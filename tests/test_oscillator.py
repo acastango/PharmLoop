@@ -23,15 +23,19 @@ class TestOscillatorCell:
         x_new, v_new, gz = cell(x, v, training=False)
         assert x_new.shape == (4, 64)
         assert v_new.shape == (4, 64)
-        assert isinstance(gz, float)
-        assert gz >= 0
+        assert isinstance(gz, torch.Tensor)
+        assert gz.shape == (4,)
+        assert (gz >= 0).all()
 
     def test_clamped_parameters(self) -> None:
-        """Decay, dt, and threshold are properly clamped."""
+        """Decay, dt, spring are properly clamped per-dimension; threshold is scalar."""
         cell = OscillatorCell()
-        assert 0.5 <= cell.decay.item() <= 0.99
-        assert 0.01 <= cell.dt.item() <= 0.5
-        assert cell.spring.item() > 0
+        assert cell.decay.shape == (STATE_DIM,)
+        assert (cell.decay >= 0.5).all() and (cell.decay <= 0.99).all()
+        assert cell.dt.shape == (STATE_DIM,)
+        assert (cell.dt >= 0.01).all() and (cell.dt <= 0.5).all()
+        assert cell.spring.shape == (STATE_DIM,)
+        assert (cell.spring > 0).all()
         assert cell.threshold.item() > 0
 
     def test_with_hopfield(self) -> None:
@@ -119,16 +123,17 @@ class TestReasoningLoop:
         assert result["steps"] <= 16
 
     def test_gray_zone_is_velocity_norm(self) -> None:
-        """Gray zone values are the L2 norm of velocity (|v|)."""
+        """Gray zone values are per-sample L2 norm of velocity (|v|)."""
         cell = OscillatorCell(state_dim=16)
         loop = ReasoningLoop(cell, max_steps=4)
         initial = torch.randn(1, 16)
         result = loop(initial, training=False)
 
-        # Initial gray zone is non-zero (from learned initial velocity projection)
-        # and all gray zones are non-negative
+        # Gray zones are now per-sample tensors
         for gz in result["gray_zones"]:
-            assert gz >= 0.0
+            assert isinstance(gz, torch.Tensor)
+            assert gz.shape == (1,)
+            assert (gz >= 0.0).all()
 
     def test_gradients_flow(self) -> None:
         """Gradients flow through the entire reasoning loop."""

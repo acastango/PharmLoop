@@ -57,11 +57,12 @@ class OscillatorCell(nn.Module):
             self.hopfield_query_proj = None
             self.hopfield_value_proj = None
 
-        # Learned oscillator parameters
-        self.raw_decay = nn.Parameter(torch.tensor(0.9))      # damping coefficient (clamped to [0.5, 0.99])
-        self.raw_dt = nn.Parameter(torch.tensor(0.1))          # time step (clamped to [0.01, 0.5])
-        self.raw_spring = nn.Parameter(torch.tensor(0.5))      # spring constant (positive)
-        self.raw_threshold = nn.Parameter(torch.tensor(0.05))  # convergence threshold for |v|
+        # Learned oscillator parameters — per-dimension so different aspects
+        # of the belief state can settle at different rates
+        self.raw_decay = nn.Parameter(torch.ones(state_dim) * 0.9)      # damping coefficient (clamped to [0.5, 0.99])
+        self.raw_dt = nn.Parameter(torch.ones(state_dim) * 0.1)          # time step (clamped to [0.01, 0.5])
+        self.raw_spring = nn.Parameter(torch.ones(state_dim) * 0.5)      # spring constant (positive)
+        self.raw_threshold = nn.Parameter(torch.tensor(0.05))             # convergence threshold for |v| (scalar — operates on norm)
 
         # Evidence transform: cat(x, hopfield_retrieved) → force
         # Input is 2 * state_dim because we concatenate x and retrieved
@@ -71,11 +72,12 @@ class OscillatorCell(nn.Module):
             nn.Linear(state_dim, state_dim),
         )
 
-        # Noise gate: |v| → noise scale factor (high uncertainty → more exploration)
+        # Noise gate: per-dimension |v| → per-dimension noise scale
+        # High uncertainty dimensions get more exploration, settled dimensions stay stable
         self.noise_gate = nn.Sequential(
-            nn.Linear(1, 32),
-            nn.ReLU(),
-            nn.Linear(32, 1),
+            nn.Linear(state_dim, 128),
+            nn.GELU(),
+            nn.Linear(128, state_dim),
             nn.Sigmoid(),
         )
 
@@ -112,7 +114,7 @@ class OscillatorCell(nn.Module):
         x: Tensor,
         v: Tensor,
         training: bool = True,
-    ) -> tuple[Tensor, Tensor, float]:
+    ) -> tuple[Tensor, Tensor, Tensor]:
         """
         One step of the damped driven oscillator.
 
@@ -122,19 +124,19 @@ class OscillatorCell(nn.Module):
             training: Whether to inject noise.
 
         Returns:
-            Tuple of (new_x, new_v, gray_zone) where gray_zone = mean |v_new|.
+            Tuple of (new_x, new_v, gz_per_sample) where gz_per_sample = |v_new| per sample (batch,).
         """
         batch = x.shape[0]
         assert x.shape == (batch, self.state_dim)
         assert v.shape == (batch, self.state_dim)
 
-        # Compute gray zone = |v| (L2 norm per sample)
-        gray_zone_per_sample = v.norm(dim=-1, keepdim=True)  # (batch, 1)
-        gray_zone_scalar = gray_zone_per_sample.mean().item()
+        # Compute gray zone: per-dimension |v| for noise gating, scalar for beta_mod
+        gz_per_dim = torch.abs(v)                              # (batch, state_dim)
+        gz_scalar = v.norm(dim=-1, keepdim=True)               # (batch, 1) — for beta_mod
 
         # Hopfield retrieval with beta modulated by gray zone
         if self.hopfield is not None and self.hopfield.count > 0:
-            beta = self.beta_mod(gray_zone_per_sample).mean()  # scalar beta
+            beta = self.beta_mod(gz_scalar).mean()  # scalar beta
             # Project state to Hopfield's input space if dimensions differ
             if self.hopfield_query_proj is not None:
                 query = self.hopfield_query_proj(x)  # (batch, hopfield.input_dim)
@@ -152,9 +154,9 @@ class OscillatorCell(nn.Module):
         evidence_input = torch.cat([x, retrieved], dim=-1)  # (batch, state_dim * 2)
         force = self.spring * self.evidence_transform(evidence_input)  # (batch, state_dim)
 
-        # Noise (only during training, gated by gray zone)
+        # Noise (only during training, gated by per-dimension gray zone)
         if training:
-            noise_scale = self.noise_gate(gray_zone_per_sample)  # (batch, 1)
+            noise_scale = self.noise_gate(gz_per_dim)  # (batch, state_dim)
             noise = torch.randn_like(v) * noise_scale * NOISE_SCALE
         else:
             noise = torch.zeros_like(v)
@@ -163,7 +165,8 @@ class OscillatorCell(nn.Module):
         v_new = self.decay * v + force + noise
         x_new = x + self.dt * v_new
 
-        return x_new, v_new, gray_zone_scalar
+        gz_per_sample = v_new.norm(dim=-1)  # (batch,) — per-sample gray zone of NEW velocity
+        return x_new, v_new, gz_per_sample
 
 
 class ReasoningLoop(nn.Module):
@@ -191,7 +194,7 @@ class ReasoningLoop(nn.Module):
         self,
         initial_state: Tensor,
         training: bool = True,
-    ) -> dict[str, Tensor | list[float] | bool]:
+    ) -> dict[str, Tensor | list[Tensor] | int]:
         """
         Run the oscillator from initial_state until convergence or max_steps.
 
@@ -205,7 +208,7 @@ class ReasoningLoop(nn.Module):
               - "final_v": Final velocity tensor (batch, state_dim).
               - "positions": List of position tensors at each step.
               - "velocities": List of velocity tensors at each step.
-              - "gray_zones": List of gray zone (|v|) scalars at each step.
+              - "gray_zones": List of per-sample gray zone tensors (batch,) at each step.
               - "steps": Number of steps taken.
               - "converged": Whether oscillator converged (bool tensor per sample).
         """
@@ -219,7 +222,7 @@ class ReasoningLoop(nn.Module):
 
         positions: list[Tensor] = [x]
         velocities: list[Tensor] = [v]
-        gray_zones: list[float] = [v.norm(dim=-1).mean().item()]
+        gray_zones: list[Tensor] = [v.norm(dim=-1)]  # (batch,) tensor
 
         steps = 0
         # During training, always run all steps (for consistent gradient computation)
@@ -228,14 +231,14 @@ class ReasoningLoop(nn.Module):
             x, v, gz = self.cell(x, v, training=training)
             positions.append(x)
             velocities.append(v)
-            gray_zones.append(gz)
+            gray_zones.append(gz)  # gz is (batch,) tensor
             steps = step + 1
 
             # Early stopping only during inference, and only after a minimum number of steps
             # to give the oscillator time to settle (not just trivially pass threshold)
             min_eval_steps = 3
             if not training and steps >= min_eval_steps:
-                if gz < self.cell.threshold.item():
+                if gz.mean().item() < self.cell.threshold.item():
                     break
 
         # Determine convergence per sample
