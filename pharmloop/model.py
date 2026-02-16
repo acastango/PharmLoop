@@ -14,6 +14,7 @@ import torch
 import torch.nn as nn
 from torch import Tensor
 
+from pharmloop.context import ContextEncoder
 from pharmloop.encoder import DrugEncoder, FUSED_DIM
 from pharmloop.hopfield import PharmHopfield
 from pharmloop.oscillator import OscillatorCell, ReasoningLoop, STATE_DIM, MAX_STEPS
@@ -42,6 +43,7 @@ class PharmLoopModel(nn.Module):
         state_dim: int = STATE_DIM,
         hopfield: PharmHopfield | None = None,
         max_steps: int = MAX_STEPS,
+        use_context: bool = False,
     ) -> None:
         super().__init__()
         self.num_drugs = num_drugs
@@ -58,6 +60,9 @@ class PharmLoopModel(nn.Module):
             nn.Linear(state_dim, state_dim),
         )
 
+        # Context encoder (optional — Phase 3+)
+        self.context_encoder = ContextEncoder(state_dim=state_dim) if use_context else None
+
         # Oscillatory reasoning
         self.cell = OscillatorCell(state_dim, hopfield)
         self.reasoning_loop = ReasoningLoop(self.cell, max_steps)
@@ -71,6 +76,7 @@ class PharmLoopModel(nn.Module):
         drug_a_features: Tensor,
         drug_b_id: Tensor,
         drug_b_features: Tensor,
+        context: Tensor | None = None,
     ) -> dict[str, Tensor | list | bool]:
         """
         Full forward pass: drug pair → interaction prediction.
@@ -80,15 +86,11 @@ class PharmLoopModel(nn.Module):
             drug_a_features: (batch, 64) — drug A structured features.
             drug_b_id: (batch,) integer tensor — drug B vocabulary index.
             drug_b_features: (batch, 64) — drug B structured features.
+            context: Optional (batch, 32) context features (dose, route, timing).
 
         Returns:
-            Dictionary with:
-              - "severity_logits": (batch, 6) severity class logits.
-              - "mechanism_logits": (batch, num_mechanisms) mechanism logits.
-              - "flag_logits": (batch, num_flags) flag logits.
-              - "confidence": (batch,) confidence scores from dynamics.
-              - "converged": (batch,) boolean convergence flags.
-              - "trajectory": dict with positions, velocities, gray_zones, steps.
+            Dictionary with severity_logits, mechanism_logits, flag_logits,
+            confidence, converged, trajectory.
         """
         batch = drug_a_id.shape[0]
 
@@ -104,11 +106,15 @@ class PharmLoopModel(nn.Module):
 
         assert initial_state.shape == (batch, self.state_dim)
 
+        # Context modulation (optional — Phase 3+)
+        if self.context_encoder is not None and context is not None:
+            initial_state = self.context_encoder(initial_state, context)
+
         # Run oscillatory reasoning
         trajectory = self.reasoning_loop(initial_state, training=self.training)
 
-        # Output head on final position
-        predictions = self.output_head(trajectory["final_x"])
+        # Output head on final position + trajectory (for mechanism head)
+        predictions = self.output_head(trajectory["final_x"], trajectory["positions"])
 
         # Compute confidence from dynamics
         confidence = compute_confidence(

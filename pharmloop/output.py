@@ -74,6 +74,63 @@ NUM_FLAGS = len(FLAG_NAMES)  # now 18
 STATE_DIM = 512
 
 
+class TrajectoryMechanismHead(nn.Module):
+    """
+    Reads mechanism signal from the oscillation trajectory, not just
+    the final position.
+
+    Takes the last K positions from the trajectory, attention-pools them,
+    and runs through a small MLP. This captures mechanism information that
+    emerges during oscillation but may not survive to the final position.
+
+    Zero additional oscillator parameters — this only adds readout capacity.
+    """
+
+    def __init__(
+        self,
+        state_dim: int = STATE_DIM,
+        num_mechanisms: int = NUM_MECHANISMS,
+        trajectory_window: int = 4,
+        hidden_dim: int = 256,
+    ) -> None:
+        super().__init__()
+        self.trajectory_window = trajectory_window
+
+        # Attention pool over trajectory window
+        self.step_attention = nn.Sequential(
+            nn.Linear(state_dim, 64),
+            nn.Tanh(),
+            nn.Linear(64, 1),
+        )
+
+        # MLP for mechanism classification
+        self.mlp = nn.Sequential(
+            nn.Linear(state_dim, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(0.1),
+            nn.Linear(hidden_dim, num_mechanisms),
+        )
+
+    def forward(self, positions: list[Tensor]) -> Tensor:
+        """
+        Classify mechanisms from trajectory positions.
+
+        Args:
+            positions: List of (batch, state_dim) tensors from trajectory.
+
+        Returns:
+            (batch, num_mechanisms) mechanism logits.
+        """
+        window = positions[-self.trajectory_window:]
+        stacked = torch.stack(window, dim=1)  # (batch, K, state_dim)
+
+        attn_scores = self.step_attention(stacked).squeeze(-1)  # (batch, K)
+        attn_weights = torch.softmax(attn_scores, dim=1)  # (batch, K)
+        pooled = (stacked * attn_weights.unsqueeze(-1)).sum(dim=1)  # (batch, state_dim)
+
+        return self.mlp(pooled)
+
+
 class OutputHead(nn.Module):
     """
     Maps converged oscillator state to structured drug interaction predictions.
@@ -83,7 +140,7 @@ class OutputHead(nn.Module):
     Args:
         state_dim: Dimension of the oscillator state (default 512).
         num_mechanisms: Number of mechanism labels (default 15).
-        num_flags: Number of clinical flag labels (default 10).
+        num_flags: Number of clinical flag labels (default 18).
     """
 
     def __init__(
@@ -98,34 +155,45 @@ class OutputHead(nn.Module):
         # Severity: 6-class classification
         self.severity_head = nn.Linear(state_dim, NUM_SEVERITY_CLASSES)
 
-        # Mechanism: multi-label classification
-        self.mechanism_head = nn.Linear(state_dim, num_mechanisms)
+        # Mechanism: trajectory-aware multi-label classification
+        self.mechanism_head = TrajectoryMechanismHead(state_dim, num_mechanisms)
 
         # Clinical flags: binary classification
         self.flags_head = nn.Linear(state_dim, num_flags)
 
-    def forward(self, state: Tensor) -> dict[str, Tensor]:
+    def forward(
+        self,
+        state: Tensor,
+        positions: list[Tensor] | None = None,
+    ) -> dict[str, Tensor]:
         """
         Produce structured predictions from oscillator state.
 
         Args:
-            state: Tensor of shape (batch, state_dim) — converged oscillator position.
+            state: (batch, state_dim) — converged oscillator position.
+            positions: List of (batch, state_dim) trajectory positions.
+                       If None, falls back to using [state] for mechanism head.
 
         Returns:
-            Dictionary with:
-              - "severity_logits": (batch, 6) — raw logits for severity classification.
-              - "mechanism_logits": (batch, num_mechanisms) — raw logits for multi-label.
-              - "flag_logits": (batch, num_flags) — raw logits for binary flags.
+            Dictionary with severity_logits, mechanism_logits, flag_logits.
         """
         batch = state.shape[0]
         assert state.shape == (batch, self.state_dim), (
             f"Expected state shape ({batch}, {self.state_dim}), got {state.shape}"
         )
 
+        severity_logits = self.severity_head(state)
+        flag_logits = self.flags_head(state)
+
+        if positions is not None:
+            mechanism_logits = self.mechanism_head(positions)
+        else:
+            mechanism_logits = self.mechanism_head([state])
+
         return {
-            "severity_logits": self.severity_head(state),      # (batch, 6)
-            "mechanism_logits": self.mechanism_head(state),     # (batch, num_mechanisms)
-            "flag_logits": self.flags_head(state),              # (batch, num_flags)
+            "severity_logits": severity_logits,
+            "mechanism_logits": mechanism_logits,
+            "flag_logits": flag_logits,
         }
 
 
