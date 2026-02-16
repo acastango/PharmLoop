@@ -30,18 +30,27 @@ class PharmHopfield(nn.Module):
         max_capacity: Maximum number of stored patterns.
     """
 
-    def __init__(self, input_dim: int, hidden_dim: int = 512, max_capacity: int = MAX_CAPACITY) -> None:
+    def __init__(self, input_dim: int, hidden_dim: int = 512,
+                 max_capacity: int = MAX_CAPACITY, phase0: bool = False) -> None:
         super().__init__()
         self.input_dim = input_dim
-        self.hidden_dim = hidden_dim
+        self.hidden_dim = hidden_dim if not phase0 else input_dim
         self.max_capacity = max_capacity
+        self.phase0 = phase0
 
-        # Learned projections for queries and keys
-        self.query_proj = nn.Linear(input_dim, hidden_dim)
-        self.key_proj = nn.Linear(input_dim, hidden_dim)
+        if phase0:
+            # Phase 0: no learned projections, operate in raw feature space
+            self.query_proj = nn.Identity()
+            self.key_proj = nn.Identity()
+            # Stored keys are in input_dim space
+            self.register_buffer("stored_keys", torch.zeros(max_capacity, input_dim))
+        else:
+            # Phase 2: learned projections in hidden_dim space
+            self.query_proj = nn.Linear(input_dim, self.hidden_dim)
+            self.key_proj = nn.Linear(input_dim, self.hidden_dim)
+            self.register_buffer("stored_keys", torch.zeros(max_capacity, self.hidden_dim))
 
-        # Stored patterns are buffers — not learned, can grow
-        self.register_buffer("stored_keys", torch.zeros(max_capacity, hidden_dim))
+        # Stored values always in input_dim space
         self.register_buffer("stored_values", torch.zeros(max_capacity, input_dim))
         self.register_buffer("num_stored", torch.tensor(0, dtype=torch.long))
 
@@ -73,6 +82,7 @@ class PharmHopfield(nn.Module):
 
         with torch.no_grad():
             # Project patterns to key space and store
+            # In phase0 mode, key_proj is Identity so keys == patterns
             keys = self.key_proj(patterns)
             self.stored_keys[current:current + n] = keys.detach()
             self.stored_values[current:current + n] = patterns.detach()

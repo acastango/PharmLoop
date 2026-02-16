@@ -57,10 +57,10 @@ def build_model(
     Phase 0: Hopfield bank is built from raw 64-dim feature vectors,
     then frozen. The oscillator learns against stable retrieval targets.
     """
-    # Phase 0: create Hopfield in 64-dim feature space
-    hopfield = PharmHopfield(input_dim=64, hidden_dim=512)
+    # Phase 0: create Hopfield in raw 64-dim feature space (no learned projections)
+    hopfield = PharmHopfield(input_dim=64, hidden_dim=512, phase0=True)
     hopfield.store(drug_features)
-    logger.info(f"Hopfield initialized with {hopfield.count} patterns in 64-dim space")
+    logger.info(f"Hopfield initialized with {hopfield.count} patterns in 64-dim space (phase0 mode)")
 
     # Freeze Hopfield — it's a stable reference, not a learnable component in Phase 1
     for param in hopfield.parameters():

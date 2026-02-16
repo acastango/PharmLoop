@@ -58,8 +58,17 @@ FLAG_NAMES = [
     "monitor_electrolytes",
     "monitor_drug_levels",
     "monitor_cns_depression",
+    # --- previously missing ---
+    "avoid_combination",
+    "monitor_bleeding",
+    "monitor_digoxin_levels",
+    "monitor_lithium_levels",
+    "monitor_cyclosporine_levels",
+    "monitor_theophylline_levels",
+    "reduce_statin_dose",
+    "separate_administration",
 ]
-NUM_FLAGS = len(FLAG_NAMES)
+NUM_FLAGS = len(FLAG_NAMES)  # now 18
 
 # State dimension from the oscillator
 STATE_DIM = 512
@@ -121,12 +130,12 @@ class OutputHead(nn.Module):
 
 
 def compute_confidence(
-    gray_zones: list[float],
+    gray_zones: list[Tensor],
     converged: Tensor,
     max_steps: int = 16,
 ) -> Tensor:
     """
-    Compute confidence from convergence dynamics (a formula, not a neural network).
+    Compute per-sample confidence from convergence dynamics (a formula, not a neural network).
 
     confidence = f(final_gray_zone, steps_to_converge, trajectory_smoothness)
 
@@ -136,36 +145,38 @@ def compute_confidence(
       - Smoothness: smooth decay of |v| → higher confidence (vs chaotic oscillation)
 
     Args:
-        gray_zones: List of gray zone values (|v|) at each step.
+        gray_zones: List of per-sample gray zone tensors (batch,) at each step.
         converged: Boolean tensor of shape (batch,) — whether each sample converged.
         max_steps: Maximum number of oscillator steps.
 
     Returns:
         Tensor of shape (batch,) with confidence scores in [0, 1].
     """
-    # Final gray zone component: lower → more confident
-    final_gz = gray_zones[-1] if gray_zones else 1.0
-    gz_confidence = max(0.0, 1.0 - final_gz * 5.0)  # scale so gz=0.2 → confidence=0
+    batch = converged.shape[0]
+    device = converged.device
 
-    # Speed component: fewer steps → more confident
+    # Final gray zone component: lower → more confident (per-sample)
+    final_gz = gray_zones[-1]  # (batch,)
+    gz_confidence = (1.0 - final_gz * 5.0).clamp(min=0.0)
+
+    # Speed component: fewer steps → more confident (same for all samples in batch)
     steps_taken = len(gray_zones) - 1  # subtract initial state
     speed_confidence = max(0.0, 1.0 - steps_taken / max_steps)
+    speed_confidence = torch.full((batch,), speed_confidence, device=device)
 
-    # Smoothness component: measure how monotonically |v| decreases
+    # Per-sample smoothness: measure how monotonically |v| decreases
     if len(gray_zones) >= 3:
-        diffs = [gray_zones[i + 1] - gray_zones[i] for i in range(len(gray_zones) - 1)]
-        second_diffs = [diffs[i + 1] - diffs[i] for i in range(len(diffs) - 1)]
-        roughness = sum(abs(d) for d in second_diffs) / len(second_diffs)
-        smoothness_confidence = max(0.0, 1.0 - roughness * 10.0)
+        gz_stack = torch.stack(gray_zones, dim=0)          # (steps, batch)
+        first_d = gz_stack[1:] - gz_stack[:-1]             # (steps-1, batch)
+        second_d = first_d[1:] - first_d[:-1]              # (steps-2, batch)
+        roughness = second_d.abs().mean(dim=0)              # (batch,)
+        smoothness_confidence = (1.0 - roughness * 10.0).clamp(min=0.0)
     else:
-        smoothness_confidence = 0.5
+        smoothness_confidence = torch.full((batch,), 0.5, device=device)
 
-    # Combined confidence
-    raw_confidence = 0.4 * gz_confidence + 0.3 * speed_confidence + 0.3 * smoothness_confidence
+    # Combined confidence (per-sample)
+    raw = 0.4 * gz_confidence + 0.3 * speed_confidence + 0.3 * smoothness_confidence
 
     # Non-converged samples get forced low confidence
-    batch = converged.shape[0]
-    confidence = torch.full((batch,), raw_confidence, device=converged.device)
-    confidence[~converged] = confidence[~converged].clamp(max=0.1)
-
-    return confidence
+    raw[~converged] = raw[~converged].clamp(max=0.1)
+    return raw

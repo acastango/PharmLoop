@@ -44,8 +44,8 @@ def load_test_model() -> tuple[PharmLoopModel, dict]:
         drug_features_list.append(info["features"])
     drug_features = torch.tensor(drug_features_list, dtype=torch.float32)
 
-    # Build Hopfield in 64-dim feature space
-    hopfield = PharmHopfield(input_dim=64, hidden_dim=512)
+    # Build Hopfield in 64-dim feature space (phase0 — no learned projections)
+    hopfield = PharmHopfield(input_dim=64, hidden_dim=512, phase0=True)
     hopfield.store(drug_features)
     for param in hopfield.parameters():
         param.requires_grad = False
@@ -92,14 +92,14 @@ class TestThreeWaySeparation:
         severity_pred = output["severity_logits"].argmax(dim=-1).item()
         converged = output["converged"].item()
         steps = output["trajectory"]["steps"]
-        final_gz = output["trajectory"]["gray_zones"][-1]
+        final_gz = output["trajectory"]["gray_zones"][-1].item()
 
         print(f"\nCase 1 (fluoxetine + tramadol):")
         print(f"  Severity: {SEVERITY_NAMES[severity_pred]}")
         print(f"  Converged: {converged}")
         print(f"  Steps: {steps}")
         print(f"  Final gray zone: {final_gz:.4f}")
-        print(f"  GZ trajectory: {[f'{gz:.4f}' for gz in output['trajectory']['gray_zones']]}")
+        print(f"  GZ trajectory: {[f'{gz.item():.4f}' for gz in output['trajectory']['gray_zones']]}")
 
         assert converged, "Severe interaction should converge"
         assert steps <= 16, f"Should converge within max_steps, took {steps}"
@@ -120,14 +120,14 @@ class TestThreeWaySeparation:
         severity_pred = output["severity_logits"].argmax(dim=-1).item()
         converged = output["converged"].item()
         steps = output["trajectory"]["steps"]
-        final_gz = output["trajectory"]["gray_zones"][-1]
+        final_gz = output["trajectory"]["gray_zones"][-1].item()
 
         print(f"\nCase 2 (metformin + lisinopril):")
         print(f"  Severity: {SEVERITY_NAMES[severity_pred]}")
         print(f"  Converged: {converged}")
         print(f"  Steps: {steps}")
         print(f"  Final gray zone: {final_gz:.4f}")
-        print(f"  GZ trajectory: {[f'{gz:.4f}' for gz in output['trajectory']['gray_zones']]}")
+        print(f"  GZ trajectory: {[f'{gz.item():.4f}' for gz in output['trajectory']['gray_zones']]}")
 
         assert converged, "Safe pair should converge"
         assert steps <= 16, f"Should converge within max_steps, took {steps}"
@@ -151,14 +151,14 @@ class TestThreeWaySeparation:
         severity_pred = output["severity_logits"].argmax(dim=-1).item()
         converged = output["converged"].item()
         steps = output["trajectory"]["steps"]
-        final_gz = output["trajectory"]["gray_zones"][-1]
+        final_gz = output["trajectory"]["gray_zones"][-1].item()
 
         print(f"\nCase 3 (QZ-7734 + aspirin):")
         print(f"  Severity: {SEVERITY_NAMES[severity_pred]}")
         print(f"  Converged: {converged}")
         print(f"  Steps: {steps}")
         print(f"  Final gray zone: {final_gz:.4f}")
-        print(f"  GZ trajectory: {[f'{gz:.4f}' for gz in output['trajectory']['gray_zones']]}")
+        print(f"  GZ trajectory: {[f'{gz.item():.4f}' for gz in output['trajectory']['gray_zones']]}")
 
         # Either doesn't converge OR outputs unknown severity
         assert (not converged) or (severity_pred == SEVERITY_UNKNOWN), (
@@ -183,8 +183,8 @@ class TestThreeWaySeparation:
         with torch.no_grad():
             out_unknown = model(fabricated_id, fabricated_features, b_id2, b_feat2)
 
-        known_gz = out_known["trajectory"]["gray_zones"][-1]
-        unknown_gz = out_unknown["trajectory"]["gray_zones"][-1]
+        known_gz = out_known["trajectory"]["gray_zones"][-1].item()
+        unknown_gz = out_unknown["trajectory"]["gray_zones"][-1].item()
 
         print(f"\nGray zone separation:")
         print(f"  Known (fluoxetine+tramadol) final GZ: {known_gz:.4f}")
