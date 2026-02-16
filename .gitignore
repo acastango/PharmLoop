@@ -1,0 +1,35 @@
+# Environment variables (may contain local paths / secrets)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# PyTorch artifacts
+checkpoints/
+*.pt
+*.pth
+*.onnx
+
+# Logs
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
