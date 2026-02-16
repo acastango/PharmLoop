@@ -33,6 +33,7 @@ class DrugInteractionDataset(Dataset):
         interactions_path: Path to interactions.json with interaction pairs.
         fabricated_ratio: Fraction of fabricated (unknown) drug pairs to inject per epoch.
         feature_dim: Expected feature vector dimension.
+        split_indices: If provided, only use interactions at these indices.
     """
 
     def __init__(
@@ -41,6 +42,7 @@ class DrugInteractionDataset(Dataset):
         interactions_path: str | Path,
         fabricated_ratio: float = 0.15,
         feature_dim: int = 64,
+        split_indices: list[int] | None = None,
     ) -> None:
         self.feature_dim = feature_dim
         self.fabricated_ratio = fabricated_ratio
@@ -72,9 +74,15 @@ class DrugInteractionDataset(Dataset):
         self.mechanism_to_idx = {name: i for i, name in enumerate(MECHANISM_NAMES)}
         self.flag_to_idx = {name: i for i, name in enumerate(FLAG_NAMES)}
 
-        # Parse interactions into samples
+        # Parse interactions into samples (optionally filtered by split indices)
+        all_interactions = interactions_data["interactions"]
+        if split_indices is not None:
+            indexed_interactions = [(i, all_interactions[i]) for i in split_indices]
+        else:
+            indexed_interactions = list(enumerate(all_interactions))
+
         self.samples: list[dict] = []
-        for inter in interactions_data["interactions"]:
+        for _idx, inter in indexed_interactions:
             drug_a = inter["drug_a"]
             drug_b = inter["drug_b"]
 
@@ -149,9 +157,16 @@ def create_dataloader(
     batch_size: int = 32,
     shuffle: bool = True,
     num_workers: int = 0,
+    split_indices: list[int] | None = None,
 ) -> DataLoader:
-    """Create a DataLoader for PharmLoop training."""
-    dataset = DrugInteractionDataset(drugs_path, interactions_path)
+    """Create a DataLoader for PharmLoop training.
+
+    Args:
+        split_indices: If provided, only include interactions at these indices.
+    """
+    dataset = DrugInteractionDataset(
+        drugs_path, interactions_path, split_indices=split_indices,
+    )
     return DataLoader(
         dataset,
         batch_size=batch_size,

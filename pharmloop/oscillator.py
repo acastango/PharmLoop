@@ -62,7 +62,7 @@ class OscillatorCell(nn.Module):
         self.raw_decay = nn.Parameter(torch.ones(state_dim) * 0.9)      # damping coefficient (clamped to [0.5, 0.99])
         self.raw_dt = nn.Parameter(torch.ones(state_dim) * 0.1)          # time step (clamped to [0.01, 0.5])
         self.raw_spring = nn.Parameter(torch.ones(state_dim) * 0.5)      # spring constant (positive)
-        self.raw_threshold = nn.Parameter(torch.tensor(0.05))             # convergence threshold for |v| (scalar — operates on norm)
+        self.raw_threshold = nn.Parameter(torch.tensor(0.15))             # convergence threshold for |v| (scalar — operates on norm)
 
         # Evidence transform: cat(x, hopfield_retrieved) → force
         # Input is 2 * state_dim because we concatenate x and retrieved
