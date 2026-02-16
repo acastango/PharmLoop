@@ -275,6 +275,7 @@ class PharmLoopInference:
                 highest_severity="unknown",
                 pairwise_results=[],
                 multi_drug_alerts=[],
+                skipped_drugs=unknown_drugs_in_list,
             )
 
         # Batch forward pass
@@ -293,7 +294,9 @@ class PharmLoopInference:
             pairwise_results[(drug_a, drug_b)] = result
 
         # Run polypharmacy pattern detection
-        return self.polypharmacy_analyzer.analyze(drug_names, pairwise_results)
+        return self.polypharmacy_analyzer.analyze(
+            drug_names, pairwise_results, skipped_drugs=unknown_drugs_in_list,
+        )
 
     def _unbatch_single(
         self,

@@ -37,6 +37,13 @@ logger = logging.getLogger("pharmloop.pipeline")
 # These define default feature ranges per drug class.
 # Used for synthetic feature generation when DrugBank XML is not available.
 # Each value is (dim_index, default_value) or (dim_index, low, high) for range.
+#
+# WARNING: These priors are handcrafted pharmacological heuristics. The mapping
+# from dimension indices to pharmacological properties (e.g. dim 5 → CYP2D6
+# inhibition) is assumed here and may not match the layout used in the v1
+# feature vectors from Phase 1-3. When DrugBank XML becomes available in
+# Phase 4b, these synthetic features will be replaced entirely. Do NOT treat
+# severity/mechanism accuracy on this synthetic data as clinically meaningful.
 
 CLASS_FEATURE_PRIORS: dict[str, dict[int, float | tuple[float, float]]] = {
     "ssri_snri": {

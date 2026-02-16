@@ -254,6 +254,7 @@ def _run_epoch(
     total_do_no_harm = 0.0
     total_early_conv = 0.0
     convergence_count = 0
+    total_known = 0
     total_samples = 0
     batches = 0
 
@@ -298,6 +299,7 @@ def _run_epoch(
         total_early_conv += losses.get("early_convergence", torch.tensor(0.0)).item() * bs
 
         known_mask = ~is_unknown
+        total_known += known_mask.sum().item()
         if known_mask.any():
             convergence_count += output["converged"][known_mask].float().sum().item()
 
@@ -307,8 +309,7 @@ def _run_epoch(
     if total_samples == 0:
         return {"total": 0.0, "convergence_rate": 0.0}
 
-    # Approximate known count (fabricated ratio is ~15%)
-    approx_known = max(1, total_samples * 0.85)
+    known_count = max(1, total_known)
 
     return {
         "total": total_loss / total_samples,
@@ -317,7 +318,7 @@ def _run_epoch(
         "smoothness": total_smoothness / total_samples,
         "do_no_harm": total_do_no_harm / total_samples,
         "early_convergence": total_early_conv / total_samples,
-        "convergence_rate": convergence_count / approx_known,
+        "convergence_rate": convergence_count / known_count,
     }
 
 
@@ -326,7 +327,15 @@ def _compute_metrics(
     loader: DataLoader,
     device: str,
 ) -> dict[str, float]:
-    """Compute severity accuracy, mechanism accuracy, and false negative rate."""
+    """
+    Compute severity accuracy, mechanism accuracy, and false negative rate.
+
+    NOTE: FNR on this synthetic dataset reflects convergence on probabilistic
+    class-level interaction rules, NOT ground-truth clinical labels. A nonzero
+    FNR here (e.g. 3-5%) may be inflated by noisy severity assignments from
+    CLASS_INTERACTION_RULES. Real FNR will only be meaningful after validation
+    against DrugBank data or pharmacist review (Phase 4b+).
+    """
     model.eval()
     correct_sev = 0
     total_sev = 0
