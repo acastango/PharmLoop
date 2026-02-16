@@ -131,6 +131,36 @@ class PharmLoopModel(nn.Module):
             },
         }
 
+    def compute_pair_state(
+        self,
+        drug_a_id: Tensor,
+        drug_a_features: Tensor,
+        drug_b_id: Tensor,
+        drug_b_features: Tensor,
+    ) -> Tensor:
+        """
+        Compute the initial pair state (before oscillation) for Hopfield storage.
+
+        This is the deterministic representation of what a drug pair looks like
+        in learned space. Used by Phase 2 to populate the Hopfield memory.
+
+        Args:
+            drug_a_id: (batch,) integer tensor.
+            drug_a_features: (batch, 64) feature tensor.
+            drug_b_id: (batch,) integer tensor.
+            drug_b_features: (batch, 64) feature tensor.
+
+        Returns:
+            (batch, state_dim) initial pair state tensor.
+        """
+        enc_a = self.encoder(drug_a_id, drug_a_features)
+        enc_b = self.encoder(drug_b_id, drug_b_features)
+
+        pair_forward = torch.cat([enc_a, enc_b], dim=-1)
+        pair_reverse = torch.cat([enc_b, enc_a], dim=-1)
+        pair_state = (self.pair_combine(pair_forward) + self.pair_combine(pair_reverse)) / 2.0
+        return pair_state
+
     def count_parameters(self) -> dict[str, int]:
         """Count learned parameters and buffer sizes."""
         learned = sum(p.numel() for p in self.parameters() if p.requires_grad)
