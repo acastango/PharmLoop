@@ -1,0 +1,1929 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "num_interactions": 209,
+    "severity_classes": ["none", "mild", "moderate", "severe", "contraindicated"],
+    "mechanism_vocabulary": [
+      "serotonergic",
+      "cyp_inhibition",
+      "cyp_induction",
+      "qt_prolongation",
+      "bleeding_risk",
+      "cns_depression",
+      "nephrotoxicity",
+      "hepatotoxicity",
+      "hypotension",
+      "hyperkalemia",
+      "seizure_risk",
+      "immunosuppression",
+      "absorption_altered",
+      "protein_binding_displacement",
+      "electrolyte_imbalance"
+    ],
+    "flag_vocabulary": [
+      "monitor_serotonin_syndrome",
+      "monitor_inr",
+      "monitor_qt_interval",
+      "monitor_blood_pressure",
+      "monitor_renal_function",
+      "monitor_hepatic_function",
+      "monitor_electrolytes",
+      "monitor_blood_glucose",
+      "monitor_drug_levels",
+      "monitor_cns_depression",
+      "monitor_bleeding",
+      "monitor_lithium_levels",
+      "monitor_digoxin_levels",
+      "monitor_theophylline_levels",
+      "monitor_cyclosporine_levels",
+      "reduce_statin_dose",
+      "avoid_combination",
+      "separate_administration"
+    ],
+    "sources": "Approximated from DrugBank, FDA labels, Lexicomp, clinical pharmacology references"
+  },
+  "interactions": [
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "tramadol",
+      "severity": "severe",
+      "mechanisms": ["serotonergic", "cyp_inhibition"],
+      "flags": ["monitor_serotonin_syndrome", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine strongly inhibits CYP2D6 (tramadol activation) and both increase serotonergic activity. Risk of serotonin syndrome."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "sertraline",
+      "severity": "contraindicated",
+      "mechanisms": ["serotonergic"],
+      "flags": ["avoid_combination", "monitor_serotonin_syndrome"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual SSRI use: extreme serotonin syndrome risk. No clinical rationale for combining."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "paroxetine",
+      "severity": "contraindicated",
+      "mechanisms": ["serotonergic", "cyp_inhibition"],
+      "flags": ["avoid_combination", "monitor_serotonin_syndrome"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual SSRI use with overlapping CYP2D6 inhibition."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "citalopram",
+      "severity": "contraindicated",
+      "mechanisms": ["serotonergic", "qt_prolongation"],
+      "flags": ["avoid_combination", "monitor_serotonin_syndrome", "monitor_qt_interval"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual SSRI use plus additive QT prolongation risk from citalopram."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "codeine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine strongly inhibits CYP2D6, blocking codeine conversion to morphine. Loss of analgesic effect."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "fentanyl",
+      "severity": "severe",
+      "mechanisms": ["serotonergic"],
+      "flags": ["monitor_serotonin_syndrome", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Fentanyl has serotonergic activity. Combined with SSRI increases serotonin syndrome risk."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "metoprolol",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine inhibits CYP2D6, increasing metoprolol levels. May cause excessive bradycardia and hypotension."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "warfarin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "protein_binding_displacement", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine inhibits CYP2C9 and may displace warfarin from protein binding. Increased bleeding risk."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine may inhibit carbamazepine metabolism, while carbamazepine induces fluoxetine metabolism."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "haloperidol",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "qt_prolongation"],
+      "flags": ["monitor_qt_interval", "monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine inhibits CYP2D6, increasing haloperidol exposure. Additive QT prolongation."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "lithium",
+      "severity": "moderate",
+      "mechanisms": ["serotonergic"],
+      "flags": ["monitor_lithium_levels", "monitor_serotonin_syndrome"],
+      "source": "DrugBank/FDA",
+      "notes": "Lithium augments serotonergic transmission. Common combination but requires monitoring."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "diazepam",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "cns_depression"],
+      "flags": ["monitor_cns_depression"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluoxetine may inhibit diazepam metabolism. Additive CNS depression."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "tramadol",
+      "severity": "severe",
+      "mechanisms": ["serotonergic", "cyp_inhibition"],
+      "flags": ["monitor_serotonin_syndrome", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Serotonin syndrome risk from dual serotonergic activity. Sertraline moderately inhibits CYP2D6."
+    },
+    {
+      "drug_a": "paroxetine",
+      "drug_b": "tramadol",
+      "severity": "severe",
+      "mechanisms": ["serotonergic", "cyp_inhibition"],
+      "flags": ["monitor_serotonin_syndrome", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Paroxetine is strong CYP2D6 inhibitor. Blocks tramadol activation and increases serotonin syndrome risk."
+    },
+    {
+      "drug_a": "paroxetine",
+      "drug_b": "codeine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Paroxetine strongly inhibits CYP2D6, preventing codeine to morphine conversion."
+    },
+    {
+      "drug_a": "citalopram",
+      "drug_b": "tramadol",
+      "severity": "severe",
+      "mechanisms": ["serotonergic"],
+      "flags": ["monitor_serotonin_syndrome", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Serotonin syndrome risk from dual serotonergic activity."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "metronidazole",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Metronidazole inhibits CYP2C9, dramatically increasing warfarin levels. Major bleeding risk."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "fluconazole",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole strongly inhibits CYP2C9/2C19. Major increase in warfarin effect."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "amiodarone",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits CYP2C9/3A4. Increases warfarin levels 30-50%. Reduce warfarin dose."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "aspirin",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding", "monitor_inr"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive anticoagulant/antiplatelet effect. Major GI and intracranial bleeding risk."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "ibuprofen",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk", "cyp_inhibition"],
+      "flags": ["monitor_bleeding", "monitor_inr"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs increase bleeding risk and may inhibit warfarin metabolism. GI bleeding risk."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "naproxen",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk", "cyp_inhibition"],
+      "flags": ["monitor_bleeding", "monitor_inr"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAID + anticoagulant. Major bleeding risk."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "ciprofloxacin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Ciprofloxacin inhibits CYP1A2 and may increase warfarin effect."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "clarithromycin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4 and may increase S-warfarin levels."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "phenytoin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction", "protein_binding_displacement"],
+      "flags": ["monitor_inr", "monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Complex bidirectional interaction via CYP2C9 and protein binding displacement."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_inr"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine induces CYP enzymes, potentially reducing warfarin effect."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "ketoconazole",
+      "severity": "contraindicated",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole strongly inhibits CYP3A4. Massive increase in simvastatin levels. Rhabdomyolysis risk."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "clarithromycin",
+      "severity": "contraindicated",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin strongly inhibits CYP3A4. Simvastatin levels increase dramatically. Rhabdomyolysis risk."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "cyclosporine",
+      "severity": "contraindicated",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Cyclosporine inhibits CYP3A4 and P-gp. Extreme statin level increase. Rhabdomyolysis."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "amiodarone",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits CYP3A4. Simvastatin dose must not exceed 20mg. Rhabdomyolysis risk."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "diltiazem",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Diltiazem inhibits CYP3A4. Simvastatin dose should not exceed 10mg."
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "verapamil",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Verapamil inhibits CYP3A4. Simvastatin dose should not exceed 10mg."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "ketoconazole",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination", "reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole strongly inhibits CYP3A4. Major increase in atorvastatin exposure."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "clarithromycin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4. Increased atorvastatin levels."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "cyclosporine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Cyclosporine inhibits CYP3A4 and OATP1B1. Major increase in atorvastatin levels."
+    },
+    {
+      "drug_a": "omeprazole",
+      "drug_b": "clopidogrel",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Omeprazole inhibits CYP2C19, reducing clopidogrel activation. Diminished antiplatelet effect."
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "aspirin",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual antiplatelet therapy. Increased bleeding risk but commonly used intentionally post-ACS."
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "ibuprofen",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs increase bleeding risk when combined with antiplatelet agents."
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "naproxen",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive bleeding risk with NSAID and antiplatelet."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "digoxin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_digoxin_levels", "monitor_qt_interval"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits P-gp, increasing digoxin levels 70-100%. Reduce digoxin dose by 50%."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "phenytoin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits CYP2C9, increasing phenytoin levels. Phenytoin may also reduce amiodarone."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "ciprofloxacin",
+      "severity": "severe",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation. Risk of torsades de pointes."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "haloperidol",
+      "severity": "severe",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation. Significant risk of torsades de pointes."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "citalopram",
+      "severity": "severe",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation from both agents."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "metoprolol",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "hypotension"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits CYP2D6, increasing metoprolol levels. Additive bradycardia risk."
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cyclosporine_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Amiodarone inhibits CYP3A4 and P-gp, increasing cyclosporine levels."
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "theophylline",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_theophylline_levels", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ciprofloxacin strongly inhibits CYP1A2, causing dangerous theophylline accumulation. Seizure risk."
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function", "monitor_cyclosporine_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive nephrotoxicity risk."
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "methotrexate",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Ciprofloxacin may decrease methotrexate renal clearance."
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "haloperidol",
+      "severity": "moderate",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation risk."
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "citalopram",
+      "severity": "moderate",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation risk."
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "digoxin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits P-gp and kills gut flora that metabolize digoxin. Major level increase."
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "cyclosporine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cyclosporine_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4 and P-gp, significantly increasing cyclosporine exposure."
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "quetiapine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cns_depression"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4. Major increase in quetiapine levels causing excessive sedation."
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "carbamazepine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4 metabolism of carbamazepine. Toxicity risk."
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "fentanyl",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4, increasing fentanyl levels. Respiratory depression risk."
+    },
+    {
+      "drug_a": "ketoconazole",
+      "drug_b": "cyclosporine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cyclosporine_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole strongly inhibits CYP3A4 and P-gp. Major cyclosporine level increase."
+    },
+    {
+      "drug_a": "ketoconazole",
+      "drug_b": "quetiapine",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole strongly inhibits CYP3A4. Quetiapine levels increase dramatically."
+    },
+    {
+      "drug_a": "ketoconazole",
+      "drug_b": "fentanyl",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole inhibits CYP3A4 fentanyl metabolism. Risk of respiratory depression."
+    },
+    {
+      "drug_a": "ketoconazole",
+      "drug_b": "alprazolam",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "cns_depression"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole inhibits CYP3A4. Major increase in alprazolam levels and CNS depression."
+    },
+    {
+      "drug_a": "ketoconazole",
+      "drug_b": "diltiazem",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Bidirectional CYP3A4 inhibition. Increased levels of both drugs."
+    },
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "phenytoin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole inhibits CYP2C9/2C19, increasing phenytoin levels. Toxicity risk."
+    },
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "simvastatin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole inhibits CYP3A4 and CYP2C9. Increased rhabdomyolysis risk with simvastatin."
+    },
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "glipizide",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole inhibits CYP2C9, increasing glipizide levels. Hypoglycemia risk."
+    },
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole inhibits carbamazepine metabolism."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "verapamil",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "hypotension"],
+      "flags": ["monitor_digoxin_levels", "monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Verapamil inhibits P-gp, increasing digoxin levels. Additive AV nodal depression."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "diltiazem",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Diltiazem increases digoxin levels via P-gp inhibition. Additive bradycardia."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Cyclosporine inhibits P-gp, increasing digoxin exposure."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "spironolactone",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_digoxin_levels", "monitor_electrolytes"],
+      "source": "DrugBank/FDA",
+      "notes": "Spironolactone may increase digoxin levels and alter electrolytes affecting digoxin sensitivity."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "furosemide",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_electrolytes", "monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Furosemide-induced hypokalemia increases digoxin toxicity risk."
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "hydrochlorothiazide",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_electrolytes", "monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Thiazide-induced hypokalemia increases digoxin toxicity risk."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "ibuprofen",
+      "severity": "severe",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce renal lithium clearance. Can increase lithium levels 15-50%."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "naproxen",
+      "severity": "severe",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce renal lithium clearance."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "lisinopril",
+      "severity": "severe",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "ACE inhibitors reduce lithium renal clearance. Levels may increase significantly."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "losartan",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "ARBs may reduce lithium renal clearance, though generally less than ACE inhibitors."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "furosemide",
+      "severity": "severe",
+      "mechanisms": ["electrolyte_imbalance", "nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_electrolytes"],
+      "source": "DrugBank/FDA",
+      "notes": "Loop diuretics cause sodium depletion increasing lithium reabsorption. Toxicity risk."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "hydrochlorothiazide",
+      "severity": "severe",
+      "mechanisms": ["electrolyte_imbalance", "nephrotoxicity"],
+      "flags": ["monitor_lithium_levels", "monitor_electrolytes"],
+      "source": "DrugBank/FDA",
+      "notes": "Thiazide diuretics reduce lithium clearance by 25%. Common cause of lithium toxicity."
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_lithium_levels", "monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive neurotoxicity risk. Both lower seizure threshold."
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "phenytoin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Mutual enzyme induction. Unpredictable effects on levels of both drugs."
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "valproic_acid",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction", "hepatotoxicity"],
+      "flags": ["monitor_drug_levels", "monitor_hepatic_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine reduces valproate levels via CYP induction. Valproate may increase carbamazepine-epoxide."
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "doxycycline",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine induces doxycycline metabolism, potentially reducing its half-life by 50%."
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "quetiapine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine induces CYP3A4, dramatically reducing quetiapine levels."
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "valproic_acid",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition", "protein_binding_displacement"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Valproate displaces phenytoin from protein binding and inhibits its metabolism. Complex interaction."
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "theophylline",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_theophylline_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Phenytoin induces theophylline metabolism, reducing its levels."
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "cyclosporine",
+      "severity": "severe",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_cyclosporine_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Phenytoin induces CYP3A4, dramatically reducing cyclosporine levels. Transplant rejection risk."
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "doxycycline",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Phenytoin may reduce doxycycline efficacy through enzyme induction."
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "ibuprofen",
+      "severity": "severe",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce methotrexate renal clearance. Risk of methotrexate toxicity including pancytopenia."
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "naproxen",
+      "severity": "severe",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce methotrexate renal clearance."
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "omeprazole",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "PPIs may reduce methotrexate renal elimination, increasing levels."
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "ciprofloxacin",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Ciprofloxacin may decrease renal tubular transport of methotrexate."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "methotrexate",
+      "severity": "moderate",
+      "mechanisms": ["immunosuppression", "nephrotoxicity"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive immunosuppression and nephrotoxicity."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "simvastatin",
+      "severity": "contraindicated",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Listed above but bidirectional entry. Rhabdomyolysis risk."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "diltiazem",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cyclosporine_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Diltiazem inhibits CYP3A4, increasing cyclosporine levels."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "verapamil",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_cyclosporine_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Verapamil inhibits CYP3A4 and P-gp, increasing cyclosporine levels."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "spironolactone",
+      "severity": "severe",
+      "mechanisms": ["hyperkalemia"],
+      "flags": ["monitor_electrolytes", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Both increase potassium retention. Hyperkalemia risk especially with renal impairment."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "losartan",
+      "severity": "severe",
+      "mechanisms": ["hyperkalemia", "hypotension", "nephrotoxicity"],
+      "flags": ["monitor_electrolytes", "monitor_renal_function", "monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual RAAS blockade. Increased risk of hyperkalemia, hypotension, and renal failure. Generally avoided."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "ibuprofen",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity", "hyperkalemia"],
+      "flags": ["monitor_renal_function", "monitor_blood_pressure", "monitor_electrolytes"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce antihypertensive effect and increase renal and hyperkalemia risk."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "naproxen",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity", "hyperkalemia"],
+      "flags": ["monitor_renal_function", "monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs reduce ACE inhibitor efficacy and increase renal risk."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "aspirin",
+      "severity": "mild",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Low-dose aspirin: minimal effect. High-dose aspirin may reduce ACE inhibitor efficacy."
+    },
+    {
+      "drug_a": "losartan",
+      "drug_b": "spironolactone",
+      "severity": "severe",
+      "mechanisms": ["hyperkalemia"],
+      "flags": ["monitor_electrolytes", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Both retain potassium. Significant hyperkalemia risk."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "ibuprofen",
+      "severity": "mild",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAIDs may impair renal function, reducing metformin clearance. Minor at normal doses."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "furosemide",
+      "severity": "mild",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Furosemide may increase metformin levels. Minor clinical significance."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "ciprofloxacin",
+      "severity": "mild",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Ciprofloxacin may alter blood glucose and affect metformin clearance."
+    },
+    {
+      "drug_a": "glipizide",
+      "drug_b": "metronidazole",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Metronidazole inhibits CYP2C9, potentially increasing glipizide levels and hypoglycemia risk."
+    },
+    {
+      "drug_a": "glipizide",
+      "drug_b": "fluconazole",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Fluconazole inhibits CYP2C9, increasing glipizide levels."
+    },
+    {
+      "drug_a": "tramadol",
+      "drug_b": "morphine",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression", "serotonergic"],
+      "flags": ["monitor_cns_depression"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive CNS depression. Tramadol adds serotonergic risk to opioid combination."
+    },
+    {
+      "drug_a": "tramadol",
+      "drug_b": "diazepam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression", "seizure_risk"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Combined CNS depression risk. Respiratory depression. Tramadol lowers seizure threshold."
+    },
+    {
+      "drug_a": "tramadol",
+      "drug_b": "alprazolam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression", "seizure_risk"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Opioid-benzodiazepine combination. FDA boxed warning for respiratory depression."
+    },
+    {
+      "drug_a": "fentanyl",
+      "drug_b": "diazepam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "FDA boxed warning: opioid + benzodiazepine. Respiratory depression, coma, death risk."
+    },
+    {
+      "drug_a": "fentanyl",
+      "drug_b": "alprazolam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "FDA boxed warning: opioid + benzodiazepine combination."
+    },
+    {
+      "drug_a": "morphine",
+      "drug_b": "diazepam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "FDA boxed warning: opioid + benzodiazepine combination."
+    },
+    {
+      "drug_a": "morphine",
+      "drug_b": "alprazolam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "FDA boxed warning: opioid + benzodiazepine combination."
+    },
+    {
+      "drug_a": "codeine",
+      "drug_b": "diazepam",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression"],
+      "source": "DrugBank/FDA",
+      "notes": "Opioid + benzodiazepine. Respiratory depression risk."
+    },
+    {
+      "drug_a": "haloperidol",
+      "drug_b": "citalopram",
+      "severity": "moderate",
+      "mechanisms": ["qt_prolongation"],
+      "flags": ["monitor_qt_interval"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive QT prolongation from both agents."
+    },
+    {
+      "drug_a": "haloperidol",
+      "drug_b": "lithium",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Risk of neurotoxicity and NMS-like syndrome. Monitor neurological status."
+    },
+    {
+      "drug_a": "quetiapine",
+      "drug_b": "diazepam",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression", "hypotension"],
+      "flags": ["monitor_cns_depression", "monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive sedation and orthostatic hypotension."
+    },
+    {
+      "drug_a": "quetiapine",
+      "drug_b": "phenytoin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Phenytoin induces CYP3A4, reducing quetiapine levels. May need dose increase."
+    },
+    {
+      "drug_a": "diltiazem",
+      "drug_b": "metoprolol",
+      "severity": "severe",
+      "mechanisms": ["hypotension"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Both agents depress cardiac conduction. Risk of severe bradycardia, AV block, heart failure."
+    },
+    {
+      "drug_a": "verapamil",
+      "drug_b": "metoprolol",
+      "severity": "severe",
+      "mechanisms": ["hypotension"],
+      "flags": ["monitor_blood_pressure", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Non-dihydropyridine CCB + beta-blocker. Severe bradycardia and conduction abnormalities."
+    },
+    {
+      "drug_a": "verapamil",
+      "drug_b": "digoxin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "hypotension"],
+      "flags": ["monitor_digoxin_levels", "monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Verapamil increases digoxin levels 50-75%. Additive AV nodal depression."
+    },
+    {
+      "drug_a": "diltiazem",
+      "drug_b": "simvastatin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Diltiazem inhibits CYP3A4. Simvastatin dose should not exceed 10mg."
+    },
+    {
+      "drug_a": "verapamil",
+      "drug_b": "simvastatin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Verapamil inhibits CYP3A4. Simvastatin dose should not exceed 10mg."
+    },
+    {
+      "drug_a": "spironolactone",
+      "drug_b": "digoxin",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_electrolytes", "monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Spironolactone may interfere with digoxin assay and alter K+ balance."
+    },
+    {
+      "drug_a": "furosemide",
+      "drug_b": "lisinopril",
+      "severity": "moderate",
+      "mechanisms": ["hypotension"],
+      "flags": ["monitor_blood_pressure", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "First-dose hypotension with ACE inhibitor + diuretic. Common but monitor."
+    },
+    {
+      "drug_a": "hydrochlorothiazide",
+      "drug_b": "lisinopril",
+      "severity": "mild",
+      "mechanisms": ["hypotension"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Intentional combination (Zestoretic). Additive hypotension. Generally well tolerated."
+    },
+    {
+      "drug_a": "hydrochlorothiazide",
+      "drug_b": "losartan",
+      "severity": "mild",
+      "mechanisms": ["hypotension"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Intentional combination (Hyzaar). Additive antihypertensive effect."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "omeprazole",
+      "severity": "mild",
+      "mechanisms": ["absorption_altered"],
+      "flags": ["separate_administration", "monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "PPIs raise gastric pH, reducing levothyroxine absorption. May need dose adjustment."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine induces levothyroxine metabolism, potentially causing hypothyroidism."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "phenytoin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction", "protein_binding_displacement"],
+      "flags": ["monitor_drug_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Phenytoin displaces levothyroxine from binding proteins and induces its metabolism."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "ibuprofen",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Corticosteroid + NSAID increases GI ulceration and bleeding risk."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "naproxen",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Corticosteroid + NSAID increases GI ulceration and bleeding risk."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "aspirin",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Corticosteroid + NSAID. Additive GI bleeding risk."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "warfarin",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Prednisone may enhance or diminish warfarin effect. GI bleeding risk."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "metformin",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Corticosteroids increase blood glucose, opposing metformin effect."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "glipizide",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_blood_glucose"],
+      "source": "DrugBank/FDA",
+      "notes": "Corticosteroids increase blood glucose, opposing glipizide effect."
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "clarithromycin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["monitor_theophylline_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4, modestly increasing theophylline levels."
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "mechanisms": ["cyp_induction"],
+      "flags": ["monitor_theophylline_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Carbamazepine induces theophylline metabolism."
+    },
+    {
+      "drug_a": "amlodipine",
+      "drug_b": "simvastatin",
+      "severity": "moderate",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["reduce_statin_dose"],
+      "source": "DrugBank/FDA",
+      "notes": "Amlodipine modestly inhibits CYP3A4. Simvastatin dose should not exceed 20mg."
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "ketoconazole",
+      "severity": "contraindicated",
+      "mechanisms": ["cyp_inhibition"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Ketoconazole strongly inhibits CYP3A4 and P-gp, dramatically increasing rivaroxaban levels."
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "clarithromycin",
+      "severity": "severe",
+      "mechanisms": ["cyp_inhibition", "bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Clarithromycin inhibits CYP3A4 and P-gp, increasing rivaroxaban levels and bleeding risk."
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "aspirin",
+      "severity": "moderate",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive bleeding risk. Sometimes used intentionally in ACS."
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "ibuprofen",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAID + DOAC. Significant bleeding risk."
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "naproxen",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_bleeding", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "NSAID + DOAC. Significant bleeding risk."
+    },
+    {
+      "drug_a": "valproic_acid",
+      "drug_b": "quetiapine",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression", "hepatotoxicity"],
+      "flags": ["monitor_cns_depression", "monitor_hepatic_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive CNS depression and sedation. Monitor for excessive sedation."
+    },
+    {
+      "drug_a": "valproic_acid",
+      "drug_b": "aspirin",
+      "severity": "moderate",
+      "mechanisms": ["protein_binding_displacement", "bleeding_risk"],
+      "flags": ["monitor_drug_levels", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Aspirin displaces valproate from protein binding, increasing free fraction."
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "aspirin",
+      "severity": "moderate",
+      "mechanisms": ["nephrotoxicity", "protein_binding_displacement"],
+      "flags": ["monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Aspirin reduces methotrexate renal clearance and displaces from protein binding."
+    },
+    {
+      "drug_a": "spironolactone",
+      "drug_b": "lisinopril",
+      "severity": "severe",
+      "mechanisms": ["hyperkalemia"],
+      "flags": ["monitor_electrolytes", "monitor_renal_function"],
+      "source": "DrugBank/FDA",
+      "notes": "Duplicate of lisinopril+spironolactone for bidirectional lookup."
+    },
+    {
+      "drug_a": "furosemide",
+      "drug_b": "digoxin",
+      "severity": "moderate",
+      "mechanisms": ["electrolyte_imbalance"],
+      "flags": ["monitor_electrolytes", "monitor_digoxin_levels"],
+      "source": "DrugBank/FDA",
+      "notes": "Duplicate for bidirectional lookup."
+    },
+
+    {
+      "drug_a": "metformin",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction. Commonly co-prescribed safely in diabetic hypertensive patients."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Different pathways."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Beta-blockers may mask hypoglycemia symptoms but this is minor."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "omeprazole",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Very commonly co-prescribed."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "losartan",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Commonly co-prescribed."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Intentional combination for hypertension. Complementary mechanisms. No adverse interaction."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Commonly co-prescribed for heart failure and hypertension. Additive benefit."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Common cardiovascular combination."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Bidirectional entry. No significant interaction."
+    },
+    {
+      "drug_a": "amlodipine",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Combined as Caduet. No clinically significant interaction."
+    },
+    {
+      "drug_a": "amlodipine",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Commonly co-prescribed. Dihydropyridine CCB + beta-blocker is safe unlike non-dihydropyridine."
+    },
+    {
+      "drug_a": "amlodipine",
+      "drug_b": "losartan",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Commonly co-prescribed for hypertension. No adverse interaction."
+    },
+    {
+      "drug_a": "omeprazole",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "omeprazole",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "omeprazole",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Different elimination pathways."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "omeprazole",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. No CYP involvement for gabapentin."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "metoprolol",
+      "drug_b": "losartan",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Commonly co-prescribed for hypertension and heart failure."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "losartan",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Standard cardiovascular co-prescription."
+    },
+    {
+      "drug_a": "hydrochlorothiazide",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Complementary antihypertensive mechanisms."
+    },
+    {
+      "drug_a": "hydrochlorothiazide",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction at usual doses."
+    },
+    {
+      "drug_a": "hydrochlorothiazide",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "furosemide",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Additive antihypertensive effect but no adverse interaction."
+    },
+    {
+      "drug_a": "furosemide",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "Commonly co-prescribed. No adverse interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "omeprazole",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "omeprazole",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Omeprazole sometimes given prophylactically with steroids."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Commonly co-prescribed."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction."
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "omeprazole",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant pharmacokinetic interaction. Fluoxetine may slightly improve insulin sensitivity."
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction at standard doses."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Commonly co-prescribed in cardiovascular patients."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Standard cardiovascular prevention regimen."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Commonly co-prescribed."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "lisinopril",
+      "severity": "mild",
+      "mechanisms": ["nephrotoxicity"],
+      "flags": ["monitor_blood_pressure"],
+      "source": "DrugBank/FDA",
+      "notes": "Duplicate entry for bidirectional lookup."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "metformin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "amlodipine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "morphine",
+      "drug_b": "fentanyl",
+      "severity": "severe",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression", "avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual opioid agonism. Additive respiratory depression."
+    },
+    {
+      "drug_a": "codeine",
+      "drug_b": "morphine",
+      "severity": "moderate",
+      "mechanisms": ["cns_depression"],
+      "flags": ["monitor_cns_depression"],
+      "source": "DrugBank/FDA",
+      "notes": "Additive opioid effects. Codeine converts to morphine."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "clopidogrel",
+      "severity": "severe",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["monitor_inr", "monitor_bleeding"],
+      "source": "DrugBank/FDA",
+      "notes": "Anticoagulant + antiplatelet. Major bleeding risk. Triple therapy concern."
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "rivaroxaban",
+      "severity": "contraindicated",
+      "mechanisms": ["bleeding_risk"],
+      "flags": ["avoid_combination"],
+      "source": "DrugBank/FDA",
+      "notes": "Dual anticoagulation. No indication. Extreme bleeding risk."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "levothyroxine",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Different elimination pathways."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "losartan",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction. Commonly co-prescribed."
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "atorvastatin",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "metoprolol",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No significant interaction."
+    },
+    {
+      "drug_a": "prednisone",
+      "drug_b": "lisinopril",
+      "severity": "none",
+      "mechanisms": [],
+      "flags": [],
+      "source": "DrugBank/FDA",
+      "notes": "No clinically significant interaction."
+    }
+  ]
+}
