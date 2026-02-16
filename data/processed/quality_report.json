@@ -1,0 +1,13 @@
+{
+  "total_drugs": 283,
+  "drugs_with_complete_features": 50,
+  "drugs_with_fallback_values": 233,
+  "drugs_flagged_for_review": 0,
+  "total_interactions": 3031,
+  "interactions_with_clear_mechanism": 3031,
+  "interactions_with_ambiguous_mechanism": 0,
+  "severity_conflicts": 0,
+  "severity_conflict_resolutions": [],
+  "missing_feature_drugs": [],
+  "ambiguous_mechanism_pairs": []
+}

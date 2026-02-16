@@ -16,6 +16,7 @@ from torch import Tensor
 
 from pharmloop.context import ContextEncoder
 from pharmloop.encoder import DrugEncoder, FUSED_DIM
+from pharmloop.hierarchical_hopfield import HierarchicalHopfield
 from pharmloop.hopfield import PharmHopfield
 from pharmloop.oscillator import OscillatorCell, ReasoningLoop, STATE_DIM, MAX_STEPS
 from pharmloop.output import OutputHead, compute_confidence
@@ -41,13 +42,17 @@ class PharmLoopModel(nn.Module):
         num_drugs: int,
         feature_dim: int = 64,
         state_dim: int = STATE_DIM,
-        hopfield: PharmHopfield | None = None,
+        hopfield: PharmHopfield | HierarchicalHopfield | None = None,
         max_steps: int = MAX_STEPS,
         use_context: bool = False,
+        drug_class_map: dict[int, str] | None = None,
     ) -> None:
         super().__init__()
         self.num_drugs = num_drugs
         self.state_dim = state_dim
+
+        # Drug class lookup: drug_id → class name (for hierarchical Hopfield)
+        self.drug_class_map = drug_class_map or {}
 
         # Drug encoder (shared for both drugs in a pair)
         self.encoder = DrugEncoder(num_drugs, feature_dim)
@@ -109,6 +114,13 @@ class PharmLoopModel(nn.Module):
         # Context modulation (optional — Phase 3+)
         if self.context_encoder is not None and context is not None:
             initial_state = self.context_encoder(initial_state, context)
+
+        # Set drug classes for hierarchical Hopfield routing (Phase 4a+)
+        if isinstance(self.cell.hopfield, HierarchicalHopfield) and self.drug_class_map:
+            # Use first item in batch for class routing (batch typically same pair)
+            cls_a = self.drug_class_map.get(drug_a_id[0].item(), "other")
+            cls_b = self.drug_class_map.get(drug_b_id[0].item(), "other")
+            self.cell.hopfield._current_classes = (cls_a, cls_b)
 
         # Run oscillatory reasoning
         trajectory = self.reasoning_loop(initial_state, training=self.training)

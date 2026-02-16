@@ -67,8 +67,10 @@ class DrugInteractionDataset(Dataset):
         with open(interactions_path) as f:
             interactions_data = json.load(f)
 
-        self.mechanism_vocab = interactions_data["metadata"]["mechanism_vocabulary"]
-        self.severity_classes = interactions_data["metadata"]["severity_classes"]
+        # Support both v1 format (has "metadata") and v2 format (no "metadata")
+        metadata = interactions_data.get("metadata", {})
+        self.mechanism_vocab = metadata.get("mechanism_vocabulary", MECHANISM_NAMES)
+        self.severity_classes = metadata.get("severity_classes", SEVERITY_NAMES)
 
         # Build mechanism and flag name-to-index maps
         self.mechanism_to_idx = {name: i for i, name in enumerate(MECHANISM_NAMES)}
