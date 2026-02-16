@@ -41,12 +41,14 @@ class PharmLoopLoss(nn.Module):
         smoothness_weight: float = 0.1,
         mechanism_weight: float = 0.5,
         flags_weight: float = 0.3,
+        early_convergence_weight: float = 0.0,
     ) -> None:
         super().__init__()
         self.convergence_weight = convergence_weight
         self.smoothness_weight = smoothness_weight
         self.mechanism_weight = mechanism_weight
         self.flags_weight = flags_weight
+        self.early_convergence_weight = early_convergence_weight
 
     def forward(
         self,
@@ -142,11 +144,26 @@ class PharmLoopLoss(nn.Module):
             severity_logits, target_severity, reduction="none"
         )).mean()
 
+        # === L_early_convergence: step-weighted GZ penalty (Phase 3+) ===
+        # Earlier steps have higher weight — incentivizes fast velocity decay
+        l_early_convergence = torch.tensor(0.0, device=device)
+        if self.early_convergence_weight > 0 and len(velocities) >= 2 and known_mask.sum() > 0:
+            gz_steps = [v.norm(dim=-1) for v in velocities]  # list of (batch,)
+            num_steps = len(gz_steps)
+            step_weights = torch.tensor(
+                [0.95 ** (num_steps - 1 - i) for i in range(num_steps)],
+                device=device,
+            )  # earlier steps have higher weight
+            gz_stack = torch.stack(gz_steps, dim=0)  # (steps, batch)
+            weighted_gz = (gz_stack * step_weights.unsqueeze(1)).mean(dim=0)  # (batch,)
+            l_early_convergence = (weighted_gz * known_mask).sum() / (known_mask.sum() + 1e-8)
+
         # === Total ===
         l_total = (
             l_answer
             + self.convergence_weight * l_convergence
             + self.smoothness_weight * l_smoothness
+            + self.early_convergence_weight * l_early_convergence
             + l_do_no_harm
         )
 
@@ -156,4 +173,5 @@ class PharmLoopLoss(nn.Module):
             "convergence": l_convergence,
             "smoothness": l_smoothness,
             "do_no_harm": l_do_no_harm,
+            "early_convergence": l_early_convergence,
         }

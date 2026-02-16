@@ -1,0 +1,34 @@
+[
+    {
+        "drug_a": "warfarin",
+        "drug_b": "acetaminophen",
+        "context": {"dose_b_normalized": 0.2, "duration_b_days": 3, "both_oral": 1},
+        "severity_without_context": "moderate",
+        "severity_with_context": "mild",
+        "note": "Low-dose short-term acetaminophen has minimal warfarin interaction"
+    },
+    {
+        "drug_a": "warfarin",
+        "drug_b": "acetaminophen",
+        "context": {"dose_b_normalized": 0.9, "duration_b_days": 30, "both_oral": 1},
+        "severity_without_context": "moderate",
+        "severity_with_context": "severe",
+        "note": "Chronic high-dose acetaminophen significantly increases INR"
+    },
+    {
+        "drug_a": "ciprofloxacin",
+        "drug_b": "omeprazole",
+        "context": {"simultaneous": 1, "separated_hours_norm": 0, "both_oral": 1},
+        "severity_without_context": "moderate",
+        "severity_with_context": "moderate",
+        "note": "Simultaneous administration maintains interaction"
+    },
+    {
+        "drug_a": "ciprofloxacin",
+        "drug_b": "omeprazole",
+        "context": {"simultaneous": 0, "separated_hours_norm": 0.5, "both_oral": 1},
+        "severity_without_context": "moderate",
+        "severity_with_context": "mild",
+        "note": "Separation reduces absorption interaction"
+    }
+]
