@@ -29,16 +29,35 @@ class DrugEncoder(nn.Module):
     """
     Encodes a single drug into a 512-dim pharmacological state.
 
+    Two pathways:
+      1. Identity embedding — captures drug-specific quirks.
+      2. Structured features — explicit pharmacological profile.
+
+    Feature-dominant scaling (Phase 4a): at inference, identity embedding
+    influence is suppressed for rarely-seen drugs. This ensures new drugs
+    with few training examples rely on their pharmacological features
+    (which are always well-defined) rather than undertrained embeddings.
+
     Args:
         num_drugs: Number of known drugs in the vocabulary.
         feature_dim: Dimension of structured feature vectors (default 64).
+        min_appearances: Minimum training appearances before identity
+            embedding reaches full influence (default 5).
     """
 
-    def __init__(self, num_drugs: int, feature_dim: int = FEATURE_DIM) -> None:
+    def __init__(
+        self,
+        num_drugs: int,
+        feature_dim: int = FEATURE_DIM,
+        min_appearances: int = 5,
+    ) -> None:
         super().__init__()
         self.num_drugs = num_drugs
         self.feature_dim = feature_dim
-        self.total_vocab = num_drugs + UNKNOWN_PADDING
+        self.min_appearances = min_appearances
+
+        # Allocate headroom for future drug additions without retraining
+        self.total_vocab = max(1024, num_drugs * 3) + UNKNOWN_PADDING
 
         # Pathway 1: learned identity embedding
         self.identity_embedding = nn.Embedding(self.total_vocab, IDENTITY_DIM)
@@ -52,6 +71,12 @@ class DrugEncoder(nn.Module):
             nn.LayerNorm(FUSED_DIM),
             nn.GELU(),
             nn.Linear(FUSED_DIM, FUSED_DIM),
+        )
+
+        # Track how many times each drug has been seen in training
+        self.register_buffer(
+            "drug_counts",
+            torch.zeros(self.total_vocab, dtype=torch.long),
         )
 
     def forward(self, drug_id: Tensor, features: Tensor) -> Tensor:
@@ -76,6 +101,24 @@ class DrugEncoder(nn.Module):
 
         # Pathway 1: identity embedding
         identity = self.identity_embedding(safe_id)  # (batch, 256)
+
+        # Feature-dominant scaling: suppress identity for rarely-seen drugs
+        # During training: full identity (let all embeddings learn)
+        # During inference: scale identity by sigmoid of (count - min_appearances)
+        if not self.training:
+            counts = self.drug_counts[safe_id].float()
+            identity_weight = torch.sigmoid(
+                (counts - self.min_appearances) / 2.0
+            )  # (batch,)
+            identity = identity * identity_weight.unsqueeze(-1)
+
+        # Update drug counts during training
+        if self.training:
+            # Increment counts for drugs seen in this batch
+            for sid in safe_id:
+                idx = sid.item()
+                if idx < self.total_vocab:
+                    self.drug_counts[idx] += 1
 
         # Pathway 2: structured features
         feat_proj = self.feature_proj(features)  # (batch, 256)
