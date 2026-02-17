@@ -1,0 +1,52 @@
+{
+  "Step 0 (encoder)": {
+    "severity_accuracy": 0.8563218390804598,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Step 2": {
+    "severity_accuracy": 0.8563218390804598,
+    "mechanism_accuracy": 0.9656540777230433,
+    "feature_dim": 512
+  },
+  "Step 4": {
+    "severity_accuracy": 0.8596059113300493,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Step 8": {
+    "severity_accuracy": 0.8596059113300493,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Step 12": {
+    "severity_accuracy": 0.8596059113300493,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Step 16 (final)": {
+    "severity_accuracy": 0.8596059113300493,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Late mean (8-16)": {
+    "severity_accuracy": 0.8596059113300493,
+    "mechanism_accuracy": 0.9655856595511768,
+    "feature_dim": 512
+  },
+  "Pos+Vel final": {
+    "severity_accuracy": 0.8366174055829229,
+    "mechanism_accuracy": 0.9633962780514503,
+    "feature_dim": 1024
+  },
+  "Pos+Vel step 0": {
+    "severity_accuracy": 0.8366174055829229,
+    "mechanism_accuracy": 0.9636015325670498,
+    "feature_dim": 1024
+  },
+  "Delta (16 - 0)": {
+    "severity_accuracy": 0.8341543513957307,
+    "mechanism_accuracy": 0.9649698960043787,
+    "feature_dim": 512
+  }
+}
