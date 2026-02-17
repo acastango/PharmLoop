@@ -1,0 +1,102 @@
+[
+  {
+    "max_steps": 2,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.5057,
+    "avg_steps_taken": 2.0,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 4,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 3.0,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 6,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 3.1,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 8,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 3.2,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 12,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 3.5,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 16,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 3.6,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 24,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 4.0,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 32,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 4.5,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 48,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 5.2,
+    "total_samples": 1218,
+    "severe_total": 315
+  },
+  {
+    "max_steps": 64,
+    "severity_accuracy": 0.8834,
+    "mechanism_accuracy": 0.7299,
+    "fnr": 0.0,
+    "convergence_rate": 0.9647,
+    "avg_steps_taken": 6.0,
+    "total_samples": 1218,
+    "severe_total": 315
+  }
+]

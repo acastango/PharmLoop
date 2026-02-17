@@ -1,0 +1,4395 @@
+{
+  "dim_threshold": 0.0066335458292347575,
+  "convergence_threshold": 0.1501000076532364,
+  "summaries": {
+    "fabricated": {
+      "name": "FABRICATED",
+      "count": 50,
+      "severity_flips_mean": 0.08,
+      "severity_flips_max": 2,
+      "severity_zero_flips": 47,
+      "mechanism_flips_mean": 0.36,
+      "mechanism_flips_max": 4,
+      "mechanism_zero_flips": 37,
+      "dims_oscillating_mean": 254.12,
+      "dims_converged_mean": 257.88,
+      "final_severity_distribution": {
+        "moderate": 11,
+        "contraindicated": 24,
+        "none": 7,
+        "unknown": 2,
+        "mild": 2,
+        "severe": 4
+      },
+      "converged_count": 5
+    },
+    "novel": {
+      "name": "NOVEL PAIRS",
+      "count": 50,
+      "severity_flips_mean": 0.0,
+      "severity_flips_max": 0,
+      "severity_zero_flips": 50,
+      "mechanism_flips_mean": 0.0,
+      "mechanism_flips_max": 0,
+      "mechanism_zero_flips": 50,
+      "dims_oscillating_mean": 69.24,
+      "dims_converged_mean": 442.76,
+      "final_severity_distribution": {
+        "moderate": 14,
+        "none": 27,
+        "mild": 1,
+        "severe": 8
+      },
+      "converged_count": 50
+    },
+    "known": {
+      "name": "KNOWN INTERACTING",
+      "count": 50,
+      "severity_flips_mean": 0.0,
+      "severity_flips_max": 0,
+      "severity_zero_flips": 50,
+      "mechanism_flips_mean": 0.0,
+      "mechanism_flips_max": 0,
+      "mechanism_zero_flips": 50,
+      "dims_oscillating_mean": 59.52,
+      "dims_converged_mean": 452.48,
+      "final_severity_distribution": {
+        "severe": 25,
+        "contraindicated": 1,
+        "moderate": 24
+      },
+      "converged_count": 50
+    }
+  },
+  "fabricated_sample": [
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2413,
+            0.0029,
+            0.7331,
+            0.0,
+            0.0227,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0002,
+            0.0847,
+            0.2861,
+            0.9171,
+            0.0002,
+            0.009,
+            0.0,
+            0.0,
+            0.9987,
+            0.0007,
+            0.0197,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2397,
+            0.0027,
+            0.7349,
+            0.0,
+            0.0227,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0836,
+            0.2826,
+            0.9152,
+            0.0002,
+            0.0087,
+            0.0,
+            0.0,
+            0.9987,
+            0.0006,
+            0.0192,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2395,
+            0.0026,
+            0.7353,
+            0.0,
+            0.0226,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0821,
+            0.2774,
+            0.9135,
+            0.0002,
+            0.0084,
+            0.0,
+            0.0,
+            0.9986,
+            0.0006,
+            0.0184,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2399,
+            0.0024,
+            0.7353,
+            0.0,
+            0.0224,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0804,
+            0.2712,
+            0.9119,
+            0.0002,
+            0.008,
+            0.0,
+            0.0,
+            0.9985,
+            0.0006,
+            0.0177,
+            0.0
+          ]
+        },
+        {
+          "step": 4,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2404,
+            0.0023,
+            0.7351,
+            0.0,
+            0.0222,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.077,
+            0.2594,
+            0.9084,
+            0.0001,
+            0.0074,
+            0.0,
+            0.0,
+            0.9984,
+            0.0005,
+            0.0163,
+            0.0
+          ]
+        },
+        {
+          "step": 5,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2409,
+            0.0022,
+            0.7349,
+            0.0,
+            0.022,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0733,
+            0.2463,
+            0.9052,
+            0.0001,
+            0.0068,
+            0.0,
+            0.0,
+            0.9982,
+            0.0005,
+            0.0149,
+            0.0
+          ]
+        },
+        {
+          "step": 6,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2412,
+            0.0022,
+            0.7348,
+            0.0,
+            0.0218,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0695,
+            0.2334,
+            0.9022,
+            0.0001,
+            0.0062,
+            0.0,
+            0.0,
+            0.9981,
+            0.0005,
+            0.0136,
+            0.0
+          ]
+        },
+        {
+          "step": 7,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2414,
+            0.0021,
+            0.7349,
+            0.0,
+            0.0217,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0657,
+            0.2214,
+            0.8995,
+            0.0001,
+            0.0057,
+            0.0,
+            0.0,
+            0.9979,
+            0.0004,
+            0.0125,
+            0.0
+          ]
+        },
+        {
+          "step": 8,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2414,
+            0.002,
+            0.735,
+            0.0,
+            0.0215,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0621,
+            0.2107,
+            0.8971,
+            0.0001,
+            0.0054,
+            0.0,
+            0.0,
+            0.9977,
+            0.0004,
+            0.0115,
+            0.0
+          ]
+        },
+        {
+          "step": 9,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2413,
+            0.002,
+            0.7353,
+            0.0,
+            0.0214,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0587,
+            0.2013,
+            0.8949,
+            0.0001,
+            0.0051,
+            0.0,
+            0.0,
+            0.9975,
+            0.0004,
+            0.0106,
+            0.0
+          ]
+        },
+        {
+          "step": 10,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2411,
+            0.0019,
+            0.7356,
+            0.0,
+            0.0213,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0555,
+            0.193,
+            0.893,
+            0.0001,
+            0.0048,
+            0.0,
+            0.0,
+            0.9974,
+            0.0004,
+            0.0099,
+            0.0
+          ]
+        },
+        {
+          "step": 11,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2409,
+            0.0019,
+            0.736,
+            0.0,
+            0.0212,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0525,
+            0.1857,
+            0.8914,
+            0.0001,
+            0.0046,
+            0.0,
+            0.0,
+            0.9972,
+            0.0004,
+            0.0092,
+            0.0
+          ]
+        },
+        {
+          "step": 12,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2406,
+            0.0019,
+            0.7365,
+            0.0,
+            0.0211,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0497,
+            0.1794,
+            0.8899,
+            0.0001,
+            0.0045,
+            0.0,
+            0.0,
+            0.997,
+            0.0003,
+            0.0087,
+            0.0
+          ]
+        },
+        {
+          "step": 13,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2402,
+            0.0018,
+            0.737,
+            0.0,
+            0.021,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0472,
+            0.1738,
+            0.8887,
+            0.0001,
+            0.0044,
+            0.0,
+            0.0,
+            0.9969,
+            0.0003,
+            0.0082,
+            0.0
+          ]
+        },
+        {
+          "step": 14,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2398,
+            0.0018,
+            0.7375,
+            0.0,
+            0.0209,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0449,
+            0.1689,
+            0.8875,
+            0.0001,
+            0.0043,
+            0.0,
+            0.0,
+            0.9968,
+            0.0003,
+            0.0078,
+            0.0
+          ]
+        },
+        {
+          "step": 15,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.2394,
+            0.0018,
+            0.7379,
+            0.0,
+            0.0209,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0428,
+            0.1646,
+            0.8865,
+            0.0,
+            0.0042,
+            0.0,
+            0.0,
+            0.9966,
+            0.0003,
+            0.0074,
+            0.0
+          ]
+        },
+        {
+          "step": 16,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.239,
+            0.0018,
+            0.7384,
+            0.0,
+            0.0208,
+            0.0
+          ],
+          "mechanism_active": [
+            "nephrotoxicity",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0002,
+            0.0,
+            0.0001,
+            0.0409,
+            0.1607,
+            0.8856,
+            0.0,
+            0.0042,
+            0.0,
+            0.0,
+            0.9965,
+            0.0003,
+            0.0071,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "nephrotoxicity",
+        "immunosuppression"
+      ],
+      "n_dims_converged": 220,
+      "n_dims_oscillating": 292,
+      "dims_converged_per_step": [
+        38,
+        36,
+        69,
+        68,
+        68,
+        84,
+        95,
+        111,
+        126,
+        129,
+        150,
+        158,
+        173,
+        186,
+        201,
+        209,
+        220
+      ],
+      "converged": false,
+      "confidence": 0.10000000149011612,
+      "steps_taken": 16
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0535,
+            0.0709,
+            0.0372,
+            0.0,
+            0.7218,
+            0.1167
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0006,
+            0.0008,
+            0.0001,
+            0.0001,
+            0.7855,
+            0.3032,
+            0.1978,
+            0.0004,
+            0.0017,
+            0.0,
+            0.0,
+            0.9768,
+            0.0011,
+            0.2428,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0548,
+            0.066,
+            0.0373,
+            0.0,
+            0.7569,
+            0.0851
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0006,
+            0.0008,
+            0.0001,
+            0.0001,
+            0.7767,
+            0.2964,
+            0.1942,
+            0.0004,
+            0.0016,
+            0.0,
+            0.0,
+            0.9749,
+            0.0011,
+            0.2292,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0565,
+            0.0623,
+            0.0378,
+            0.0,
+            0.7809,
+            0.0625
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0005,
+            0.0007,
+            0.0001,
+            0.0001,
+            0.7692,
+            0.2867,
+            0.1915,
+            0.0003,
+            0.0015,
+            0.0,
+            0.0,
+            0.9727,
+            0.001,
+            0.2161,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0584,
+            0.0592,
+            0.0384,
+            0.0,
+            0.7972,
+            0.0468
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0005,
+            0.0007,
+            0.0001,
+            0.0001,
+            0.7625,
+            0.2756,
+            0.1893,
+            0.0003,
+            0.0014,
+            0.0,
+            0.0,
+            0.9703,
+            0.0009,
+            0.2038,
+            0.0
+          ]
+        },
+        {
+          "step": 4,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0602,
+            0.0567,
+            0.039,
+            0.0,
+            0.8081,
+            0.0359
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0005,
+            0.0007,
+            0.0,
+            0.0001,
+            0.7491,
+            0.2557,
+            0.1852,
+            0.0002,
+            0.0012,
+            0.0,
+            0.0,
+            0.9652,
+            0.0008,
+            0.1818,
+            0.0
+          ]
+        },
+        {
+          "step": 5,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0619,
+            0.0546,
+            0.0396,
+            0.0,
+            0.8155,
+            0.0283
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0004,
+            0.0007,
+            0.0,
+            0.0,
+            0.7378,
+            0.2352,
+            0.1826,
+            0.0002,
+            0.001,
+            0.0,
+            0.0,
+            0.9595,
+            0.0008,
+            0.163,
+            0.0
+          ]
+        },
+        {
+          "step": 6,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0633,
+            0.0529,
+            0.0402,
+            0.0,
+            0.8206,
+            0.023
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0004,
+            0.0007,
+            0.0,
+            0.0,
+            0.7275,
+            0.2166,
+            0.181,
+            0.0002,
+            0.0009,
+            0.0,
+            0.0,
+            0.9536,
+            0.0007,
+            0.1473,
+            0.0
+          ]
+        },
+        {
+          "step": 7,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0645,
+            0.0514,
+            0.0407,
+            0.0,
+            0.8242,
+            0.0191
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0004,
+            0.0007,
+            0.0,
+            0.0,
+            0.7175,
+            0.2007,
+            0.1801,
+            0.0001,
+            0.0008,
+            0.0,
+            0.0,
+            0.9477,
+            0.0006,
+            0.1343,
+            0.0
+          ]
+        },
+        {
+          "step": 8,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0655,
+            0.0501,
+            0.0412,
+            0.0001,
+            0.8269,
+            0.0163
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0004,
+            0.0007,
+            0.0,
+            0.0,
+            0.7077,
+            0.1876,
+            0.1798,
+            0.0001,
+            0.0007,
+            0.0,
+            0.0,
+            0.9419,
+            0.0006,
+            0.1235,
+            0.0
+          ]
+        },
+        {
+          "step": 9,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0664,
+            0.049,
+            0.0415,
+            0.0001,
+            0.8289,
+            0.0142
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6978,
+            0.1772,
+            0.1799,
+            0.0001,
+            0.0007,
+            0.0,
+            0.0,
+            0.9365,
+            0.0006,
+            0.1147,
+            0.0
+          ]
+        },
+        {
+          "step": 10,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.067,
+            0.048,
+            0.0419,
+            0.0001,
+            0.8305,
+            0.0126
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6878,
+            0.169,
+            0.1804,
+            0.0001,
+            0.0006,
+            0.0,
+            0.0,
+            0.9316,
+            0.0005,
+            0.1074,
+            0.0
+          ]
+        },
+        {
+          "step": 11,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0675,
+            0.0472,
+            0.0422,
+            0.0001,
+            0.8317,
+            0.0113
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6777,
+            0.1625,
+            0.1811,
+            0.0001,
+            0.0006,
+            0.0,
+            0.0,
+            0.9271,
+            0.0005,
+            0.1013,
+            0.0
+          ]
+        },
+        {
+          "step": 12,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0679,
+            0.0465,
+            0.0424,
+            0.0001,
+            0.8328,
+            0.0103
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6676,
+            0.1574,
+            0.1821,
+            0.0001,
+            0.0006,
+            0.0,
+            0.0,
+            0.9232,
+            0.0005,
+            0.0962,
+            0.0
+          ]
+        },
+        {
+          "step": 13,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0683,
+            0.0458,
+            0.0427,
+            0.0001,
+            0.8337,
+            0.0095
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6577,
+            0.1535,
+            0.1831,
+            0.0001,
+            0.0005,
+            0.0,
+            0.0,
+            0.9198,
+            0.0005,
+            0.0919,
+            0.0
+          ]
+        },
+        {
+          "step": 14,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0685,
+            0.0452,
+            0.0429,
+            0.0001,
+            0.8345,
+            0.0088
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.648,
+            0.1504,
+            0.1842,
+            0.0001,
+            0.0005,
+            0.0,
+            0.0,
+            0.9168,
+            0.0005,
+            0.0882,
+            0.0
+          ]
+        },
+        {
+          "step": 15,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0688,
+            0.0447,
+            0.0431,
+            0.0001,
+            0.8351,
+            0.0083
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6385,
+            0.1479,
+            0.1854,
+            0.0001,
+            0.0005,
+            0.0,
+            0.0,
+            0.9141,
+            0.0005,
+            0.0851,
+            0.0
+          ]
+        },
+        {
+          "step": 16,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0689,
+            0.0442,
+            0.0433,
+            0.0001,
+            0.8357,
+            0.0078
+          ],
+          "mechanism_active": [
+            "bleeding_risk",
+            "immunosuppression"
+          ],
+          "mechanism_probs": [
+            0.0003,
+            0.0007,
+            0.0,
+            0.0,
+            0.6294,
+            0.1459,
+            0.1865,
+            0.0001,
+            0.0005,
+            0.0,
+            0.0,
+            0.9118,
+            0.0005,
+            0.0823,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "contraindicated",
+      "final_mechanisms": [
+        "immunosuppression",
+        "bleeding_risk"
+      ],
+      "n_dims_converged": 174,
+      "n_dims_oscillating": 338,
+      "dims_converged_per_step": [
+        15,
+        41,
+        48,
+        47,
+        48,
+        58,
+        70,
+        76,
+        84,
+        99,
+        110,
+        124,
+        132,
+        147,
+        159,
+        165,
+        174
+      ],
+      "converged": false,
+      "confidence": 0.10000000149011612,
+      "steps_taken": 16
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.086,
+            0.1804,
+            0.0002,
+            0.0047,
+            0.6981,
+            0.0306
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0567,
+            0.166,
+            0.0,
+            0.0002,
+            0.7087,
+            0.1102,
+            0.0096,
+            0.0006,
+            0.0662,
+            0.0014,
+            0.0001,
+            0.0281,
+            0.0892,
+            0.02,
+            0.0006
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0866,
+            0.164,
+            0.0002,
+            0.0048,
+            0.7208,
+            0.0236
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0553,
+            0.1605,
+            0.0,
+            0.0002,
+            0.7033,
+            0.1076,
+            0.0095,
+            0.0005,
+            0.0625,
+            0.0013,
+            0.0001,
+            0.0268,
+            0.0849,
+            0.0189,
+            0.0006
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0879,
+            0.1522,
+            0.0002,
+            0.0049,
+            0.7366,
+            0.0183
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0538,
+            0.1562,
+            0.0,
+            0.0002,
+            0.6985,
+            0.104,
+            0.0095,
+            0.0005,
+            0.0585,
+            0.0012,
+            0.0001,
+            0.0252,
+            0.0808,
+            0.0177,
+            0.0005
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0896,
+            0.1432,
+            0.0002,
+            0.0051,
+            0.7477,
+            0.0143
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0524,
+            0.1529,
+            0.0,
+            0.0002,
+            0.6938,
+            0.1,
+            0.0094,
+            0.0004,
+            0.0547,
+            0.0011,
+            0.0001,
+            0.0236,
+            0.0769,
+            0.0165,
+            0.0005
+          ]
+        },
+        {
+          "step": 4,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0912,
+            0.1362,
+            0.0002,
+            0.0052,
+            0.7558,
+            0.0113
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0497,
+            0.1466,
+            0.0,
+            0.0002,
+            0.684,
+            0.0926,
+            0.0093,
+            0.0004,
+            0.0478,
+            0.0009,
+            0.0,
+            0.0208,
+            0.0698,
+            0.0144,
+            0.0004
+          ]
+        },
+        {
+          "step": 5,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0928,
+            0.1307,
+            0.0002,
+            0.0054,
+            0.7618,
+            0.0092
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0473,
+            0.1427,
+            0.0,
+            0.0002,
+            0.6744,
+            0.085,
+            0.0093,
+            0.0003,
+            0.0418,
+            0.0008,
+            0.0,
+            0.0182,
+            0.0639,
+            0.0126,
+            0.0004
+          ]
+        },
+        {
+          "step": 6,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0943,
+            0.1261,
+            0.0002,
+            0.0055,
+            0.7663,
+            0.0076
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.045,
+            0.1403,
+            0.0,
+            0.0002,
+            0.6645,
+            0.0781,
+            0.0093,
+            0.0002,
+            0.037,
+            0.0007,
+            0.0,
+            0.016,
+            0.0591,
+            0.0111,
+            0.0003
+          ]
+        },
+        {
+          "step": 7,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0955,
+            0.1223,
+            0.0002,
+            0.0056,
+            0.7699,
+            0.0065
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.043,
+            0.1389,
+            0.0,
+            0.0001,
+            0.6538,
+            0.0722,
+            0.0094,
+            0.0002,
+            0.0332,
+            0.0006,
+            0.0,
+            0.0142,
+            0.0553,
+            0.0098,
+            0.0003
+          ]
+        },
+        {
+          "step": 8,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0966,
+            0.1192,
+            0.0002,
+            0.0057,
+            0.7727,
+            0.0056
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0412,
+            0.1381,
+            0.0,
+            0.0001,
+            0.6423,
+            0.0673,
+            0.0094,
+            0.0002,
+            0.0303,
+            0.0005,
+            0.0,
+            0.0127,
+            0.0522,
+            0.0088,
+            0.0003
+          ]
+        },
+        {
+          "step": 9,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0976,
+            0.1165,
+            0.0002,
+            0.0059,
+            0.775,
+            0.0049
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0395,
+            0.1378,
+            0.0,
+            0.0001,
+            0.63,
+            0.0632,
+            0.0095,
+            0.0001,
+            0.028,
+            0.0005,
+            0.0,
+            0.0115,
+            0.0498,
+            0.008,
+            0.0003
+          ]
+        },
+        {
+          "step": 10,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0984,
+            0.1142,
+            0.0002,
+            0.006,
+            0.7769,
+            0.0044
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.038,
+            0.1377,
+            0.0,
+            0.0001,
+            0.6173,
+            0.0598,
+            0.0096,
+            0.0001,
+            0.0263,
+            0.0004,
+            0.0,
+            0.0106,
+            0.0479,
+            0.0073,
+            0.0003
+          ]
+        },
+        {
+          "step": 11,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.099,
+            0.1122,
+            0.0002,
+            0.006,
+            0.7786,
+            0.0039
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0366,
+            0.1378,
+            0.0,
+            0.0001,
+            0.6042,
+            0.057,
+            0.0097,
+            0.0001,
+            0.025,
+            0.0004,
+            0.0,
+            0.0098,
+            0.0464,
+            0.0067,
+            0.0002
+          ]
+        },
+        {
+          "step": 12,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0996,
+            0.1105,
+            0.0002,
+            0.0061,
+            0.78,
+            0.0036
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0354,
+            0.138,
+            0.0,
+            0.0001,
+            0.591,
+            0.0547,
+            0.0098,
+            0.0001,
+            0.024,
+            0.0004,
+            0.0,
+            0.0092,
+            0.0452,
+            0.0062,
+            0.0002
+          ]
+        },
+        {
+          "step": 13,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.1001,
+            0.109,
+            0.0002,
+            0.0062,
+            0.7813,
+            0.0033
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0342,
+            0.1381,
+            0.0,
+            0.0001,
+            0.5778,
+            0.0528,
+            0.0099,
+            0.0001,
+            0.0233,
+            0.0004,
+            0.0,
+            0.0086,
+            0.0443,
+            0.0058,
+            0.0002
+          ]
+        },
+        {
+          "step": 14,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.1005,
+            0.1076,
+            0.0002,
+            0.0063,
+            0.7824,
+            0.0031
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0331,
+            0.1382,
+            0.0,
+            0.0001,
+            0.5649,
+            0.0511,
+            0.01,
+            0.0001,
+            0.0227,
+            0.0004,
+            0.0,
+            0.0082,
+            0.0435,
+            0.0055,
+            0.0002
+          ]
+        },
+        {
+          "step": 15,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.1009,
+            0.1064,
+            0.0002,
+            0.0063,
+            0.7834,
+            0.0029
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0322,
+            0.1382,
+            0.0,
+            0.0001,
+            0.5524,
+            0.0497,
+            0.0101,
+            0.0001,
+            0.0223,
+            0.0003,
+            0.0,
+            0.0078,
+            0.0428,
+            0.0052,
+            0.0002
+          ]
+        },
+        {
+          "step": 16,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.1013,
+            0.1052,
+            0.0002,
+            0.0064,
+            0.7843,
+            0.0027
+          ],
+          "mechanism_active": [
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0313,
+            0.138,
+            0.0,
+            0.0001,
+            0.5404,
+            0.0485,
+            0.0102,
+            0.0001,
+            0.022,
+            0.0003,
+            0.0,
+            0.0075,
+            0.0423,
+            0.0049,
+            0.0002
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "contraindicated",
+      "final_mechanisms": [
+        "bleeding_risk"
+      ],
+      "n_dims_converged": 170,
+      "n_dims_oscillating": 342,
+      "dims_converged_per_step": [
+        30,
+        30,
+        39,
+        56,
+        59,
+        66,
+        73,
+        78,
+        89,
+        101,
+        109,
+        115,
+        126,
+        143,
+        147,
+        161,
+        170
+      ],
+      "converged": false,
+      "confidence": 0.10000000149011612,
+      "steps_taken": 16
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4853,
+            0.003,
+            0.1529,
+            0.1564,
+            0.2025,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0176,
+            0.0832,
+            0.0,
+            0.0,
+            0.2531,
+            0.0005,
+            0.0013,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0011,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4828,
+            0.0028,
+            0.1523,
+            0.1563,
+            0.2057,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0172,
+            0.081,
+            0.0,
+            0.0,
+            0.2433,
+            0.0005,
+            0.0012,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.001,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4817,
+            0.0027,
+            0.1515,
+            0.1569,
+            0.2072,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.017,
+            0.0794,
+            0.0,
+            0.0,
+            0.2347,
+            0.0005,
+            0.0012,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0009,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4813,
+            0.0026,
+            0.1507,
+            0.1578,
+            0.2076,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0168,
+            0.0782,
+            0.0,
+            0.0,
+            0.227,
+            0.0005,
+            0.0012,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0009,
+            0.0
+          ]
+        },
+        {
+          "step": 4,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4812,
+            0.0025,
+            0.15,
+            0.1588,
+            0.2074,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0164,
+            0.076,
+            0.0,
+            0.0,
+            0.2121,
+            0.0005,
+            0.0011,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0008,
+            0.0
+          ]
+        },
+        {
+          "step": 5,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4813,
+            0.0024,
+            0.1494,
+            0.1599,
+            0.207,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0161,
+            0.0746,
+            0.0,
+            0.0,
+            0.1996,
+            0.0004,
+            0.001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0007,
+            0.0
+          ]
+        },
+        {
+          "step": 6,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4813,
+            0.0024,
+            0.149,
+            0.161,
+            0.2063,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0159,
+            0.0739,
+            0.0,
+            0.0,
+            0.1888,
+            0.0004,
+            0.001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0006,
+            0.0
+          ]
+        },
+        {
+          "step": 7,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4813,
+            0.0023,
+            0.1488,
+            0.162,
+            0.2056,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0158,
+            0.0736,
+            0.0,
+            0.0,
+            0.1791,
+            0.0004,
+            0.0009,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0006,
+            0.0
+          ]
+        },
+        {
+          "step": 8,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4812,
+            0.0023,
+            0.1486,
+            0.1629,
+            0.2049,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0156,
+            0.0735,
+            0.0,
+            0.0,
+            0.1704,
+            0.0004,
+            0.0009,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005,
+            0.0
+          ]
+        },
+        {
+          "step": 9,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4811,
+            0.0022,
+            0.1486,
+            0.1638,
+            0.2043,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0155,
+            0.0736,
+            0.0,
+            0.0,
+            0.1625,
+            0.0004,
+            0.0009,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005,
+            0.0
+          ]
+        },
+        {
+          "step": 10,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4809,
+            0.0022,
+            0.1486,
+            0.1646,
+            0.2037,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0153,
+            0.0738,
+            0.0,
+            0.0,
+            0.1553,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005,
+            0.0
+          ]
+        },
+        {
+          "step": 11,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4806,
+            0.0022,
+            0.1487,
+            0.1653,
+            0.2032,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0152,
+            0.0741,
+            0.0,
+            0.0,
+            0.1487,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005,
+            0.0
+          ]
+        },
+        {
+          "step": 12,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4803,
+            0.0022,
+            0.1489,
+            0.166,
+            0.2026,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0151,
+            0.0744,
+            0.0,
+            0.0,
+            0.1428,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004,
+            0.0
+          ]
+        },
+        {
+          "step": 13,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.48,
+            0.0021,
+            0.149,
+            0.1667,
+            0.2022,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0149,
+            0.0747,
+            0.0,
+            0.0,
+            0.1373,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004,
+            0.0
+          ]
+        },
+        {
+          "step": 14,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4796,
+            0.0021,
+            0.1492,
+            0.1673,
+            0.2018,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0148,
+            0.075,
+            0.0,
+            0.0,
+            0.1323,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004,
+            0.0
+          ]
+        },
+        {
+          "step": 15,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.4793,
+            0.0021,
+            0.1494,
+            0.1678,
+            0.2014,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0147,
+            0.0752,
+            0.0,
+            0.0,
+            0.1278,
+            0.0004,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004,
+            0.0
+          ]
+        },
+        {
+          "step": 16,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.479,
+            0.0021,
+            0.1496,
+            0.1683,
+            0.201,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0146,
+            0.0754,
+            0.0,
+            0.0,
+            0.1238,
+            0.0003,
+            0.0008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "none",
+      "final_mechanisms": [],
+      "n_dims_converged": 286,
+      "n_dims_oscillating": 226,
+      "dims_converged_per_step": [
+        35,
+        63,
+        78,
+        89,
+        106,
+        117,
+        132,
+        152,
+        167,
+        180,
+        197,
+        213,
+        230,
+        242,
+        264,
+        277,
+        286
+      ],
+      "converged": false,
+      "confidence": 0.10000000149011612,
+      "steps_taken": 16
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0046,
+            0.0022,
+            0.0,
+            0.4823,
+            0.5109,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0124,
+            0.5712,
+            0.0,
+            0.0,
+            0.2024,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0046,
+            0.0022,
+            0.0,
+            0.4716,
+            0.5216,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0126,
+            0.566,
+            0.0,
+            0.0,
+            0.1932,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0046,
+            0.0022,
+            0.0,
+            0.4647,
+            0.5286,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0127,
+            0.5625,
+            0.0,
+            0.0,
+            0.1865,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4602,
+            0.5331,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0128,
+            0.5601,
+            0.0,
+            0.0,
+            0.1813,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 4,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4573,
+            0.5361,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0131,
+            0.5548,
+            0.0,
+            0.0,
+            0.1703,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 5,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4555,
+            0.5378,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0132,
+            0.5523,
+            0.0,
+            0.0,
+            0.163,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 6,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4545,
+            0.5389,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0133,
+            0.5516,
+            0.0,
+            0.0,
+            0.1577,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 7,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.454,
+            0.5394,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0134,
+            0.5517,
+            0.0,
+            0.0,
+            0.1535,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 8,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4539,
+            0.5395,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0134,
+            0.5524,
+            0.0,
+            0.0,
+            0.1501,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 9,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4541,
+            0.5394,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0133,
+            0.5532,
+            0.0,
+            0.0,
+            0.147,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 10,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4543,
+            0.5391,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0133,
+            0.5541,
+            0.0,
+            0.0,
+            0.1443,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 11,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0045,
+            0.0021,
+            0.0,
+            0.4547,
+            0.5387,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0132,
+            0.5551,
+            0.0,
+            0.0,
+            0.1419,
+            0.0001,
+            0.0002,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "contraindicated",
+      "final_mechanisms": [
+        "cyp_inhibition"
+      ],
+      "n_dims_converged": 433,
+      "n_dims_oscillating": 79,
+      "dims_converged_per_step": [
+        40,
+        67,
+        108,
+        150,
+        222,
+        284,
+        332,
+        376,
+        394,
+        414,
+        425,
+        433
+      ],
+      "converged": true,
+      "confidence": 0.3110116720199585,
+      "steps_taken": 11
+    }
+  ],
+  "novel_sample": [
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0371,
+            0.0001,
+            0.9628,
+            0.0001,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0002,
+            0.7639,
+            0.0105,
+            0.0288,
+            0.001,
+            0.1913,
+            0.0002,
+            0.0012,
+            0.0001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0017,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0374,
+            0.0001,
+            0.9624,
+            0.0001,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0002,
+            0.7637,
+            0.0105,
+            0.0288,
+            0.001,
+            0.1891,
+            0.0002,
+            0.0012,
+            0.0001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0017,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0377,
+            0.0001,
+            0.9622,
+            0.0001,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0002,
+            0.7636,
+            0.0105,
+            0.0288,
+            0.001,
+            0.1875,
+            0.0002,
+            0.0012,
+            0.0001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0017,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0378,
+            0.0001,
+            0.962,
+            0.0001,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0002,
+            0.7635,
+            0.0106,
+            0.0289,
+            0.001,
+            0.1863,
+            0.0002,
+            0.0012,
+            0.0001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0017,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "cyp_inhibition"
+      ],
+      "n_dims_converged": 480,
+      "n_dims_oscillating": 32,
+      "dims_converged_per_step": [
+        146,
+        277,
+        397,
+        480
+      ],
+      "converged": true,
+      "confidence": 0.6081647872924805,
+      "steps_taken": 3,
+      "pair_label": "mirtazapine + rufinamide"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.9443,
+            0.0116,
+            0.0413,
+            0.0026,
+            0.0002,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0001,
+            0.1105,
+            0.0,
+            0.0002,
+            0.0026,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.9437,
+            0.0116,
+            0.0419,
+            0.0026,
+            0.0002,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0001,
+            0.109,
+            0.0,
+            0.0002,
+            0.0026,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.9434,
+            0.0116,
+            0.0422,
+            0.0026,
+            0.0002,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0001,
+            0.1078,
+            0.0,
+            0.0002,
+            0.0026,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.9431,
+            0.0117,
+            0.0424,
+            0.0026,
+            0.0002,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0001,
+            0.107,
+            0.0,
+            0.0002,
+            0.0026,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "none",
+      "final_mechanisms": [],
+      "n_dims_converged": 419,
+      "n_dims_oscillating": 93,
+      "dims_converged_per_step": [
+        94,
+        152,
+        274,
+        419
+      ],
+      "converged": true,
+      "confidence": 0.4357863962650299,
+      "steps_taken": 3,
+      "pair_label": "micafungin + sertraline"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0058,
+            0.0,
+            0.9942,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cns_depression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0034,
+            0.0001,
+            0.006,
+            0.0,
+            0.9942,
+            0.0,
+            0.0002,
+            0.0002,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0058,
+            0.0,
+            0.9942,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cns_depression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0034,
+            0.0001,
+            0.006,
+            0.0,
+            0.9941,
+            0.0,
+            0.0002,
+            0.0002,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0059,
+            0.0,
+            0.9941,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cns_depression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0034,
+            0.0001,
+            0.006,
+            0.0,
+            0.9941,
+            0.0,
+            0.0002,
+            0.0002,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0059,
+            0.0,
+            0.9941,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cns_depression"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0033,
+            0.0001,
+            0.0061,
+            0.0,
+            0.9941,
+            0.0,
+            0.0002,
+            0.0002,
+            0.0006,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "cns_depression"
+      ],
+      "n_dims_converged": 478,
+      "n_dims_oscillating": 34,
+      "dims_converged_per_step": [
+        131,
+        247,
+        378,
+        478
+      ],
+      "converged": true,
+      "confidence": 0.5982758402824402,
+      "steps_taken": 3,
+      "pair_label": "brexpiprazole + buspirone"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.7672,
+            0.0045,
+            0.1395,
+            0.0885,
+            0.0003,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0006,
+            0.0415,
+            0.0001,
+            0.2509,
+            0.0001,
+            0.0008,
+            0.0006,
+            0.0,
+            0.0025,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0057
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.7635,
+            0.0045,
+            0.1424,
+            0.0893,
+            0.0003,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0007,
+            0.0419,
+            0.0001,
+            0.2542,
+            0.0001,
+            0.0008,
+            0.0006,
+            0.0,
+            0.0024,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0057
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.7612,
+            0.0045,
+            0.1443,
+            0.0898,
+            0.0003,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0007,
+            0.0421,
+            0.0001,
+            0.2565,
+            0.0001,
+            0.0008,
+            0.0006,
+            0.0,
+            0.0024,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0057
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 0,
+          "severity_name": "none",
+          "severity_probs": [
+            0.7598,
+            0.0045,
+            0.1454,
+            0.09,
+            0.0003,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0007,
+            0.0423,
+            0.0001,
+            0.2581,
+            0.0001,
+            0.0008,
+            0.0006,
+            0.0,
+            0.0024,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0056
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "none",
+      "final_mechanisms": [],
+      "n_dims_converged": 436,
+      "n_dims_oscillating": 76,
+      "dims_converged_per_step": [
+        113,
+        194,
+        315,
+        436
+      ],
+      "converged": true,
+      "confidence": 0.5011591911315918,
+      "steps_taken": 3,
+      "pair_label": "paroxetine + verapamil"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0109,
+            0.0,
+            0.9888,
+            0.0002,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0047,
+            0.0,
+            0.936,
+            0.0,
+            0.011,
+            0.0,
+            0.0,
+            0.004,
+            0.0003,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0053
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.011,
+            0.0,
+            0.9887,
+            0.0002,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0046,
+            0.0,
+            0.9362,
+            0.0,
+            0.0111,
+            0.0,
+            0.0,
+            0.004,
+            0.0003,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0053
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0111,
+            0.0,
+            0.9887,
+            0.0002,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0046,
+            0.0,
+            0.9363,
+            0.0,
+            0.0112,
+            0.0,
+            0.0,
+            0.004,
+            0.0003,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0053
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0111,
+            0.0,
+            0.9887,
+            0.0002,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.0045,
+            0.0,
+            0.9365,
+            0.0,
+            0.0113,
+            0.0,
+            0.0,
+            0.004,
+            0.0003,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0053
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "qt_prolongation"
+      ],
+      "n_dims_converged": 490,
+      "n_dims_oscillating": 22,
+      "dims_converged_per_step": [
+        177,
+        295,
+        424,
+        490
+      ],
+      "converged": true,
+      "confidence": 0.6587129235267639,
+      "steps_taken": 3,
+      "pair_label": "levocetirizine + procainamide"
+    }
+  ],
+  "known_sample": [
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.002,
+            0.0001,
+            0.047,
+            0.9442,
+            0.0067,
+            0.0
+          ],
+          "mechanism_active": [
+            "serotonergic"
+          ],
+          "mechanism_probs": [
+            0.9062,
+            0.3249,
+            0.0001,
+            0.0133,
+            0.0005,
+            0.0527,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0002,
+            0.0,
+            0.0,
+            0.0003,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.002,
+            0.0001,
+            0.0475,
+            0.9437,
+            0.0067,
+            0.0
+          ],
+          "mechanism_active": [
+            "serotonergic"
+          ],
+          "mechanism_probs": [
+            0.9061,
+            0.3247,
+            0.0001,
+            0.0132,
+            0.0005,
+            0.0527,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0002,
+            0.0,
+            0.0,
+            0.0003,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.002,
+            0.0001,
+            0.0479,
+            0.9434,
+            0.0067,
+            0.0
+          ],
+          "mechanism_active": [
+            "serotonergic"
+          ],
+          "mechanism_probs": [
+            0.9061,
+            0.3246,
+            0.0001,
+            0.0132,
+            0.0005,
+            0.0527,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0002,
+            0.0,
+            0.0,
+            0.0003,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.002,
+            0.0001,
+            0.048,
+            0.9432,
+            0.0066,
+            0.0
+          ],
+          "mechanism_active": [
+            "serotonergic"
+          ],
+          "mechanism_probs": [
+            0.906,
+            0.3246,
+            0.0001,
+            0.0131,
+            0.0005,
+            0.0526,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0002,
+            0.0,
+            0.0,
+            0.0003,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "severe",
+      "final_mechanisms": [
+        "serotonergic"
+      ],
+      "n_dims_converged": 491,
+      "n_dims_oscillating": 21,
+      "dims_converged_per_step": [
+        180,
+        269,
+        394,
+        491
+      ],
+      "converged": true,
+      "confidence": 0.6267896294593811,
+      "steps_taken": 3,
+      "pair_label": "fluoxetine + tramadol",
+      "true_severity": "severe"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0246,
+            0.0001,
+            0.0062,
+            0.3596,
+            0.6096,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0021,
+            0.9395,
+            0.0,
+            0.0007,
+            0.0001,
+            0.0017,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0249,
+            0.0001,
+            0.0063,
+            0.3587,
+            0.61,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.002,
+            0.9392,
+            0.0,
+            0.0007,
+            0.0001,
+            0.0017,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0251,
+            0.0001,
+            0.0064,
+            0.3581,
+            0.6103,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.002,
+            0.939,
+            0.0,
+            0.0007,
+            0.0001,
+            0.0016,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 4,
+          "severity_name": "contraindicated",
+          "severity_probs": [
+            0.0251,
+            0.0001,
+            0.0065,
+            0.3578,
+            0.6105,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition"
+          ],
+          "mechanism_probs": [
+            0.0019,
+            0.9389,
+            0.0,
+            0.0007,
+            0.0001,
+            0.0016,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "contraindicated",
+      "final_mechanisms": [
+        "cyp_inhibition"
+      ],
+      "n_dims_converged": 374,
+      "n_dims_oscillating": 138,
+      "dims_converged_per_step": [
+        82,
+        143,
+        231,
+        374
+      ],
+      "converged": true,
+      "confidence": 0.365418940782547,
+      "steps_taken": 3,
+      "pair_label": "simvastatin + ketoconazole",
+      "true_severity": "contraindicated"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0062,
+            0.0001,
+            0.9937,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition",
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.6192,
+            0.0009,
+            0.0011,
+            0.955,
+            0.0,
+            0.0481,
+            0.0,
+            0.0001,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0015,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0061,
+            0.0001,
+            0.9938,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition",
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.6198,
+            0.0009,
+            0.0011,
+            0.9558,
+            0.0,
+            0.0476,
+            0.0,
+            0.0001,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0015,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0061,
+            0.0001,
+            0.9938,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition",
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.6203,
+            0.0009,
+            0.0011,
+            0.9564,
+            0.0,
+            0.0473,
+            0.0,
+            0.0001,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0015,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.006,
+            0.0001,
+            0.9938,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mechanism_active": [
+            "cyp_inhibition",
+            "bleeding_risk"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.6206,
+            0.0009,
+            0.0011,
+            0.9568,
+            0.0,
+            0.0471,
+            0.0,
+            0.0001,
+            0.0,
+            0.0,
+            0.0001,
+            0.0,
+            0.0015,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "cyp_inhibition",
+        "bleeding_risk"
+      ],
+      "n_dims_converged": 417,
+      "n_dims_oscillating": 95,
+      "dims_converged_per_step": [
+        121,
+        180,
+        297,
+        417
+      ],
+      "converged": true,
+      "confidence": 0.4627169668674469,
+      "steps_taken": 3,
+      "pair_label": "omeprazole + clopidogrel",
+      "true_severity": "moderate"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0278,
+            0.0002,
+            0.8761,
+            0.0958,
+            0.0001,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.4307,
+            0.0001,
+            0.6233,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0007,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0024
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0276,
+            0.0002,
+            0.8763,
+            0.0958,
+            0.0001,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.4285,
+            0.0001,
+            0.6247,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0007,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0024
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0275,
+            0.0002,
+            0.8765,
+            0.0957,
+            0.0001,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.4271,
+            0.0001,
+            0.6256,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0007,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0024
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 2,
+          "severity_name": "moderate",
+          "severity_probs": [
+            0.0274,
+            0.0002,
+            0.8766,
+            0.0957,
+            0.0001,
+            0.0
+          ],
+          "mechanism_active": [
+            "qt_prolongation"
+          ],
+          "mechanism_probs": [
+            0.0,
+            0.4261,
+            0.0001,
+            0.6261,
+            0.0,
+            0.0006,
+            0.0,
+            0.0,
+            0.0007,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0024
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "moderate",
+      "final_mechanisms": [
+        "qt_prolongation"
+      ],
+      "n_dims_converged": 491,
+      "n_dims_oscillating": 21,
+      "dims_converged_per_step": [
+        156,
+        255,
+        404,
+        491
+      ],
+      "converged": true,
+      "confidence": 0.6357322335243225,
+      "steps_taken": 3,
+      "pair_label": "ciprofloxacin + theophylline",
+      "true_severity": "severe"
+    },
+    {
+      "step_predictions": [
+        {
+          "step": 0,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.1637,
+            0.0132,
+            0.0002,
+            0.8182,
+            0.0046,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0092,
+            0.4641,
+            0.0,
+            0.0,
+            0.0,
+            0.2195,
+            0.0014,
+            0.0,
+            0.0003,
+            0.0002,
+            0.0,
+            0.0,
+            0.0029,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 1,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.1619,
+            0.0132,
+            0.0002,
+            0.82,
+            0.0046,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.009,
+            0.4609,
+            0.0,
+            0.0,
+            0.0,
+            0.2208,
+            0.0014,
+            0.0,
+            0.0003,
+            0.0002,
+            0.0,
+            0.0,
+            0.0028,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 2,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.1608,
+            0.0131,
+            0.0002,
+            0.8212,
+            0.0046,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0089,
+            0.4586,
+            0.0,
+            0.0,
+            0.0,
+            0.2216,
+            0.0014,
+            0.0,
+            0.0003,
+            0.0002,
+            0.0,
+            0.0,
+            0.0028,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "step": 3,
+          "severity_class": 3,
+          "severity_name": "severe",
+          "severity_probs": [
+            0.1601,
+            0.0131,
+            0.0002,
+            0.8221,
+            0.0045,
+            0.0
+          ],
+          "mechanism_active": [],
+          "mechanism_probs": [
+            0.0088,
+            0.457,
+            0.0,
+            0.0,
+            0.0,
+            0.222,
+            0.0014,
+            0.0,
+            0.0003,
+            0.0002,
+            0.0,
+            0.0,
+            0.0028,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "severity_flips": 0,
+      "mechanism_flips": 0,
+      "final_severity": "severe",
+      "final_mechanisms": [],
+      "n_dims_converged": 417,
+      "n_dims_oscillating": 95,
+      "dims_converged_per_step": [
+        118,
+        199,
+        299,
+        417
+      ],
+      "converged": true,
+      "confidence": 0.4725949764251709,
+      "steps_taken": 3,
+      "pair_label": "ketoconazole + alprazolam",
+      "true_severity": "severe"
+    }
+  ]
+}
