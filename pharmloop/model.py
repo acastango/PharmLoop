@@ -115,12 +115,18 @@ class PharmLoopModel(nn.Module):
         if self.context_encoder is not None and context is not None:
             initial_state = self.context_encoder(initial_state, context)
 
-        # Set drug classes for hierarchical Hopfield routing (Phase 4a+)
+        # Set drug classes for hierarchical Hopfield routing (Phase 4a+).
+        # Per-item routing: each batch item gets its own class pair so
+        # mixed batches during training get correct class-specific retrieval.
         if isinstance(self.cell.hopfield, HierarchicalHopfield) and self.drug_class_map:
-            # Use first item in batch for class routing (batch typically same pair)
-            cls_a = self.drug_class_map.get(drug_a_id[0].item(), "other")
-            cls_b = self.drug_class_map.get(drug_b_id[0].item(), "other")
-            self.cell.hopfield._current_classes = (cls_a, cls_b)
+            per_item_classes = [
+                (
+                    self.drug_class_map.get(drug_a_id[i].item(), "other"),
+                    self.drug_class_map.get(drug_b_id[i].item(), "other"),
+                )
+                for i in range(batch)
+            ]
+            self.cell.hopfield._current_classes = per_item_classes
 
         # Run oscillatory reasoning
         trajectory = self.reasoning_loop(initial_state, training=self.training)

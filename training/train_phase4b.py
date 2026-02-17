@@ -1,15 +1,15 @@
 """
-Phase 4a training: scaled to ~300 drugs / ~3000 interactions.
+Phase 4b training: scaled to ~560 drugs / ~12000 interactions.
 
-Key differences from Phase 2/3 training:
-  1. Weight transfer from Phase 3 (original 50 drugs keep embeddings)
-  2. Hierarchical Hopfield (class-specific + global banks)
-  3. Curriculum learning (high-confidence first, then all)
-  4. Feature-dominant encoding (identity suppressed for rare drugs)
-  5. Data split on v2 dataset
+Key differences from Phase 4a:
+  1. Loads v3 data (561 drugs, 12094 interactions)
+  2. Weight transfer from Phase 4a checkpoint (283 drugs keep embeddings)
+  3. Uses pre-computed split_v3.json
+  4. Curriculum learning + Hopfield annealing (same structure as 4a)
+  5. Saves best_model_phase4b.pt
 
 Usage:
-    python -m training.train_phase4a
+    python -m training.train_phase4b
 """
 
 import json
@@ -26,38 +26,36 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
 
 from pharmloop.hierarchical_hopfield import HierarchicalHopfield, DRUG_CLASSES
-from pharmloop.hopfield import PharmHopfield
 from pharmloop.model import PharmLoopModel
-from pharmloop.output import SEVERITY_NAMES, MECHANISM_NAMES, NUM_MECHANISMS
-from training.data_loader import DrugInteractionDataset, create_dataloader
+from pharmloop.output import SEVERITY_NAMES
+from training.data_loader import create_dataloader
 from training.loss import PharmLoopLoss
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(name)s %(levelname)s: %(message)s",
 )
-logger = logging.getLogger("pharmloop.train_phase4a")
+logger = logging.getLogger("pharmloop.train_phase4b")
 
 
-def _load_v2_data(data_dir: str) -> tuple[dict, list[dict]]:
-    """Load v2 drug and interaction data."""
+def _load_v3_data(data_dir: str) -> tuple[dict, dict]:
+    """Load v3 drug and interaction data."""
     data_path = Path(data_dir)
 
-    with open(data_path / "drugs_v2.json") as f:
+    with open(data_path / "drugs_v3.json") as f:
         drugs_data = json.load(f)
 
-    with open(data_path / "interactions_v2.json") as f:
+    with open(data_path / "interactions_v3.json") as f:
         interactions_data = json.load(f)
 
     return drugs_data, interactions_data
 
 
 def _build_drug_class_map(drugs_data: dict) -> dict[int, str]:
-    """Build drug_id → class mapping for hierarchical Hopfield routing."""
+    """Build drug_id -> class mapping for hierarchical Hopfield routing."""
     class_map: dict[int, str] = {}
     for name, info in drugs_data["drugs"].items():
         drug_class = info.get("class", "other")
-        # Map drug classes to DRUG_CLASSES taxonomy
         if drug_class in DRUG_CLASSES:
             class_map[info["id"]] = drug_class
         else:
@@ -65,66 +63,30 @@ def _build_drug_class_map(drugs_data: dict) -> dict[int, str]:
     return class_map
 
 
-def _split_v2_data(
-    interactions: list[dict],
-    train_ratio: float = 0.8,
-    val_ratio: float = 0.1,
-    seed: int = 42,
-) -> tuple[list[int], list[int], list[int]]:
-    """
-    Split v2 interactions into train/val/test indices.
-
-    Stratified by severity to maintain class balance across splits.
-    """
-    rng = random.Random(seed)
-
-    # Group by severity
-    severity_groups: dict[str, list[int]] = {}
-    for i, ix in enumerate(interactions):
-        sev = ix["severity"]
-        severity_groups.setdefault(sev, []).append(i)
-
-    train_idx: list[int] = []
-    val_idx: list[int] = []
-    test_idx: list[int] = []
-
-    for sev, indices in severity_groups.items():
-        rng.shuffle(indices)
-        n = len(indices)
-        n_train = int(n * train_ratio)
-        n_val = int(n * val_ratio)
-        train_idx.extend(indices[:n_train])
-        val_idx.extend(indices[n_train:n_train + n_val])
-        test_idx.extend(indices[n_train + n_val:])
-
-    return train_idx, val_idx, test_idx
-
-
-def _transfer_phase3_weights(
-    phase3_path: str,
+def _transfer_phase4a_weights(
+    phase4a_path: str,
     model: PharmLoopModel,
-    original_drugs: dict,
     v2_drugs: dict,
+    v3_drugs: dict,
 ) -> None:
     """
-    Transfer Phase 3 weights to Phase 4a model.
+    Transfer Phase 4a weights to Phase 4b model.
 
-    - feature_proj and fusion are copied directly (architecture unchanged)
-    - Identity embeddings for original 50 drugs are placed at their v2 IDs
-    - Oscillator, output head weights are copied
-    - New drug embeddings stay random-initialized (feature-dominant scaling handles them)
+    - Identity embeddings for v2 drugs are placed at their v3 IDs
+    - All other compatible weights are copied directly
+    - New drug embeddings stay random-initialized
     """
-    phase3_ckpt = torch.load(phase3_path, map_location="cpu", weights_only=True)
-    phase3_state = phase3_ckpt["model_state_dict"]
+    ckpt = torch.load(phase4a_path, map_location="cpu", weights_only=True)
+    old_state = ckpt["model_state_dict"]
 
-    # Map old drug names to their new v2 IDs
+    # Map old drug names to their new v3 IDs
     old_to_new_id: dict[int, int] = {}
-    for name, old_info in original_drugs.items():
-        if name in v2_drugs:
-            old_to_new_id[old_info["id"]] = v2_drugs[name]["id"]
+    for name, old_info in v2_drugs.items():
+        if name in v3_drugs:
+            old_to_new_id[old_info["id"]] = v3_drugs[name]["id"]
 
-    # Copy identity embeddings for original drugs
-    old_embed = phase3_state.get("encoder.identity_embedding.weight")
+    # Copy identity embeddings for known drugs
+    old_embed = old_state.get("encoder.identity_embedding.weight")
     if old_embed is not None:
         with torch.no_grad():
             for old_id, new_id in old_to_new_id.items():
@@ -137,9 +99,9 @@ def _transfer_phase3_weights(
     transferred = 0
     skipped = []
 
-    for key, value in phase3_state.items():
+    for key, value in old_state.items():
         if key == "encoder.identity_embedding.weight":
-            continue  # already handled
+            continue
         if key in model_state and model_state[key].shape == value.shape:
             model_state[key] = value
             transferred += 1
@@ -164,7 +126,12 @@ def _build_hierarchical_hopfield(
     Computes pair states for all interactions and stores them in
     both global and class-specific banks with severity amplification.
     """
-    hopfield = HierarchicalHopfield(input_dim=512, class_names=DRUG_CLASSES)
+    # v3 dataset produces ~5600+ unique initial patterns; after annealing
+    # (encoder changes → patterns diverge) this can grow to 12K+
+    hopfield = HierarchicalHopfield(
+        input_dim=512, class_names=DRUG_CLASSES,
+        class_capacity=2000, global_capacity=15000,
+    )
 
     # Identity-init projections on all banks
     all_banks = [hopfield.global_bank] + list(hopfield.class_banks.values())
@@ -216,19 +183,21 @@ def _build_hierarchical_hopfield(
     unique_patterns = [stacked[0]]
     unique_classes = [classes[0]]
     for i in range(1, len(stacked)):
-        cos_sims = torch.cosine_similarity(stacked[i].unsqueeze(0), torch.stack(unique_patterns))
+        cos_sims = torch.cosine_similarity(
+            stacked[i].unsqueeze(0), torch.stack(unique_patterns),
+        )
         if cos_sims.max() < 0.999:
             unique_patterns.append(stacked[i])
             unique_classes.append(classes[i])
 
     patterns_tensor = torch.stack(unique_patterns)
-    logger.info(f"Hopfield: {len(unique_patterns)} unique patterns "
-                f"(from {len(patterns)} raw, {len(interactions)} interactions)")
+    logger.info(
+        f"Hopfield: {len(unique_patterns)} unique patterns "
+        f"(from {len(patterns)} raw, {len(interactions)} interactions)"
+    )
 
-    # Store in hierarchical banks
     hopfield.store(patterns_tensor, drug_classes=unique_classes)
 
-    # Log class bank sizes
     for name, bank in hopfield.class_banks.items():
         if bank.count > 0:
             logger.info(f"  {name}: {bank.count} patterns")
@@ -256,7 +225,6 @@ def _run_epoch(
     convergence_count = 0
     total_known = 0
     total_samples = 0
-    batches = 0
 
     for batch in loader:
         a_id = batch["drug_a_id"].to(device)
@@ -296,7 +264,9 @@ def _run_epoch(
         total_convergence += losses["convergence"].item() * bs
         total_smoothness += losses["smoothness"].item() * bs
         total_do_no_harm += losses["do_no_harm"].item() * bs
-        total_early_conv += losses.get("early_convergence", torch.tensor(0.0)).item() * bs
+        total_early_conv += losses.get(
+            "early_convergence", torch.tensor(0.0),
+        ).item() * bs
 
         known_mask = ~is_unknown
         total_known += known_mask.sum().item()
@@ -304,7 +274,6 @@ def _run_epoch(
             convergence_count += output["converged"][known_mask].float().sum().item()
 
         total_samples += bs
-        batches += 1
 
     if total_samples == 0:
         return {"total": 0.0, "convergence_rate": 0.0}
@@ -331,10 +300,7 @@ def _compute_metrics(
     Compute severity accuracy, mechanism accuracy, and false negative rate.
 
     NOTE: FNR on this synthetic dataset reflects convergence on probabilistic
-    class-level interaction rules, NOT ground-truth clinical labels. A nonzero
-    FNR here (e.g. 3-5%) may be inflated by noisy severity assignments from
-    CLASS_INTERACTION_RULES. Real FNR will only be meaningful after validation
-    against DrugBank data or pharmacist review (Phase 4b+).
+    class-level interaction rules, NOT ground-truth clinical labels.
     """
     model.eval()
     correct_sev = 0
@@ -358,27 +324,30 @@ def _compute_metrics(
 
             known_mask = ~is_unknown
 
-            # Severity accuracy
             pred_sev = output["severity_logits"][known_mask].argmax(dim=-1)
             true_sev = target_sev[known_mask]
             correct_sev += (pred_sev == true_sev).sum().item()
             total_sev += known_mask.sum().item()
 
-            # False negatives on severe/contraindicated
             for i in range(len(true_sev)):
                 if true_sev[i].item() in (3, 4):  # severe or contraindicated
                     total_severe += 1
                     if pred_sev[i].item() == 0:  # predicted "none"
                         false_neg_severe += 1
 
-            # Mechanism accuracy (at least one correct)
             mech_target = target_mech[known_mask]
-            mech_pred = (torch.sigmoid(output["mechanism_logits"][known_mask]) > 0.5).float()
+            mech_pred = (
+                torch.sigmoid(output["mechanism_logits"][known_mask]) > 0.5
+            ).float()
             for i in range(mech_target.shape[0]):
                 if mech_target[i].sum() > 0:
                     total_mech += 1
-                    pred_set = set(mech_pred[i].nonzero(as_tuple=True)[0].tolist())
-                    true_set = set(mech_target[i].nonzero(as_tuple=True)[0].tolist())
+                    pred_set = set(
+                        mech_pred[i].nonzero(as_tuple=True)[0].tolist(),
+                    )
+                    true_set = set(
+                        mech_target[i].nonzero(as_tuple=True)[0].tolist(),
+                    )
                     if pred_set & true_set:
                         correct_mech += 1
 
@@ -390,13 +359,13 @@ def _compute_metrics(
     }
 
 
-def train_phase4a(
+def train_phase4b(
     data_dir: str = "./data/processed",
     checkpoint_dir: str = "./checkpoints",
-    phase3_checkpoint: str = "./checkpoints/best_model_phase3.pt",
+    phase4a_checkpoint: str = "./checkpoints/best_model_phase4a.pt",
     epochs: int = 50,
     batch_size: int = 32,
-    lr: float = 5e-4,
+    lr: float = 3e-4,
     warmup_epochs: int = 5,
     anneal_interval: int = 15,
     max_anneal_cycles: int = 3,
@@ -404,12 +373,12 @@ def train_phase4a(
     seed: int = 42,
 ) -> PharmLoopModel:
     """
-    Phase 4a training with curriculum learning and Hopfield annealing.
+    Phase 4b training with curriculum learning and Hopfield annealing.
 
-    Stage 1 (15 epochs): High-confidence interactions only (clear mechanisms,
-        no severity conflicts). Establishes good Hopfield attractors.
-    Stage 2 (35 epochs): All interactions. Model has good priors from stage 1.
-        Hopfield rebuilt every anneal_interval epochs.
+    Stage 1 (15 epochs): High-confidence interactions only.
+    Stage 2 (35 epochs): Full dataset with Hopfield annealing.
+
+    Transfers weights from Phase 4a (283 drugs) to Phase 4b (561 drugs).
     """
     torch.manual_seed(seed)
     random.seed(seed)
@@ -419,39 +388,38 @@ def train_phase4a(
     checkpoint_path = Path(checkpoint_dir)
     checkpoint_path.mkdir(parents=True, exist_ok=True)
 
-    # ── Load v2 data ──
-    drugs_data, interactions_data = _load_v2_data(data_dir)
+    # ── Load v3 data ──
+    drugs_data, interactions_data = _load_v3_data(data_dir)
     num_drugs = drugs_data["num_drugs"]
     all_interactions = interactions_data["interactions"]
     logger.info(f"Loaded {num_drugs} drugs, {len(all_interactions)} interactions")
 
     drug_class_map = _build_drug_class_map(drugs_data)
 
-    # ── Split data ──
-    train_idx, val_idx, test_idx = _split_v2_data(all_interactions)
-    logger.info(f"Split: {len(train_idx)} train, {len(val_idx)} val, {len(test_idx)} test")
+    # ── Load split ──
+    split_path = data_path / "split_v3.json"
+    with open(split_path) as f:
+        split = json.load(f)
 
-    # Save split for reproducibility
-    with open(data_path / "split_v2.json", "w") as f:
-        json.dump({
-            "train_indices": train_idx,
-            "val_indices": val_idx,
-            "test_indices": test_idx,
-        }, f)
+    train_idx = split["train_indices"]
+    val_idx = split["val_indices"]
+    test_idx = split["test_indices"]
+    logger.info(
+        f"Split: {len(train_idx)} train, {len(val_idx)} val, {len(test_idx)} test"
+    )
 
-    # ── Identify high-confidence interactions for curriculum stage 1 ──
+    # ── High-confidence curriculum ──
     high_conf_idx = []
     for i in train_idx:
         ix = all_interactions[i]
-        # High confidence: has clear mechanism labels or is severity "none"
         if ix["severity"] == "none" or len(ix["mechanisms"]) > 0:
             if ix.get("source") != "negative_sample" or random.random() < 0.5:
                 high_conf_idx.append(i)
     logger.info(f"High-confidence training set: {len(high_conf_idx)} interactions")
 
     # ── Create data loaders ──
-    drugs_path = data_path / "drugs_v2.json"
-    interactions_path = data_path / "interactions_v2.json"
+    drugs_path = data_path / "drugs_v3.json"
+    interactions_path = data_path / "interactions_v3.json"
 
     high_conf_loader = create_dataloader(
         drugs_path, interactions_path, batch_size=batch_size,
@@ -471,7 +439,10 @@ def train_phase4a(
     )
 
     # ── Build model ──
-    hopfield = HierarchicalHopfield(input_dim=512, class_names=DRUG_CLASSES)
+    hopfield = HierarchicalHopfield(
+        input_dim=512, class_names=DRUG_CLASSES,
+        class_capacity=2000, global_capacity=15000,
+    )
     model = PharmLoopModel(
         num_drugs=num_drugs,
         hopfield=hopfield,
@@ -479,26 +450,27 @@ def train_phase4a(
     )
     model.to(device)
 
-    # ── Transfer Phase 3 weights ──
-    if Path(phase3_checkpoint).exists():
-        original_drugs_path = data_path / "drugs.json"
-        if original_drugs_path.exists():
-            with open(original_drugs_path) as f:
-                original_drugs = json.load(f)["drugs"]
-            _transfer_phase3_weights(
-                phase3_checkpoint, model, original_drugs, drugs_data["drugs"],
+    # ── Transfer Phase 4a weights ──
+    if Path(phase4a_checkpoint).exists():
+        v2_drugs_path = data_path / "drugs_v2.json"
+        if v2_drugs_path.exists():
+            with open(v2_drugs_path) as f:
+                v2_drugs = json.load(f)["drugs"]
+            _transfer_phase4a_weights(
+                phase4a_checkpoint, model, v2_drugs, drugs_data["drugs"],
             )
         else:
-            logger.warning("No original drugs.json found — skipping weight transfer")
+            logger.warning("No v2 drugs.json found — training from scratch")
     else:
-        logger.warning(f"No Phase 3 checkpoint at {phase3_checkpoint} — training from scratch")
+        logger.warning(
+            f"No Phase 4a checkpoint at {phase4a_checkpoint} — training from scratch"
+        )
 
     # ── Build initial Hopfield ──
     logger.info("Building initial hierarchical Hopfield...")
     hopfield = _build_hierarchical_hopfield(
         model, all_interactions, drugs_data, drug_class_map,
     )
-    # Replace the model's hopfield
     model.cell.hopfield = hopfield
 
     # ── Training ──
@@ -544,13 +516,15 @@ def train_phase4a(
             torch.save({
                 "epoch": global_epoch, "stage": 1,
                 "model_state_dict": model.state_dict(),
-                "val_loss": best_val_loss, "phase": "4a",
-            }, checkpoint_path / "best_model_phase4a.pt")
+                "val_loss": best_val_loss, "phase": "4b",
+            }, checkpoint_path / "best_model_phase4b.pt")
 
     # ── Stage 2: Full dataset with annealing ──
     logger.info(f"\n{'='*60}")
-    logger.info(f"Stage 2: Full dataset ({stage2_epochs} epochs, "
-                f"anneal every {anneal_interval})")
+    logger.info(
+        f"Stage 2: Full dataset ({stage2_epochs} epochs, "
+        f"anneal every {anneal_interval})"
+    )
     logger.info(f"{'='*60}")
 
     optimizer = Adam(model.parameters(), lr=lr * 0.5)
@@ -561,9 +535,15 @@ def train_phase4a(
         global_epoch += 1
 
         # Hopfield annealing
-        if epoch > 1 and (epoch - 1) % anneal_interval == 0 and anneal_count < max_anneal_cycles:
+        if (
+            epoch > 1
+            and (epoch - 1) % anneal_interval == 0
+            and anneal_count < max_anneal_cycles
+        ):
             anneal_count += 1
-            logger.info(f"\n  Annealing cycle {anneal_count}: rebuilding Hopfield...")
+            logger.info(
+                f"\n  Annealing cycle {anneal_count}: rebuilding Hopfield..."
+            )
             new_hopfield = _build_hierarchical_hopfield(
                 model, all_interactions, drugs_data, drug_class_map,
             )
@@ -577,7 +557,6 @@ def train_phase4a(
             model, val_loader, criterion, None, device, training=False,
         )
 
-        # Compute detailed metrics every 5 epochs
         extra = ""
         if epoch % 5 == 0 or epoch == stage2_epochs:
             metrics = _compute_metrics(model, test_loader, device)
@@ -600,17 +579,18 @@ def train_phase4a(
             torch.save({
                 "epoch": global_epoch, "stage": 2,
                 "model_state_dict": model.state_dict(),
-                "val_loss": best_val_loss, "phase": "4a",
-            }, checkpoint_path / "best_model_phase4a.pt")
+                "val_loss": best_val_loss, "phase": "4b",
+            }, checkpoint_path / "best_model_phase4b.pt")
             logger.info(f"  Saved best model (val_loss={best_val_loss:.4f})")
 
     # ── Final evaluation ──
     final_metrics = _compute_metrics(model, test_loader, device)
     logger.info(f"\n{'='*60}")
-    logger.info(f"Phase 4a training complete. Total epochs: {global_epoch}")
+    logger.info(f"Phase 4b training complete. Total epochs: {global_epoch}")
     logger.info(f"Severity accuracy: {final_metrics['severity_accuracy']:.1%}")
     logger.info(f"Mechanism accuracy: {final_metrics['mechanism_accuracy']:.1%}")
     logger.info(f"False negative rate: {final_metrics['false_negative_rate']:.1%}")
+    logger.info(f"Total severe/contraindicated in test: {final_metrics['total_severe']}")
     logger.info(f"{'='*60}")
 
     # Save final
@@ -619,18 +599,20 @@ def train_phase4a(
         "model_state_dict": model.state_dict(),
         "val_loss": val_metrics["total"],
         "metrics": final_metrics,
-        "phase": "4a",
-    }, checkpoint_path / "final_model_phase4a.pt")
+        "phase": "4b",
+        "num_drugs": num_drugs,
+        "num_interactions": len(all_interactions),
+    }, checkpoint_path / "final_model_phase4b.pt")
 
     return model
 
 
 def main() -> None:
-    train_phase4a(
+    train_phase4b(
         data_dir=os.getenv("PHARMLOOP_DATA_DIR", "./data/processed"),
         checkpoint_dir=os.getenv("PHARMLOOP_CHECKPOINT_DIR", "./checkpoints"),
-        phase3_checkpoint=os.getenv(
-            "PHARMLOOP_PHASE3_CHECKPOINT", "./checkpoints/best_model_phase3.pt",
+        phase4a_checkpoint=os.getenv(
+            "PHARMLOOP_PHASE4A_CHECKPOINT", "./checkpoints/best_model_phase4a.pt",
         ),
         epochs=int(os.getenv("PHARMLOOP_EPOCHS", "50")),
         batch_size=int(os.getenv("PHARMLOOP_BATCH_SIZE", "32")),

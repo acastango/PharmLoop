@@ -44,6 +44,7 @@ class PolypharmacyReport:
     highest_severity: str
     pairwise_results: list[tuple[tuple[str, str], object]]
     multi_drug_alerts: list[MultiDrugAlert] = field(default_factory=list)
+    skipped_drugs: list[str] = field(default_factory=list)
 
 
 class BasicPolypharmacyAnalyzer:
@@ -94,6 +95,7 @@ class BasicPolypharmacyAnalyzer:
         self,
         drug_names: list[str],
         pairwise_results: dict[tuple[str, str], object],
+        skipped_drugs: list[str] | None = None,
     ) -> PolypharmacyReport:
         """
         Analyze pairwise results for the three additive patterns.
@@ -101,6 +103,9 @@ class BasicPolypharmacyAnalyzer:
         Args:
             drug_names: List of all drug names in the medication list.
             pairwise_results: Dict mapping (drug_a, drug_b) → InteractionResult.
+            skipped_drugs: Drug names that were not in the registry and whose
+                pairs were skipped entirely. Surfaced in the report so callers
+                know the analysis is incomplete.
 
         Returns:
             PolypharmacyReport with ranked pairs and any multi-drug alerts.
@@ -152,4 +157,5 @@ class BasicPolypharmacyAnalyzer:
             highest_severity=highest,
             pairwise_results=ranked_pairs,
             multi_drug_alerts=alerts,
+            skipped_drugs=skipped_drugs or [],
         )
