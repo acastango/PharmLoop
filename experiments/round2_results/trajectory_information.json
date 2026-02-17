@@ -1,0 +1,26 @@
+{
+  "A: Encoder only (step 0)": {
+    "severity_mean": 0.8136780678675033,
+    "severity_std": 0.027231686305361203,
+    "mechanism_mean": 0.9524446805639885,
+    "feature_dim": 512
+  },
+  "B: Trajectory statistics": {
+    "severity_mean": 0.771031505093436,
+    "severity_std": 0.04894308897016492,
+    "mechanism_mean": 0.9492402010389259,
+    "feature_dim": 4100
+  },
+  "C: Full trajectory": {
+    "severity_mean": 0.7619409026512851,
+    "severity_std": 0.02548508421993558,
+    "mechanism_mean": 0.9456093008612743,
+    "feature_dim": 3072
+  },
+  "D: Delta (traj - encoder)": {
+    "severity_mean": 0.7275113000067462,
+    "severity_std": 0.05631810761447019,
+    "mechanism_mean": 0.9473925656075018,
+    "feature_dim": 3588
+  }
+}

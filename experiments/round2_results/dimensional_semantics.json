@@ -1,0 +1,355 @@
+{
+  "class_pair_summaries": {
+    "antibiotic + cardiac": {
+      "count": 111,
+      "mean_step": 0.0016539977477477478,
+      "std_step": 0.005171944765573155,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + immunosuppressant": {
+      "count": 83,
+      "mean_step": 0.009812688253012049,
+      "std_step": 0.023315258567505482,
+      "early": 512,
+      "late": 0
+    },
+    "cardiac + cns_psych": {
+      "count": 80,
+      "mean_step": 0.0084228515625,
+      "std_step": 0.021270449840091334,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + antidiabetic": {
+      "count": 58,
+      "mean_step": 0.0039062499999999996,
+      "std_step": 0.010659902749701822,
+      "early": 512,
+      "late": 0
+    },
+    "cns_psych + ssri_snri": {
+      "count": 56,
+      "mean_step": 0.015450613839285712,
+      "std_step": 0.034433120398751044,
+      "early": 512,
+      "late": 0
+    },
+    "cns_psych + cns_psych": {
+      "count": 56,
+      "mean_step": 0.038678850446428575,
+      "std_step": 0.05958655433628357,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + cns_psych": {
+      "count": 51,
+      "mean_step": 0.019761029411764705,
+      "std_step": 0.049930031647309484,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + anticoagulant": {
+      "count": 50,
+      "mean_step": 0.014101562500000001,
+      "std_step": 0.027449766575666792,
+      "early": 512,
+      "late": 0
+    },
+    "cns_psych + opioid": {
+      "count": 50,
+      "mean_step": 0.0279296875,
+      "std_step": 0.04905763249640512,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + antihypertensive": {
+      "count": 46,
+      "mean_step": 0.006793478260869565,
+      "std_step": 0.017610708419586573,
+      "early": 512,
+      "late": 0
+    },
+    "opioid + ssri_snri": {
+      "count": 40,
+      "mean_step": 0.03359375,
+      "std_step": 0.09041935179864705,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + statin_lipid": {
+      "count": 36,
+      "mean_step": 0.01850043402777778,
+      "std_step": 0.036907955688423824,
+      "early": 512,
+      "late": 0
+    },
+    "antihypertensive + cardiac": {
+      "count": 32,
+      "mean_step": 0.02227783203125,
+      "std_step": 0.051207550367458984,
+      "early": 512,
+      "late": 0
+    },
+    "cardiac + cardiac": {
+      "count": 31,
+      "mean_step": 0.00894657258064516,
+      "std_step": 0.03522798785541471,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + nsaid_analgesic": {
+      "count": 28,
+      "mean_step": 0.09186662946428571,
+      "std_step": 0.15972948344605345,
+      "early": 512,
+      "late": 0
+    },
+    "ssri_snri + ssri_snri": {
+      "count": 26,
+      "mean_step": 0.01585036057692308,
+      "std_step": 0.04698412230291853,
+      "early": 512,
+      "late": 0
+    },
+    "antihypertensive + cns_psych": {
+      "count": 25,
+      "mean_step": 0.0334375,
+      "std_step": 0.06134479271910535,
+      "early": 512,
+      "late": 0
+    },
+    "antiepileptic + immunosuppressant": {
+      "count": 22,
+      "mean_step": 0.04128196022727272,
+      "std_step": 0.10212832187805977,
+      "early": 512,
+      "late": 0
+    },
+    "immunosuppressant + immunosuppressant": {
+      "count": 21,
+      "mean_step": 0.04650297619047619,
+      "std_step": 0.1121458970732827,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + ssri_snri": {
+      "count": 20,
+      "mean_step": 0.02646484375,
+      "std_step": 0.06240463610812971,
+      "early": 512,
+      "late": 0
+    },
+    "antiepileptic + ssri_snri": {
+      "count": 18,
+      "mean_step": 0.01323784722222222,
+      "std_step": 0.04989196030815225,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + nsaid_analgesic": {
+      "count": 18,
+      "mean_step": 0.017795138888888888,
+      "std_step": 0.05670834938481145,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + ssri_snri": {
+      "count": 17,
+      "mean_step": 0.03722426470588235,
+      "std_step": 0.09813383435811587,
+      "early": 512,
+      "late": 0
+    },
+    "antihypertensive + nsaid_analgesic": {
+      "count": 17,
+      "mean_step": 0.10121783088235294,
+      "std_step": 0.15285145989180535,
+      "early": 512,
+      "late": 0
+    },
+    "antihypertensive + antihypertensive": {
+      "count": 15,
+      "mean_step": 0.052473958333333334,
+      "std_step": 0.09175161413747225,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + antiepileptic": {
+      "count": 12,
+      "mean_step": 0.021321614583333332,
+      "std_step": 0.06457938725711347,
+      "early": 512,
+      "late": 0
+    },
+    "antidiabetic + antidiabetic": {
+      "count": 11,
+      "mean_step": 0.04811789772727272,
+      "std_step": 0.1397288680075501,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + antibiotic": {
+      "count": 11,
+      "mean_step": 0.001953125,
+      "std_step": 0.017403285676019682,
+      "early": 512,
+      "late": 0
+    },
+    "antidiabetic + antihypertensive": {
+      "count": 9,
+      "mean_step": 0.06293402777777778,
+      "std_step": 0.1192486876476659,
+      "early": 512,
+      "late": 0
+    },
+    "opioid + opioid": {
+      "count": 9,
+      "mean_step": 0.049479166666666664,
+      "std_step": 0.1355918338223418,
+      "early": 512,
+      "late": 0
+    },
+    "antiepileptic + statin_lipid": {
+      "count": 9,
+      "mean_step": 0.022352430555555556,
+      "std_step": 0.06138655115800106,
+      "early": 512,
+      "late": 0
+    },
+    "cns_psych + nsaid_analgesic": {
+      "count": 9,
+      "mean_step": 0.10308159722222222,
+      "std_step": 0.22071571443389837,
+      "early": 512,
+      "late": 0
+    },
+    "antiepileptic + antihypertensive": {
+      "count": 8,
+      "mean_step": 0.04052734375,
+      "std_step": 0.09760618834028575,
+      "early": 512,
+      "late": 0
+    },
+    "antidiabetic + cns_psych": {
+      "count": 8,
+      "mean_step": 0.0703125,
+      "std_step": 0.13821723447620415,
+      "early": 512,
+      "late": 0
+    },
+    "antihypertensive + ssri_snri": {
+      "count": 7,
+      "mean_step": 0.17912946428571427,
+      "std_step": 0.3235909523031633,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + opioid": {
+      "count": 7,
+      "mean_step": 0.030412946428571428,
+      "std_step": 0.08923992617784218,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + antihypertensive": {
+      "count": 7,
+      "mean_step": 0.22237723214285715,
+      "std_step": 0.34397357188466393,
+      "early": 512,
+      "late": 0
+    },
+    "antibiotic + antiepileptic": {
+      "count": 7,
+      "mean_step": 0.0036272321428571425,
+      "std_step": 0.02577708251335266,
+      "early": 512,
+      "late": 0
+    },
+    "cardiac + ssri_snri": {
+      "count": 6,
+      "mean_step": 0.029947916666666664,
+      "std_step": 0.0784606504957439,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + anticoagulant": {
+      "count": 6,
+      "mean_step": 0.09635416666666666,
+      "std_step": 0.20766494343687114,
+      "early": 512,
+      "late": 0
+    },
+    "anticoagulant + cns_psych": {
+      "count": 6,
+      "mean_step": 0.10970052083333333,
+      "std_step": 0.24016974733394494,
+      "early": 512,
+      "late": 0
+    },
+    "antidiabetic + cardiac": {
+      "count": 5,
+      "mean_step": 0.07578125,
+      "std_step": 0.17376622844625908,
+      "early": 512,
+      "late": 0
+    }
+  },
+  "cosine_most_different": [
+    [
+      "antibiotic + antibiotic",
+      "cardiac + cardiac",
+      0.0
+    ],
+    [
+      "antibiotic + antihypertensive",
+      "antibiotic + antibiotic",
+      0.011676952713938761
+    ],
+    [
+      "anticoagulant + antiepileptic",
+      "antiepileptic + ssri_snri",
+      0.023182175154754153
+    ],
+    [
+      "antibiotic + antibiotic",
+      "immunosuppressant + immunosuppressant",
+      0.03579101758859828
+    ],
+    [
+      "antibiotic + ssri_snri",
+      "antibiotic + antibiotic",
+      0.037393695309096586
+    ]
+  ],
+  "cosine_most_similar": [
+    [
+      "cns_psych + opioid",
+      "cns_psych + cns_psych",
+      0.385277774252153
+    ],
+    [
+      "antibiotic + statin_lipid",
+      "cns_psych + cns_psych",
+      0.3911087007877136
+    ],
+    [
+      "cardiac + cns_psych",
+      "cns_psych + cns_psych",
+      0.3951370561829483
+    ],
+    [
+      "antibiotic + antidiabetic",
+      "antibiotic + immunosuppressant",
+      0.40686486845110487
+    ],
+    [
+      "antibiotic + ssri_snri",
+      "antibiotic + antihypertensive",
+      0.41813071406039587
+    ]
+  ],
+  "class_prediction_accuracy": 0.4189087228560913,
+  "class_prediction_chance": 0.03571428571428571,
+  "n_class_pairs": 28
+}

@@ -1,0 +1,44 @@
+{
+  "step_0": {
+    "severity_accuracy": 0.8423645320197044,
+    "mechanism_accuracy": 0.7331691297208539,
+    "per_mechanism_accuracy": 0.9658330175571554,
+    "fnr": 0.0380952380952381,
+    "mean_nearest_sim": 0.9913753271102905
+  },
+  "step_2": {
+    "severity_accuracy": 0.8440065681444991,
+    "mechanism_accuracy": 0.7364532019704434,
+    "per_mechanism_accuracy": 0.9663382594417077,
+    "fnr": 0.031746031746031744,
+    "mean_nearest_sim": 0.9914546608924866
+  },
+  "step_4": {
+    "severity_accuracy": 0.8440065681444991,
+    "mechanism_accuracy": 0.7364532019704434,
+    "per_mechanism_accuracy": 0.9663382594417077,
+    "fnr": 0.031746031746031744,
+    "mean_nearest_sim": 0.9914587140083313
+  },
+  "step_8": {
+    "severity_accuracy": 0.8440065681444991,
+    "mechanism_accuracy": 0.7364532019704434,
+    "per_mechanism_accuracy": 0.9663382594417077,
+    "fnr": 0.031746031746031744,
+    "mean_nearest_sim": 0.9914587140083313
+  },
+  "step_12": {
+    "severity_accuracy": 0.8440065681444991,
+    "mechanism_accuracy": 0.7364532019704434,
+    "per_mechanism_accuracy": 0.9663382594417077,
+    "fnr": 0.031746031746031744,
+    "mean_nearest_sim": 0.9914587140083313
+  },
+  "step_16": {
+    "severity_accuracy": 0.8440065681444991,
+    "mechanism_accuracy": 0.7364532019704434,
+    "per_mechanism_accuracy": 0.9663382594417077,
+    "fnr": 0.031746031746031744,
+    "mean_nearest_sim": 0.9914587140083313
+  }
+}
