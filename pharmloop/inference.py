@@ -1,13 +1,18 @@
 """
 Inference pipeline: drug names in, clinical narrative out.
 
-Supports both Phase 3 (50 drugs, flat Hopfield) and Phase 4a
-(300 drugs, hierarchical Hopfield, polypharmacy).
+Supports Phase 3 (50 drugs, flat Hopfield), Phase 4a (300 drugs,
+hierarchical Hopfield), and Phase 4b (500+ drugs, full polypharmacy,
+drug resolution, pharmacogenomics).
 
 Usage:
-    engine = PharmLoopInference.load("checkpoints/best_model_phase4a.pt",
+    engine = PharmLoopInference.load("checkpoints/best_model_phase4b.pt",
                                      data_dir="data/processed")
     result = engine.check("fluoxetine", "tramadol")
+    print(result.narrative)
+
+    # Brand names work too (Phase 4b+)
+    result = engine.check("Prozac", "Ultram")
     print(result.narrative)
 
     report = engine.check_multiple(["fluoxetine", "tramadol", "warfarin"])
@@ -23,13 +28,16 @@ import torch
 from torch import Tensor
 
 from pharmloop.context import CONTEXT_DIM
+from pharmloop.drug_resolver import DrugResolver, ResolvedDrug
 from pharmloop.hierarchical_hopfield import HierarchicalHopfield, DRUG_CLASSES
 from pharmloop.hopfield import PharmHopfield
 from pharmloop.model import PharmLoopModel
 from pharmloop.output import SEVERITY_NAMES, MECHANISM_NAMES, FLAG_NAMES
 from pharmloop.partial_convergence import PartialConvergenceAnalyzer
 from pharmloop.polypharmacy import BasicPolypharmacyAnalyzer, PolypharmacyReport
+from pharmloop.polypharmacy_full import FullPolypharmacyAnalyzer
 from pharmloop.templates import ClinicalNarrator
+from training.train_context import encode_context_vector
 
 
 @dataclass
@@ -53,8 +61,14 @@ class PharmLoopInference:
     """
     Complete inference pipeline: drug names → clinical narrative.
 
-    Wraps the trained model, drug registry, template engine, and
-    partial convergence analyzer into a single callable interface.
+    Wraps the trained model, drug registry, template engine,
+    partial convergence analyzer, drug resolver, and polypharmacy
+    analyzer into a single callable interface.
+
+    Phase 4b adds:
+      - Drug name resolution (brand names, fuzzy matching)
+      - Full polypharmacy analyzer with cascade detection
+      - Pharmacogenomic context encoding
     """
 
     def __init__(
@@ -64,12 +78,14 @@ class PharmLoopInference:
         narrator: ClinicalNarrator,
         convergence_analyzer: PartialConvergenceAnalyzer,
         polypharmacy_analyzer: BasicPolypharmacyAnalyzer | None = None,
+        drug_resolver: DrugResolver | None = None,
     ) -> None:
         self.model = model
         self.drug_registry = drug_registry
         self.narrator = narrator
         self.analyzer = convergence_analyzer
         self.polypharmacy_analyzer = polypharmacy_analyzer or BasicPolypharmacyAnalyzer()
+        self.drug_resolver = drug_resolver
         self.model.eval()
 
     @classmethod
@@ -77,34 +93,40 @@ class PharmLoopInference:
         cls,
         checkpoint_path: str,
         data_dir: str = "data/processed",
+        brand_names_path: str | None = None,
     ) -> "PharmLoopInference":
         """
         Load a trained model and build the inference engine.
 
-        Tries v2 data (drugs_v2.json, hierarchical Hopfield) first,
-        falls back to v1 (drugs.json, flat Hopfield) for backward compat.
+        Tries v3 data first (Phase 4b), then v2 (Phase 4a), then v1 (Phase 3).
+        If brand_names_path is provided or found in data/raw/, enables drug
+        name resolution.
 
         Args:
             checkpoint_path: Path to model checkpoint (.pt file).
             data_dir: Path to data directory containing drugs*.json.
+            brand_names_path: Optional path to brand_names.json.
 
         Returns:
             Ready-to-use PharmLoopInference instance.
         """
         data_path = Path(data_dir)
 
-        # Try v2 data first (Phase 4a+), fall back to v1
+        # Try v3 (Phase 4b), then v2 (Phase 4a), then v1 (Phase 1-3)
+        v3_path = data_path / "drugs_v3.json"
         v2_path = data_path / "drugs_v2.json"
         v1_path = data_path / "drugs.json"
 
-        if v2_path.exists():
+        if v3_path.exists():
+            drugs_path = v3_path
+        elif v2_path.exists():
             drugs_path = v2_path
         elif v1_path.exists():
             drugs_path = v1_path
         else:
             raise FileNotFoundError(
                 f"No drug data found in {data_dir}. "
-                f"Expected drugs_v2.json or drugs.json."
+                f"Expected drugs_v3.json, drugs_v2.json, or drugs.json."
             )
 
         with open(drugs_path) as f:
@@ -114,9 +136,9 @@ class PharmLoopInference:
 
         # Build drug class map and choose Hopfield type
         drug_class_map: dict[int, str] = {}
-        is_v2 = "num_drugs" in drugs_data  # v2 has num_drugs key
+        is_v2_plus = "num_drugs" in drugs_data  # v2+ has num_drugs key
 
-        if is_v2:
+        if is_v2_plus:
             for name, info in drugs_data["drugs"].items():
                 drug_class = info.get("class", "other")
                 if drug_class in DRUG_CLASSES:
@@ -127,18 +149,24 @@ class PharmLoopInference:
         else:
             hopfield = PharmHopfield(input_dim=512, hidden_dim=512, phase0=False)
 
+        # Detect if checkpoint has context encoder weights
+        checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+        has_context = any(
+            k.startswith("context_encoder.") for k in checkpoint["model_state_dict"]
+        )
+
         model = PharmLoopModel(
             num_drugs=num_drugs,
             hopfield=hopfield,
-            drug_class_map=drug_class_map if is_v2 else None,
+            drug_class_map=drug_class_map if is_v2_plus else None,
+            use_context=has_context,
         )
 
-        checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
         model.load_state_dict(checkpoint["model_state_dict"], strict=False)
         model.eval()
 
         # Build drug registry (name → {id, features, class})
-        drug_registry = {}
+        drug_registry: dict[str, dict] = {}
         for name, info in drugs_data["drugs"].items():
             drug_registry[name.lower()] = {
                 "id": info["id"],
@@ -146,11 +174,47 @@ class PharmLoopInference:
                 "class": info.get("class", "other"),
             }
 
+        # Build drug resolver (brand names + fuzzy matching)
+        if brand_names_path is None:
+            # Auto-detect brand_names.json
+            for candidate in [
+                data_path.parent / "raw" / "brand_names.json",
+                data_path / "brand_names.json",
+            ]:
+                if candidate.exists():
+                    brand_names_path = str(candidate)
+                    break
+
+        resolver = DrugResolver.load(
+            drug_registry, brand_names_path=brand_names_path,
+        )
+
         narrator = ClinicalNarrator()
         analyzer = PartialConvergenceAnalyzer(model.output_head)
-        polypharmacy = BasicPolypharmacyAnalyzer()
 
-        return cls(model, drug_registry, narrator, analyzer, polypharmacy)
+        # Use FullPolypharmacyAnalyzer for Phase 4b (v3 data)
+        is_v3 = v3_path.exists()
+        polypharmacy: BasicPolypharmacyAnalyzer
+        if is_v3:
+            polypharmacy = FullPolypharmacyAnalyzer()
+        else:
+            polypharmacy = BasicPolypharmacyAnalyzer()
+
+        return cls(
+            model, drug_registry, narrator, analyzer,
+            polypharmacy, drug_resolver=resolver,
+        )
+
+    def resolve_drug(self, name: str) -> str | None:
+        """
+        Resolve a drug name through brand lookup and fuzzy matching.
+
+        Returns the canonical generic name, or None if unresolvable.
+        """
+        if self.drug_resolver is None:
+            return name.lower() if name.lower() in self.drug_registry else None
+        result = self.drug_resolver.resolve(name)
+        return result.resolved
 
     def check(
         self,
@@ -161,16 +225,23 @@ class PharmLoopInference:
         """
         Check interaction between two drugs.
 
+        Supports brand names and fuzzy matching when a DrugResolver
+        is configured (Phase 4b+).
+
         Args:
-            drug_a_name: Drug name (must be in registry or returns unknown).
-            drug_b_name: Drug name.
-            context: Optional dict with dose, route, timing, patient info.
+            drug_a_name: Drug name (generic or brand).
+            drug_b_name: Drug name (generic or brand).
+            context: Optional dict with dose, route, timing, patient info,
+                and/or pharmacogenomic status.
 
         Returns:
             InteractionResult with all predictions and clinical narrative.
         """
-        drug_a = self.drug_registry.get(drug_a_name.lower())
-        drug_b = self.drug_registry.get(drug_b_name.lower())
+        # Resolve drug names (brand → generic, fuzzy matching)
+        resolved_a = self.resolve_drug(drug_a_name)
+        resolved_b = self.resolve_drug(drug_b_name)
+        drug_a = self.drug_registry.get(resolved_a) if resolved_a else None
+        drug_b = self.drug_registry.get(resolved_b) if resolved_b else None
 
         if drug_a is None or drug_b is None:
             return self._handle_unknown(drug_a_name, drug_b_name, drug_a, drug_b)
@@ -244,16 +315,25 @@ class PharmLoopInference:
         Returns:
             PolypharmacyReport with ranked pairs and multi-drug alerts.
         """
-        pairs = list(combinations(drug_names, 2))
+        # Resolve all drug names first
+        resolved_names: list[str | None] = []
+        for name in drug_names:
+            resolved_names.append(self.resolve_drug(name))
+
+        pairs = list(combinations(range(len(drug_names)), 2))
 
         # Build batched tensors for known drugs
         a_ids, a_feats, b_ids, b_feats = [], [], [], []
         valid_pairs: list[tuple[str, str]] = []
         unknown_drugs_in_list: list[str] = []
 
-        for drug_a, drug_b in pairs:
-            da = self.drug_registry.get(drug_a.lower())
-            db = self.drug_registry.get(drug_b.lower())
+        for i, j in pairs:
+            ra = resolved_names[i]
+            rb = resolved_names[j]
+            da = self.drug_registry.get(ra) if ra else None
+            db = self.drug_registry.get(rb) if rb else None
+            drug_a = drug_names[i]
+            drug_b = drug_names[j]
             if da is None:
                 if drug_a not in unknown_drugs_in_list:
                     unknown_drugs_in_list.append(drug_a)
@@ -293,7 +373,21 @@ class PharmLoopInference:
             result = self._unbatch_single(output, i, drug_a, drug_b)
             pairwise_results[(drug_a, drug_b)] = result
 
+        # Build drug features map for full polypharmacy analyzer
+        drug_features: dict[str, list[float]] | None = None
+        if isinstance(self.polypharmacy_analyzer, FullPolypharmacyAnalyzer):
+            drug_features = {}
+            for name, resolved in zip(drug_names, resolved_names):
+                if resolved and resolved in self.drug_registry:
+                    drug_features[name] = self.drug_registry[resolved]["features"]
+
         # Run polypharmacy pattern detection
+        if drug_features is not None:
+            return self.polypharmacy_analyzer.analyze(
+                drug_names, pairwise_results,
+                skipped_drugs=unknown_drugs_in_list,
+                drug_features=drug_features,
+            )
         return self.polypharmacy_analyzer.analyze(
             drug_names, pairwise_results, skipped_drugs=unknown_drugs_in_list,
         )
@@ -383,51 +477,11 @@ class PharmLoopInference:
 
     def _encode_context(self, context: dict) -> Tensor:
         """
-        Convert context dict to 32-dim feature tensor.
+        Convert context dict to 48-dim feature tensor.
 
-        Maps context keys to the feature layout defined in context.py.
-        Unknown keys are silently ignored. Missing keys default to 0.
+        Maps context keys to the feature layout defined in context.py,
+        including pharmacogenomic status (Phase 4b+). Uses the shared
+        encode_context_vector function for consistency with training.
         """
-        vec = torch.zeros(1, CONTEXT_DIM)
-
-        # Drug A dosing (dims 0-3)
-        vec[0, 0] = context.get("dose_a_normalized", 0.0)
-        vec[0, 1] = context.get("frequency_a", 0.0)
-        vec[0, 2] = context.get("duration_a_days", 0.0) / 365.0  # normalize
-        vec[0, 3] = float(context.get("is_loading_dose_a", False))
-
-        # Drug B dosing (dims 4-7)
-        vec[0, 4] = context.get("dose_b_normalized", 0.0)
-        vec[0, 5] = context.get("frequency_b", 0.0)
-        vec[0, 6] = context.get("duration_b_days", 0.0) / 365.0
-        vec[0, 7] = float(context.get("is_loading_dose_b", False))
-
-        # Route flags (dims 8-11)
-        vec[0, 8] = float(context.get("both_oral", False))
-        vec[0, 9] = float(context.get("any_iv", False))
-        vec[0, 10] = float(context.get("any_topical", False))
-        vec[0, 11] = float(context.get("any_inhaled", False))
-
-        # Timing (dims 12-15)
-        vec[0, 12] = float(context.get("simultaneous", False))
-        vec[0, 13] = context.get("separated_hours_norm", 0.0)
-        vec[0, 14] = float(context.get("a_before_b", False))
-        vec[0, 15] = float(context.get("b_before_a", False))
-
-        # Patient factors (dims 16-23)
-        vec[0, 16] = context.get("age_norm", 0.0)
-        vec[0, 17] = context.get("weight_norm", 0.0)
-        vec[0, 18] = context.get("renal_gfr_norm", 0.0)
-        vec[0, 19] = context.get("hepatic_child_pugh_norm", 0.0)
-        vec[0, 20] = float(context.get("pregnancy", False))
-        vec[0, 21] = float(context.get("pediatric", False))
-        vec[0, 22] = float(context.get("geriatric", False))
-        vec[0, 23] = float(context.get("genetic_pm", False))
-
-        # Comedication burden (dims 24-27)
-        vec[0, 24] = context.get("total_drugs_norm", 0.0)
-        vec[0, 25] = context.get("cyp_inhibitor_count", 0.0)
-        vec[0, 26] = context.get("cyp_inducer_count", 0.0)
-        vec[0, 27] = context.get("protein_bound_count", 0.0)
-
-        return vec
+        vec_list = encode_context_vector(context)
+        return torch.tensor([vec_list], dtype=torch.float32)

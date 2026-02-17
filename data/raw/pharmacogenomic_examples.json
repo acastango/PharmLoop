@@ -1,0 +1,908 @@
+[
+  {
+    "drug_a": "codeine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2D6: codeine cannot be converted to morphine. Fluoxetine CYP2D6 inhibition is redundant. Interaction severity lower but codeine is also ineffective."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine blocks codeine-to-morphine conversion, causing analgesia failure and serotonin syndrome risk."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Ultra-rapid CYP2D6: excessive morphine production from codeine. Fluoxetine partially blocks this but interaction is unpredictable."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "intermediate_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Intermediate CYP2D6: reduced codeine activation. Fluoxetine inhibition pushes patient closer to poor metabolizer phenotype."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2D6: paroxetine CYP2D6 inhibition redundant; codeine already ineffective as analgesic."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: paroxetine (strong inhibitor) blocks codeine activation; therapeutic failure."
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Ultra-rapid CYP2D6: paroxetine may not fully block the excessive morphine generation; unpredictable."
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2D6: tramadol active metabolite not formed. Serotonergic interaction still present but opioid component reduced."
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine blocks tramadol activation + both are serotonergic. Dual risk."
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Ultra-rapid CYP2D6: excessive active metabolite formation. Serotonin syndrome + respiratory depression risk very high."
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2D6: reduced tramadol activation. Paroxetine inhibition redundant for CYP2D6. Serotonergic risk persists."
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "bupropion",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: bupropion inhibits tramadol activation + both lower seizure threshold."
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2D6: hydrocodone to hydromorphone conversion minimal. Paroxetine inhibition less clinically relevant."
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Ultra-rapid CYP2D6: paroxetine may partially attenuate excessive hydromorphone formation but interaction remains complex."
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: fluoxetine reduces oxymorphone formation. Oxycodone has direct activity so impact is moderate."
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "mild",
+    "note": "Poor CYP2D6: oxymorphone not formed regardless. Fluoxetine inhibition of CYP2D6 irrelevant. Minimal change."
+  },
+  {
+    "drug_a": "haloperidol",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: haloperidol already accumulates. Adding fluoxetine further inhibits residual metabolism + QT risk."
+  },
+  {
+    "drug_a": "haloperidol",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: fluoxetine inhibition raises haloperidol levels but from normal baseline; requires dose adjustment."
+  },
+  {
+    "drug_a": "risperidone",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: risperidone clearance already impaired. Paroxetine adds serotonergic effect on top of elevated levels."
+  },
+  {
+    "drug_a": "risperidone",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: paroxetine inhibition raises risperidone levels; dose reduction can manage."
+  },
+  {
+    "drug_a": "aripiprazole",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: aripiprazole AUC already 80% higher. Fluoxetine inhibition compounds this."
+  },
+  {
+    "drug_a": "aripiprazole",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: fluoxetine raises aripiprazole levels; halve aripiprazole dose per labeling."
+  },
+  {
+    "drug_a": "tamoxifen",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: tamoxifen cannot form endoxifen (active metabolite). Adding fluoxetine makes no difference\u2014but tamoxifen is already ineffective."
+  },
+  {
+    "drug_a": "tamoxifen",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine blocks endoxifen formation, reducing tamoxifen efficacy for breast cancer."
+  },
+  {
+    "drug_a": "tamoxifen",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "contraindicated",
+    "severity_with_pgx": "contraindicated",
+    "note": "Paroxetine is the strongest CYP2D6 inhibitor; blocks tamoxifen activation. Associated with increased breast cancer mortality."
+  },
+  {
+    "drug_a": "atomoxetine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: atomoxetine AUC 10x higher at baseline. Fluoxetine adds to already dangerous accumulation."
+  },
+  {
+    "drug_a": "atomoxetine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: fluoxetine inhibition raises atomoxetine levels 6-8x, converting patient to PM phenocopy."
+  },
+  {
+    "drug_a": "nortriptyline",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: nortriptyline levels already 3-4x elevated. Adding CYP2D6 inhibitor = cardiac toxicity risk."
+  },
+  {
+    "drug_a": "nortriptyline",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine inhibition raises nortriptyline to toxic range. TDM required."
+  },
+  {
+    "drug_a": "imipramine",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: imipramine and desipramine (active metabolite) both accumulate. Paroxetine inhibition additive."
+  },
+  {
+    "drug_a": "desipramine",
+    "drug_b": "bupropion",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: bupropion strong inhibition raises desipramine levels 2-5x."
+  },
+  {
+    "drug_a": "desipramine",
+    "drug_b": "bupropion",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: desipramine already toxic levels. Bupropion further inhibits residual CYP2D6 + seizure risk."
+  },
+  {
+    "drug_a": "flecainide",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: flecainide has narrow therapeutic index. Accumulation causes fatal arrhythmia."
+  },
+  {
+    "drug_a": "flecainide",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine inhibition raises flecainide levels. Dose reduction and ECG monitoring needed."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2C19: clopidogrel activation already impaired. Omeprazole inhibition eliminates residual activation. Stent thrombosis risk."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2C19: omeprazole reduces clopidogrel activation ~40%. Clinical significance debated."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "mild",
+    "note": "Ultra-rapid CYP2C19: excess enzyme capacity may compensate for omeprazole inhibition."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "intermediate_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Intermediate CYP2C19: already reduced activation. Omeprazole pushes to functional poor metabolizer."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "esomeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2C19 + esomeprazole: clopidogrel essentially inactive. Consider prasugrel or ticagrelor."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "lansoprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2C19: even weaker CYP2C19 inhibitor (lansoprazole) has impact when patient already PM."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "pantoprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2C19: pantoprazole is weakest CYP2C19 inhibitor among PPIs. Still additive effect in PM."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "pantoprazole",
+    "pgx_context": {
+      "cyp2c19_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "mild",
+    "note": "Extensive CYP2C19: pantoprazole has minimal CYP2C19 inhibition. Preferred PPI with clopidogrel."
+  },
+  {
+    "drug_a": "voriconazole",
+    "drug_b": "phenytoin",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2C19: voriconazole AUC 4x higher. Phenytoin induces remaining CYP pathways. Bidirectional interaction amplified."
+  },
+  {
+    "drug_a": "voriconazole",
+    "drug_b": "phenytoin",
+    "pgx_context": {
+      "cyp2c19_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2C19: voriconazole levels reduced by phenytoin induction. Dose increase needed."
+  },
+  {
+    "drug_a": "voriconazole",
+    "drug_b": "phenytoin",
+    "pgx_context": {
+      "cyp2c19_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Ultra-rapid CYP2C19: voriconazole cleared very rapidly. Phenytoin induction compounds this. Subtherapeutic antifungal levels."
+  },
+  {
+    "drug_a": "escitalopram",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2C19: escitalopram clearance already reduced. Omeprazole further competes for residual CYP2C19."
+  },
+  {
+    "drug_a": "escitalopram",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "mild",
+    "note": "Extensive CYP2C19: adequate enzyme capacity for both substrates. Minimal clinical interaction."
+  },
+  {
+    "drug_a": "clobazam",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2C19: N-desmethylclobazam (active metabolite) accumulates 5x. Adding CYP2D6 inhibitor creates dual pathway block."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer",
+      "vkorc1_status": "sensitive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM + VKORC1 sensitive: warfarin dose requirement very low (~1mg/day). Fluconazole CYP2C9 inhibition pushes to life-threatening bleeding."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "extensive_metabolizer",
+      "vkorc1_status": "normal"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Normal CYP2C9/VKORC1: fluconazole still strongly inhibits warfarin metabolism. Standard interaction."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "extensive_metabolizer",
+      "vkorc1_status": "resistant"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "VKORC1 resistant: warfarin dose requirement high. Even with fluconazole inhibition, patient has buffer before over-anticoagulation."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "intermediate_metabolizer",
+      "vkorc1_status": "sensitive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 IM + VKORC1 sensitive: already on very low warfarin dose. Any CYP2C9 inhibitor is extremely dangerous."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "amiodarone",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM: warfarin clearance already minimal. Amiodarone inhibition of CYP2C9/1A2 further compounding."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "amiodarone",
+    "pgx_context": {
+      "cyp2c9_status": "extensive_metabolizer",
+      "vkorc1_status": "normal"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Normal PGx: amiodarone still significantly inhibits warfarin metabolism. Reduce warfarin 30-50%."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "metronidazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM: metronidazole inhibition of already minimal warfarin metabolism = critical bleeding risk."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "trimethoprim_sulfamethoxazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer",
+      "vkorc1_status": "sensitive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM + VKORC1 sensitive: TMP-SMX inhibits CYP2C9 and reduces vitamin K-producing gut flora. Bleeding risk extreme."
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM: phenytoin clearance severely impaired. Fluconazole inhibition of residual CYP2C9 = phenytoin toxicity (ataxia, nystagmus)."
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Normal CYP2C9: fluconazole still significantly raises phenytoin levels. TDM required."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "lamotrigine",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "HLA-B*1502 positive: carbamazepine contraindicated due to SJS/TEN risk. Adding lamotrigine (also SJS risk) is absolutely contraindicated."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "lamotrigine",
+    "pgx_context": {
+      "hla_b1502": "negative"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "HLA-B*1502 negative: carbamazepine SJS risk baseline level. Interaction still severe (enzyme induction reduces lamotrigine)."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "phenytoin",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "HLA-B*1502 positive: both carbamazepine and phenytoin carry SJS/TEN risk with this allele. Combination absolutely contraindicated."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "phenytoin",
+    "pgx_context": {
+      "hla_b1502": "negative"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "HLA-B*1502 negative: complex bidirectional enzyme induction interaction. SJS risk at baseline level."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "valproic_acid",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "HLA-B*1502 positive: carbamazepine itself is contraindicated. Any combination is also contraindicated."
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "oxcarbazepine",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "contraindicated",
+    "note": "HLA-B*1502 positive: cross-reactivity between carbamazepine and oxcarbazepine for SJS/TEN."
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "valproic_acid",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "HLA-B*1502 positive: phenytoin SJS/TEN risk. Combined with valproic acid protein displacement = amplified exposure."
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "lamotrigine",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "HLA-B*1502 positive: both phenytoin and lamotrigine carry SJS risk. Combined use elevates risk."
+  },
+  {
+    "drug_a": "methadone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: methadone R-enantiomer clearance reduced. Fluoxetine inhibition of both CYP2D6 and CYP3A4 raises QT risk."
+  },
+  {
+    "drug_a": "methadone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "moderate",
+    "note": "Ultra-rapid CYP2D6: methadone clearance rapid. Fluoxetine inhibition may actually stabilize levels closer to therapeutic."
+  },
+  {
+    "drug_a": "propafenone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: propafenone exhibits nonlinear kinetics. In PM, beta-blocking activity prominent. Adding CYP2D6 inhibitor = cardiac toxicity."
+  },
+  {
+    "drug_a": "propafenone",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine converts propafenone kinetics from linear to nonlinear. Significant toxicity risk."
+  },
+  {
+    "drug_a": "diazepam",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2C19: diazepam N-demethylation impaired. Omeprazole competition for residual CYP2C19 further extends half-life."
+  },
+  {
+    "drug_a": "diazepam",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "mild",
+    "note": "Extensive CYP2C19: adequate enzyme capacity. Omeprazole competition clinically insignificant."
+  },
+  {
+    "drug_a": "sertraline",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2C19: sertraline partially metabolized by CYP2C19. Reduced clearance + omeprazole inhibition raises levels."
+  },
+  {
+    "drug_a": "duloxetine",
+    "drug_b": "metoprolol",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: both duloxetine and metoprolol are CYP2D6 substrates. Both accumulate in PM. Excessive beta-blockade + serotonergic effects."
+  },
+  {
+    "drug_a": "duloxetine",
+    "drug_b": "metoprolol",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: duloxetine inhibits metoprolol metabolism. Standard drug interaction."
+  },
+  {
+    "drug_a": "venlafaxine",
+    "drug_b": "metoprolol",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: venlafaxine O-desmethylvenlafaxine ratio altered. Both drugs accumulate."
+  },
+  {
+    "drug_a": "clomipramine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: clomipramine already elevated. Fluoxetine adds CYP2D6 inhibition + serotonergic interaction. Cardiac and serotonin toxicity."
+  },
+  {
+    "drug_a": "clomipramine",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: fluoxetine inhibition raises clomipramine levels significantly. Serotonin syndrome risk."
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "omeprazole",
+    "pgx_context": {
+      "cyp2c19_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Poor CYP2C19: omeprazole levels higher but phenytoin primarily CYP2C9 substrate. CYP2C19 PM less relevant for phenytoin."
+  },
+  {
+    "drug_a": "losartan",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "CYP2C9 PM: losartan is a prodrug activated by CYP2C9. In PM, losartan less effective; fluconazole makes it worse."
+  },
+  {
+    "drug_a": "losartan",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2C9: fluconazole inhibition of losartan activation. Active metabolite E-3174 reduced."
+  },
+  {
+    "drug_a": "celecoxib",
+    "drug_b": "fluconazole",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "CYP2C9 PM: celecoxib AUC already 2-3x higher. Fluconazole inhibition further compounds this. GI/CV toxicity risk."
+  },
+  {
+    "drug_a": "donepezil",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "severe",
+    "note": "Poor CYP2D6: donepezil levels elevated. Paroxetine further inhibits metabolism. Excessive cholinergic effects."
+  },
+  {
+    "drug_a": "donepezil",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Extensive CYP2D6: paroxetine raises donepezil levels but within manageable range."
+  },
+  {
+    "drug_a": "oxcarbazepine",
+    "drug_b": "lamotrigine",
+    "pgx_context": {
+      "hla_b1502": "positive"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "severe",
+    "note": "HLA-B*1502 positive: oxcarbazepine carries SJS risk (lower than carbamazepine). Combined with lamotrigine SJS risk, severity elevated."
+  },
+  {
+    "drug_a": "oxcarbazepine",
+    "drug_b": "lamotrigine",
+    "pgx_context": {
+      "hla_b1502": "negative"
+    },
+    "severity_without_pgx": "mild",
+    "severity_with_pgx": "mild",
+    "note": "HLA-B*1502 negative: baseline SJS risk. Pharmacokinetic interaction is mild."
+  },
+  {
+    "drug_a": "ondansetron",
+    "drug_b": "fluoxetine",
+    "pgx_context": {
+      "cyp2d6_status": "ultra_rapid_metabolizer"
+    },
+    "severity_without_pgx": "moderate",
+    "severity_with_pgx": "moderate",
+    "note": "Ultra-rapid CYP2D6: ondansetron cleared faster. Fluoxetine inhibition may actually normalize ondansetron levels."
+  },
+  {
+    "drug_a": "metoprolol",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "Poor CYP2D6: metoprolol AUC 5x elevated at baseline. Paroxetine inhibition on top = severe bradycardia/hypotension."
+  },
+  {
+    "drug_a": "metoprolol",
+    "drug_b": "paroxetine",
+    "pgx_context": {
+      "cyp2d6_status": "extensive_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "severe",
+    "note": "Extensive CYP2D6: paroxetine raises metoprolol 4-6x by phenocopying PM. Significant bradycardia risk."
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "celecoxib",
+    "pgx_context": {
+      "cyp2c9_status": "poor_metabolizer"
+    },
+    "severity_without_pgx": "severe",
+    "severity_with_pgx": "contraindicated",
+    "note": "CYP2C9 PM: both warfarin and celecoxib are CYP2C9 substrates. Competitive inhibition in PM = massive warfarin elevation + celecoxib GI risk."
+  }
+]
