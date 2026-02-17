@@ -1,0 +1,3412 @@
+[
+  {
+    "drug_a": "warfarin",
+    "drug_b": "acetaminophen",
+    "context": {
+      "dose_b_normalized": 0.1,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Acetaminophen <1g/day for short course has minimal effect on INR"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "acetaminophen",
+    "context": {
+      "dose_b_normalized": 0.2,
+      "frequency_b": 0.5,
+      "duration_b_days": 7,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Acetaminophen <2g/day for one week has minimal warfarin interaction"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "acetaminophen",
+    "context": {
+      "dose_b_normalized": 0.5,
+      "frequency_b": 0.75,
+      "duration_b_days": 14,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Acetaminophen ~2-3g/day for 2 weeks: moderate INR increase expected"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "acetaminophen",
+    "context": {
+      "dose_b_normalized": 0.9,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic high-dose acetaminophen (>3g/day) significantly increases INR and bleeding risk"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Simvastatin 10mg with amiodarone: manageable with monitoring"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 0.25,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Simvastatin 20mg is the FDA max dose with amiodarone; borderline"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Simvastatin 40mg with amiodarone: high risk of rhabdomyolysis"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 1.0,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Simvastatin 80mg with amiodarone: contraindicated per FDA labeling"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "ibuprofen",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.14,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose weekly MTX (7.5-15mg/week) with ibuprofen: moderate risk, monitor renal function"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "ibuprofen",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose MTX with ibuprofen: severe risk of MTX toxicity from reduced renal clearance"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "naproxen",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.14,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose weekly MTX (7.5-15mg/week) with naproxen: moderate risk, monitor renal function"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "naproxen",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose MTX with naproxen: severe risk of MTX toxicity from reduced renal clearance"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.14,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose weekly MTX (7.5-15mg/week) with diclofenac: moderate risk, monitor renal function"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose MTX with diclofenac: severe risk of MTX toxicity from reduced renal clearance"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "indomethacin",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.14,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose weekly MTX (7.5-15mg/week) with indomethacin: moderate risk, monitor renal function"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "indomethacin",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose MTX with indomethacin: severe risk of MTX toxicity from reduced renal clearance"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "meloxicam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.14,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose weekly MTX (7.5-15mg/week) with meloxicam: moderate risk, monitor renal function"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "meloxicam",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose MTX with meloxicam: severe risk of MTX toxicity from reduced renal clearance"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 0.2,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose digoxin (0.0625-0.125mg) with amiodarone: manageable with monitoring and dose reduction"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Standard digoxin dose with amiodarone: severe risk of digoxin toxicity; reduce dig dose 50%"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "amiodarone",
+    "context": {
+      "dose_a_normalized": 1.0,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Full-dose digoxin with amiodarone: near-certain toxicity, effectively contraindicated"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "ibuprofen",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short-course low-dose ibuprofen: moderate lithium level increase expected, monitor levels"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "ibuprofen",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose ibuprofen: significant lithium accumulation risk, can cause toxicity"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "naproxen",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short-course low-dose naproxen: moderate lithium level increase expected, monitor levels"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "naproxen",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose naproxen: significant lithium accumulation risk, can cause toxicity"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short-course low-dose diclofenac: moderate lithium level increase expected, monitor levels"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose diclofenac: significant lithium accumulation risk, can cause toxicity"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "indomethacin",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short-course low-dose indomethacin: moderate lithium level increase expected, monitor levels"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "indomethacin",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose indomethacin: significant lithium accumulation risk, can cause toxicity"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "celecoxib",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "frequency_b": 0.33,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short-course low-dose celecoxib: moderate lithium level increase expected, monitor levels"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "celecoxib",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "frequency_b": 1.0,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose celecoxib: significant lithium accumulation risk, can cause toxicity"
+  },
+  {
+    "drug_a": "theophylline",
+    "drug_b": "ciprofloxacin",
+    "context": {
+      "dose_b_normalized": 0.25,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose ciprofloxacin (250mg): moderate CYP1A2 inhibition, theophylline levels rise 15-20%"
+  },
+  {
+    "drug_a": "theophylline",
+    "drug_b": "ciprofloxacin",
+    "context": {
+      "dose_b_normalized": 0.75,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose ciprofloxacin (750mg): strong CYP1A2 inhibition, theophylline levels may double"
+  },
+  {
+    "drug_a": "colchicine",
+    "drug_b": "clarithromycin",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "frequency_a": 0.5,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose colchicine (0.3mg BID) with clarithromycin: reduced dose mitigates CYP3A4/P-gp interaction"
+  },
+  {
+    "drug_a": "colchicine",
+    "drug_b": "clarithromycin",
+    "context": {
+      "dose_a_normalized": 0.6,
+      "frequency_a": 1.0,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Full-dose colchicine with clarithromycin: fatal colchicine toxicity reported"
+  },
+  {
+    "drug_a": "atorvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose atorvastatin with gemfibrozil: reduced myopathy risk, still requires CK monitoring"
+  },
+  {
+    "drug_a": "atorvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose atorvastatin with gemfibrozil: significant rhabdomyolysis risk"
+  },
+  {
+    "drug_a": "rosuvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose rosuvastatin with gemfibrozil: reduced myopathy risk, still requires CK monitoring"
+  },
+  {
+    "drug_a": "rosuvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose rosuvastatin with gemfibrozil: significant rhabdomyolysis risk"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose simvastatin with gemfibrozil: reduced myopathy risk, still requires CK monitoring"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose simvastatin with gemfibrozil: significant rhabdomyolysis risk"
+  },
+  {
+    "drug_a": "lovastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose lovastatin with gemfibrozil: reduced myopathy risk, still requires CK monitoring"
+  },
+  {
+    "drug_a": "lovastatin",
+    "drug_b": "gemfibrozil",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose lovastatin with gemfibrozil: significant rhabdomyolysis risk"
+  },
+  {
+    "drug_a": "cyclosporine",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_b_normalized": 0.2,
+      "duration_b_days": 3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Short low-dose NSAID with cyclosporine: moderate nephrotoxicity risk, monitor creatinine"
+  },
+  {
+    "drug_a": "cyclosporine",
+    "drug_b": "diclofenac",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic full-dose diclofenac with cyclosporine: synergistic nephrotoxicity"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "valproic_acid",
+    "context": {
+      "dose_b_normalized": 0.2,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose valproic acid: modest displacement of phenytoin from protein binding"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "valproic_acid",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose valproic acid: significant phenytoin displacement + CYP2C9 inhibition"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "prednisone",
+    "context": {
+      "dose_b_normalized": 0.1,
+      "duration_b_days": 5,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Short low-dose prednisone burst: minimal INR effect"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "prednisone",
+    "context": {
+      "dose_b_normalized": 0.7,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic high-dose prednisone: significant INR increase + GI bleeding risk additive with warfarin"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "prednisolone",
+    "context": {
+      "dose_b_normalized": 0.1,
+      "duration_b_days": 5,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Short low-dose prednisolone burst: minimal INR effect"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "prednisolone",
+    "context": {
+      "dose_b_normalized": 0.7,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic high-dose prednisolone: significant INR increase + GI bleeding risk additive with warfarin"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "methylprednisolone",
+    "context": {
+      "dose_b_normalized": 0.1,
+      "duration_b_days": 5,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Short low-dose methylprednisolone burst: minimal INR effect"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "methylprednisolone",
+    "context": {
+      "dose_b_normalized": 0.7,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic high-dose methylprednisolone: significant INR increase + GI bleeding risk additive with warfarin"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "dexamethasone",
+    "context": {
+      "dose_b_normalized": 0.1,
+      "duration_b_days": 5,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "dose_dependent",
+    "note": "Short low-dose dexamethasone burst: minimal INR effect"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "dexamethasone",
+    "context": {
+      "dose_b_normalized": 0.7,
+      "duration_b_days": 30,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Chronic high-dose dexamethasone: significant INR increase + GI bleeding risk additive with warfarin"
+  },
+  {
+    "drug_a": "morphine",
+    "drug_b": "alprazolam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of morphine + alprazolam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "morphine",
+    "drug_b": "lorazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of morphine + lorazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "morphine",
+    "drug_b": "diazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of morphine + diazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "alprazolam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of oxycodone + alprazolam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "lorazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of oxycodone + lorazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "diazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of oxycodone + diazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "alprazolam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of hydrocodone + alprazolam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "lorazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of hydrocodone + lorazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "diazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of hydrocodone + diazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "fentanyl",
+    "drug_b": "alprazolam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of fentanyl + alprazolam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "fentanyl",
+    "drug_b": "lorazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of fentanyl + lorazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "fentanyl",
+    "drug_b": "diazepam",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "dose_b_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Minimal doses of fentanyl + diazepam: respiratory depression risk present but lower at minimal doses"
+  },
+  {
+    "drug_a": "lisinopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "both_oral": true,
+      "renal_gfr_norm": 0.8
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose spironolactone (12.5-25mg) with lisinopril in normal renal function: manageable hyperkalemia risk"
+  },
+  {
+    "drug_a": "enalapril",
+    "drug_b": "spironolactone",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "both_oral": true,
+      "renal_gfr_norm": 0.8
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose spironolactone (12.5-25mg) with enalapril in normal renal function: manageable hyperkalemia risk"
+  },
+  {
+    "drug_a": "ramipril",
+    "drug_b": "spironolactone",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "both_oral": true,
+      "renal_gfr_norm": 0.8
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose spironolactone (12.5-25mg) with ramipril in normal renal function: manageable hyperkalemia risk"
+  },
+  {
+    "drug_a": "captopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "dose_b_normalized": 0.15,
+      "both_oral": true,
+      "renal_gfr_norm": 0.8
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose spironolactone (12.5-25mg) with captopril in normal renal function: manageable hyperkalemia risk"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "fluconazole",
+    "context": {
+      "dose_b_normalized": 0.2,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Fluconazole 100mg with tacrolimus: moderate CYP3A4 inhibition, reduce tacrolimus 25-50%"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "fluconazole",
+    "context": {
+      "dose_b_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Fluconazole 400mg with tacrolimus: strong CYP3A4 inhibition, severe toxicity risk"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral ciprofloxacin + oral omeprazole: chelation reduces cipro absorption"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV ciprofloxacin + oral omeprazole: no absorption interaction when cipro is IV"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral ciprofloxacin + oral famotidine: chelation reduces cipro absorption"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "any_iv": true,
+      "both_oral": false,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV ciprofloxacin + oral famotidine: no absorption interaction when cipro is IV"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral ciprofloxacin + oral sucralfate: chelation reduces cipro absorption"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "any_iv": true,
+      "both_oral": false,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV ciprofloxacin + oral sucralfate: no absorption interaction when cipro is IV"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral levofloxacin + oral omeprazole: chelation reduces absorption"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV levofloxacin bypasses absorption interaction with omeprazole"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral levofloxacin + oral sucralfate: chelation reduces absorption"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV levofloxacin bypasses absorption interaction with sucralfate"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "fluconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral tacrolimus + oral fluconazole: full CYP3A4 inhibition + first-pass effect amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "fluconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV tacrolimus + fluconazole: systemic CYP3A4 inhibition still relevant but no first-pass amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "itraconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral tacrolimus + oral itraconazole: full CYP3A4 inhibition + first-pass effect amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "itraconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV tacrolimus + itraconazole: systemic CYP3A4 inhibition still relevant but no first-pass amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "voriconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral tacrolimus + oral voriconazole: full CYP3A4 inhibition + first-pass effect amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "voriconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV tacrolimus + voriconazole: systemic CYP3A4 inhibition still relevant but no first-pass amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "ketoconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral tacrolimus + oral ketoconazole: full CYP3A4 inhibition + first-pass effect amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "ketoconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV tacrolimus + ketoconazole: systemic CYP3A4 inhibition still relevant but no first-pass amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "posaconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral tacrolimus + oral posaconazole: full CYP3A4 inhibition + first-pass effect amplification"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "posaconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV tacrolimus + posaconazole: systemic CYP3A4 inhibition still relevant but no first-pass amplification"
+  },
+  {
+    "drug_a": "budesonide",
+    "drug_b": "ketoconazole",
+    "context": {
+      "any_inhaled": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "route_dependent",
+    "note": "Inhaled budesonide + oral ketoconazole: minimal systemic budesonide exposure limits interaction"
+  },
+  {
+    "drug_a": "budesonide",
+    "drug_b": "ketoconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral budesonide + ketoconazole: CYP3A4 inhibition increases budesonide AUC 6-8x"
+  },
+  {
+    "drug_a": "fluticasone",
+    "drug_b": "ritonavir",
+    "context": {
+      "any_inhaled": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Even inhaled fluticasone with ritonavir is severe: ritonavir massively inhibits CYP3A4, causing Cushing syndrome from accumulated fluticasone"
+  },
+  {
+    "drug_a": "fluticasone",
+    "drug_b": "ritonavir",
+    "context": {
+      "any_topical": true,
+      "both_oral": false,
+      "any_inhaled": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "mild",
+    "category": "route_dependent",
+    "note": "Topical fluticasone + ritonavir: negligible systemic absorption from topical route"
+  },
+  {
+    "drug_a": "midazolam",
+    "drug_b": "ketoconazole",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "route_dependent",
+    "note": "Oral midazolam + ketoconazole: CYP3A4 inhibition increases midazolam AUC 15x via first-pass"
+  },
+  {
+    "drug_a": "midazolam",
+    "drug_b": "ketoconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "IV midazolam + ketoconazole: AUC increase 3-5x (no first-pass), still severe but manageable in monitored setting"
+  },
+  {
+    "drug_a": "cyclosporine",
+    "drug_b": "sirolimus",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Simultaneous oral administration: cyclosporine increases sirolimus levels 2-3x via intestinal CYP3A4/P-gp inhibition"
+  },
+  {
+    "drug_a": "nitroglycerin",
+    "drug_b": "sildenafil",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "contraindicated",
+    "severity_with_context": "contraindicated",
+    "category": "route_dependent",
+    "note": "Oral nitrate + PDE5 inhibitor: contraindicated regardless of route"
+  },
+  {
+    "drug_a": "nitroglycerin",
+    "drug_b": "sildenafil",
+    "context": {
+      "any_topical": true,
+      "both_oral": false
+    },
+    "severity_without_context": "contraindicated",
+    "severity_with_context": "contraindicated",
+    "category": "route_dependent",
+    "note": "Even topical nitroglycerin with sildenafil: still contraindicated, sufficient systemic absorption"
+  },
+  {
+    "drug_a": "erythromycin",
+    "drug_b": "simvastatin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral erythromycin + simvastatin: strong intestinal + hepatic CYP3A4 inhibition"
+  },
+  {
+    "drug_a": "erythromycin",
+    "drug_b": "simvastatin",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV erythromycin: still inhibits hepatic CYP3A4 but less intestinal first-pass effect"
+  },
+  {
+    "drug_a": "doxycycline",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral doxycycline chelation with sucralfate reduces doxycycline absorption"
+  },
+  {
+    "drug_a": "doxycycline",
+    "drug_b": "sucralfate",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV doxycycline: no absorption interaction possible"
+  },
+  {
+    "drug_a": "tetracycline",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral tetracycline chelation with sucralfate aluminum"
+  },
+  {
+    "drug_a": "tetracycline",
+    "drug_b": "sucralfate",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "IV tetracycline bypasses chelation interaction"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous ciprofloxacin + omeprazole: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 2h before omeprazole: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 4h before omeprazole: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous ciprofloxacin + famotidine: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 2h before famotidine: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 4h before famotidine: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous ciprofloxacin + sucralfate: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 2h before sucralfate: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "ciprofloxacin taken 4h before sucralfate: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levofloxacin + omeprazole: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 2h before omeprazole: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 4h before omeprazole: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levofloxacin + famotidine: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 2h before famotidine: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 4h before famotidine: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levofloxacin + sucralfate: maximal chelation/absorption interference"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 2h before sucralfate: most absorption complete, reduced interaction"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "levofloxacin taken 4h before sucralfate: negligible interaction with adequate separation"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levothyroxine + omeprazole: reduced T4 absorption"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Levothyroxine taken 4h before omeprazole: adequate separation minimizes interaction"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levothyroxine + cholestyramine: reduced T4 absorption"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Levothyroxine taken 4h before cholestyramine: adequate separation minimizes interaction"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous levothyroxine + sucralfate: reduced T4 absorption"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Levothyroxine taken 4h before sucralfate: adequate separation minimizes interaction"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: cholestyramine binds warfarin in GI tract, reduces absorption"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Warfarin 2h before cholestyramine: most warfarin absorbed, minimal binding interaction"
+  },
+  {
+    "drug_a": "tetracycline",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Simultaneous: some chelation possible with divalent cations in formulation"
+  },
+  {
+    "drug_a": "tetracycline",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "2h separation: adequate to prevent any interaction"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "probenecid",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "timing_dependent",
+    "note": "Simultaneous: maximal inhibition of MTX renal tubular secretion"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "probenecid",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 1.0,
+      "a_before_b": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "MTX given well before probenecid: some MTX already cleared renally before probenecid effect"
+  },
+  {
+    "drug_a": "mycophenolate",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: cholestyramine binds mycophenolic acid, interrupting enterohepatic recycling"
+  },
+  {
+    "drug_a": "mycophenolate",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "4h separation: reduced binding of mycophenolate metabolites in gut"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: cholestyramine binds digoxin reducing absorption and enterohepatic recycling"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Digoxin 2h before cholestyramine: most digoxin absorbed before binding occurs"
+  },
+  {
+    "drug_a": "metformin",
+    "drug_b": "gentamicin",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function (GFR>60): metformin clearance adequate, low lactic acidosis risk"
+  },
+  {
+    "drug_a": "metformin",
+    "drug_b": "gentamicin",
+    "context": {
+      "renal_gfr_norm": 0.4,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Impaired renal function (GFR 30-45): gentamicin nephrotoxicity + metformin accumulation = lactic acidosis risk"
+  },
+  {
+    "drug_a": "metformin",
+    "drug_b": "gentamicin",
+    "context": {
+      "renal_gfr_norm": 0.2,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Severe renal impairment (GFR<30): metformin contraindicated; adding nephrotoxin is extremely dangerous"
+  },
+  {
+    "drug_a": "lisinopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "lisinopril + spironolactone with normal renal function: hyperkalemia risk manageable with monitoring"
+  },
+  {
+    "drug_a": "lisinopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "lisinopril + spironolactone with poor renal function: life-threatening hyperkalemia very likely"
+  },
+  {
+    "drug_a": "enalapril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "enalapril + spironolactone with normal renal function: hyperkalemia risk manageable with monitoring"
+  },
+  {
+    "drug_a": "enalapril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "enalapril + spironolactone with poor renal function: life-threatening hyperkalemia very likely"
+  },
+  {
+    "drug_a": "ramipril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "ramipril + spironolactone with normal renal function: hyperkalemia risk manageable with monitoring"
+  },
+  {
+    "drug_a": "ramipril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "ramipril + spironolactone with poor renal function: life-threatening hyperkalemia very likely"
+  },
+  {
+    "drug_a": "benazepril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "benazepril + spironolactone with normal renal function: hyperkalemia risk manageable with monitoring"
+  },
+  {
+    "drug_a": "benazepril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "benazepril + spironolactone with poor renal function: life-threatening hyperkalemia very likely"
+  },
+  {
+    "drug_a": "captopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "captopril + spironolactone with normal renal function: hyperkalemia risk manageable with monitoring"
+  },
+  {
+    "drug_a": "captopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "captopril + spironolactone with poor renal function: life-threatening hyperkalemia very likely"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "aspirin",
+    "context": {
+      "age_norm": 0.3,
+      "geriatric": false,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult on warfarin + aspirin: bleeding risk present but lower baseline risk"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "aspirin",
+    "context": {
+      "age_norm": 0.9,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Elderly patient on warfarin + aspirin: high bleeding risk, falls risk multiplicative"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "clopidogrel",
+    "context": {
+      "age_norm": 0.3,
+      "geriatric": false,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult on warfarin + clopidogrel: bleeding risk present but lower baseline risk"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "clopidogrel",
+    "context": {
+      "age_norm": 0.9,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Elderly patient on warfarin + clopidogrel: high bleeding risk, falls risk multiplicative"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "naproxen",
+    "context": {
+      "age_norm": 0.3,
+      "geriatric": false,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult on warfarin + naproxen: bleeding risk present but lower baseline risk"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "naproxen",
+    "context": {
+      "age_norm": 0.9,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Elderly patient on warfarin + naproxen: high bleeding risk, falls risk multiplicative"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "ibuprofen",
+    "context": {
+      "age_norm": 0.3,
+      "geriatric": false,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult on warfarin + ibuprofen: bleeding risk present but lower baseline risk"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "ibuprofen",
+    "context": {
+      "age_norm": 0.9,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Elderly patient on warfarin + ibuprofen: high bleeding risk, falls risk multiplicative"
+  },
+  {
+    "drug_a": "dabigatran",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "dabigatran + amiodarone with normal renal function: P-gp inhibition increases dabigatran levels moderately"
+  },
+  {
+    "drug_a": "dabigatran",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "dabigatran + amiodarone with renal impairment: reduced clearance + P-gp inhibition = high bleeding risk"
+  },
+  {
+    "drug_a": "rivaroxaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "rivaroxaban + amiodarone with normal renal function: P-gp inhibition increases rivaroxaban levels moderately"
+  },
+  {
+    "drug_a": "rivaroxaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "rivaroxaban + amiodarone with renal impairment: reduced clearance + P-gp inhibition = high bleeding risk"
+  },
+  {
+    "drug_a": "apixaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "apixaban + amiodarone with normal renal function: P-gp inhibition increases apixaban levels moderately"
+  },
+  {
+    "drug_a": "apixaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "apixaban + amiodarone with renal impairment: reduced clearance + P-gp inhibition = high bleeding risk"
+  },
+  {
+    "drug_a": "edoxaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "edoxaban + amiodarone with normal renal function: P-gp inhibition increases edoxaban levels moderately"
+  },
+  {
+    "drug_a": "edoxaban",
+    "drug_b": "amiodarone",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "edoxaban + amiodarone with renal impairment: reduced clearance + P-gp inhibition = high bleeding risk"
+  },
+  {
+    "drug_a": "metoprolol",
+    "drug_b": "fluoxetine",
+    "context": {
+      "hepatic_child_pugh_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal hepatic function: CYP2D6 inhibition of metoprolol: hepatic impairment amplifies first-pass effect changes"
+  },
+  {
+    "drug_a": "metoprolol",
+    "drug_b": "fluoxetine",
+    "context": {
+      "hepatic_child_pugh_norm": 0.7,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Moderate hepatic impairment (Child-Pugh B): CYP2D6 inhibition of metoprolol: hepatic impairment amplifies first-pass effect changes"
+  },
+  {
+    "drug_a": "midazolam",
+    "drug_b": "erythromycin",
+    "context": {
+      "hepatic_child_pugh_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal hepatic function: CYP3A4 inhibition: hepatic impairment reduces midazolam clearance further"
+  },
+  {
+    "drug_a": "midazolam",
+    "drug_b": "erythromycin",
+    "context": {
+      "hepatic_child_pugh_norm": 0.7,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Moderate hepatic impairment (Child-Pugh B): CYP3A4 inhibition: hepatic impairment reduces midazolam clearance further"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "diltiazem",
+    "context": {
+      "hepatic_child_pugh_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal hepatic function: CYP3A4 interaction: hepatic impairment increases statin exposure and myopathy risk"
+  },
+  {
+    "drug_a": "simvastatin",
+    "drug_b": "diltiazem",
+    "context": {
+      "hepatic_child_pugh_norm": 0.7,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Moderate hepatic impairment (Child-Pugh B): CYP3A4 interaction: hepatic impairment increases statin exposure and myopathy risk"
+  },
+  {
+    "drug_a": "losartan",
+    "drug_b": "fluconazole",
+    "context": {
+      "hepatic_child_pugh_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal hepatic function: CYP2C9 inhibition of losartan activation: hepatic impairment affects prodrug conversion"
+  },
+  {
+    "drug_a": "losartan",
+    "drug_b": "fluconazole",
+    "context": {
+      "hepatic_child_pugh_norm": 0.7,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Moderate hepatic impairment (Child-Pugh B): CYP2C9 inhibition of losartan activation: hepatic impairment affects prodrug conversion"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "acetaminophen",
+    "context": {
+      "pregnancy": true,
+      "both_oral": true,
+      "dose_b_normalized": 0.3
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Pregnancy: warfarin already high-risk, any interaction partner increases fetal/maternal bleeding risk"
+  },
+  {
+    "drug_a": "methotrexate",
+    "drug_b": "ibuprofen",
+    "context": {
+      "pregnancy": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Pregnancy: methotrexate is teratogenic, NSAIDs also contraindicated in 3rd trimester; combination absolutely contraindicated"
+  },
+  {
+    "drug_a": "valproic_acid",
+    "drug_b": "lamotrigine",
+    "context": {
+      "pregnancy": true,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Pregnancy: valproic acid is teratogenic; interaction with lamotrigine (levels increase) adds seizure instability risk"
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "promethazine",
+    "context": {
+      "pediatric": true,
+      "age_norm": 0.05,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Pediatric: codeine contraindicated in children <12; combination with promethazine has caused deaths"
+  },
+  {
+    "drug_a": "metoclopramide",
+    "drug_b": "haloperidol",
+    "context": {
+      "pediatric": true,
+      "age_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Pediatric: children more susceptible to extrapyramidal effects from dopamine antagonist combination"
+  },
+  {
+    "drug_a": "fluoxetine",
+    "drug_b": "tramadol",
+    "context": {
+      "pediatric": true,
+      "age_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Pediatric: serotonin syndrome risk higher in children; tramadol seizure risk also elevated"
+  },
+  {
+    "drug_a": "codeine",
+    "drug_b": "fluoxetine",
+    "context": {
+      "genetic_pm": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "CYP2D6 poor metabolizer: codeine cannot convert to morphine; fluoxetine CYP2D6 inhibition is redundant"
+  },
+  {
+    "drug_a": "tramadol",
+    "drug_b": "paroxetine",
+    "context": {
+      "genetic_pm": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "CYP2D6 poor metabolizer: tramadol already poorly activated; paroxetine inhibition less clinically relevant"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "amiodarone",
+    "context": {
+      "total_drugs_norm": 0.8,
+      "cyp_inhibitor_count": 0.6,
+      "both_oral": true,
+      "geriatric": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly polypharmacy patient: multiple CYP inhibitors + warfarin + amiodarone = extreme bleeding/toxicity risk"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "verapamil",
+    "context": {
+      "total_drugs_norm": 0.7,
+      "renal_gfr_norm": 0.4,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly with renal impairment on polypharmacy: digoxin + verapamil risk of fatal bradycardia/AV block"
+  },
+  {
+    "drug_a": "vancomycin",
+    "drug_b": "gentamicin",
+    "context": {
+      "weight_norm": 0.3,
+      "renal_gfr_norm": 0.5,
+      "both_oral": false,
+      "any_iv": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Low body weight + reduced renal function: both drugs have narrow therapeutic index, additive nephrotoxicity severe"
+  },
+  {
+    "drug_a": "vancomycin",
+    "drug_b": "gentamicin",
+    "context": {
+      "weight_norm": 0.5,
+      "renal_gfr_norm": 0.9,
+      "both_oral": false,
+      "any_iv": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal weight + good renal function: additive nephrotoxicity manageable with monitoring"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "ibuprofen",
+    "context": {
+      "renal_gfr_norm": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: NSAIDs reduce lithium clearance but kidneys have reserve capacity"
+  },
+  {
+    "drug_a": "lithium",
+    "drug_b": "ibuprofen",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Poor renal function: lithium already at risk of accumulation, NSAIDs will push to toxic levels"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "clarithromycin",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: clarithromycin increases digoxin levels via P-gp, but renal clearance partially compensates"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "clarithromycin",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "geriatric": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly with renal impairment: digoxin toxicity nearly certain with clarithromycin P-gp inhibition"
+  },
+  {
+    "drug_a": "metformin",
+    "drug_b": "furosemide",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "mild",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: furosemide may mildly affect metformin clearance, clinically insignificant"
+  },
+  {
+    "drug_a": "metformin",
+    "drug_b": "furosemide",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Renal impairment: reduced metformin clearance + diuretic-induced volume depletion = lactic acidosis risk"
+  },
+  {
+    "drug_a": "allopurinol",
+    "drug_b": "azathioprine",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: allopurinol inhibits xanthine oxidase, azathioprine metabolite 6-MP accumulates regardless"
+  },
+  {
+    "drug_a": "allopurinol",
+    "drug_b": "azathioprine",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Renal impairment: further reduced clearance of 6-MP metabolites, life-threatening myelosuppression"
+  },
+  {
+    "drug_a": "clozapine",
+    "drug_b": "fluvoxamine",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "hepatic_child_pugh_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly with hepatic compromise: fluvoxamine CYP1A2 inhibition causes dangerous clozapine accumulation"
+  },
+  {
+    "drug_a": "clozapine",
+    "drug_b": "fluvoxamine",
+    "context": {
+      "age_norm": 0.3,
+      "hepatic_child_pugh_norm": 0.0,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Young adult, normal liver: fluvoxamine still strongly inhibits CYP1A2 but clearance capacity is better"
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "lamotrigine",
+    "context": {
+      "dose_a_normalized": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose carbamazepine: less CYP3A4/UGT induction, lamotrigine levels moderately reduced"
+  },
+  {
+    "drug_a": "carbamazepine",
+    "drug_b": "lamotrigine",
+    "context": {
+      "dose_a_normalized": 0.9,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Full-dose carbamazepine: maximal enzyme induction, lamotrigine levels reduced 40-50%"
+  },
+  {
+    "drug_a": "rifampin",
+    "drug_b": "warfarin",
+    "context": {
+      "dose_a_normalized": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Even low-dose rifampin is a potent CYP inducer; warfarin effect dramatically reduced"
+  },
+  {
+    "drug_a": "rifampin",
+    "drug_b": "warfarin",
+    "context": {
+      "dose_a_normalized": 1.0,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Full-dose rifampin: warfarin essentially ineffective, massive CYP2C9/3A4 induction"
+  },
+  {
+    "drug_a": "quetiapine",
+    "drug_b": "ketoconazole",
+    "context": {
+      "dose_a_normalized": 0.15,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose quetiapine (25-50mg) with ketoconazole: CYP3A4 inhibition manageable at reduced quetiapine dose"
+  },
+  {
+    "drug_a": "quetiapine",
+    "drug_b": "ketoconazole",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Full-dose quetiapine with ketoconazole: quetiapine AUC increase 6x, sedation/QT risk"
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazole",
+    "context": {
+      "is_loading_dose_a": true,
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Clopidogrel loading dose (300-600mg) + omeprazole: CYP2C19 inhibition most critical during loading when rapid activation needed"
+  },
+  {
+    "drug_a": "metronidazole",
+    "drug_b": "warfarin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral metronidazole + warfarin: full CYP2C9 inhibition via first-pass + systemic"
+  },
+  {
+    "drug_a": "metronidazole",
+    "drug_b": "warfarin",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV metronidazole: systemic CYP2C9 inhibition still present but no intestinal first-pass amplification"
+  },
+  {
+    "drug_a": "vancomycin",
+    "drug_b": "gentamicin",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "IV vancomycin + IV gentamicin: additive nephrotoxicity and ototoxicity at full systemic exposure"
+  },
+  {
+    "drug_a": "vancomycin",
+    "drug_b": "gentamicin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "mild",
+    "category": "route_dependent",
+    "note": "Oral vancomycin (for C. diff): negligible systemic absorption, nephrotoxicity interaction minimal"
+  },
+  {
+    "drug_a": "nystatin",
+    "drug_b": "cyclosporine",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "Oral nystatin: not systemically absorbed, no interaction with cyclosporine"
+  },
+  {
+    "drug_a": "nystatin",
+    "drug_b": "cyclosporine",
+    "context": {
+      "any_topical": true,
+      "both_oral": false
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "Topical nystatin: no systemic absorption, no interaction"
+  },
+  {
+    "drug_a": "clindamycin",
+    "drug_b": "erythromycin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Oral clindamycin + oral erythromycin: macrolide-lincosamide antagonism at ribosomal binding site"
+  },
+  {
+    "drug_a": "clindamycin",
+    "drug_b": "erythromycin",
+    "context": {
+      "any_topical": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "route_dependent",
+    "note": "Topical clindamycin: minimal systemic absorption, no meaningful antagonism with systemic erythromycin"
+  },
+  {
+    "drug_a": "diltiazem",
+    "drug_b": "simvastatin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral diltiazem: intestinal + hepatic CYP3A4 inhibition increases simvastatin exposure 4-5x"
+  },
+  {
+    "drug_a": "diltiazem",
+    "drug_b": "simvastatin",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV diltiazem: primarily hepatic CYP3A4 inhibition, less intestinal first-pass amplification for simvastatin"
+  },
+  {
+    "drug_a": "albuterol",
+    "drug_b": "propranolol",
+    "context": {
+      "any_inhaled": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "Inhaled albuterol + oral propranolol: beta-blocker antagonizes bronchodilation even with inhaled route"
+  },
+  {
+    "drug_a": "albuterol",
+    "drug_b": "propranolol",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral albuterol + propranolol: systemic beta-agonist/antagonist competition, bronchospasm + hypertensive crisis risk"
+  },
+  {
+    "drug_a": "ipratropium",
+    "drug_b": "donepezil",
+    "context": {
+      "any_inhaled": true,
+      "both_oral": false
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "route_dependent",
+    "note": "Inhaled ipratropium: minimal systemic anticholinergic effect, low antagonism of cholinesterase inhibitor"
+  },
+  {
+    "drug_a": "fentanyl",
+    "drug_b": "ketoconazole",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "IV fentanyl + ketoconazole: CYP3A4 inhibition reduces fentanyl clearance regardless of route"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "colesevelam",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: colesevelam binds warfarin in GI tract reducing absorption"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "colesevelam",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "Warfarin 4h before colesevelam: complete absorption before binding agent present"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "colestipol",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: colestipol binds warfarin in GI tract reducing absorption"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "colestipol",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "Warfarin 4h before colestipol: complete absorption before binding agent present"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "timing_dependent",
+    "note": "Simultaneous: cholestyramine binds levothyroxine, can reduce absorption by 90%"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "cholestyramine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Levothyroxine 4h before cholestyramine: adequate separation for T4 absorption"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "metoclopramide",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: metoclopramide increases GI motility, reduces digoxin absorption time"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "metoclopramide",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Digoxin 2h before metoclopramide: digoxin largely absorbed before motility change"
+  },
+  {
+    "drug_a": "doxycycline",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Simultaneous: some divalent cation chelation possible"
+  },
+  {
+    "drug_a": "doxycycline",
+    "drug_b": "omeprazole",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "2h separation eliminates any absorption interaction"
+  },
+  {
+    "drug_a": "gabapentin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Simultaneous: antacids can reduce gabapentin absorption by ~20%"
+  },
+  {
+    "drug_a": "gabapentin",
+    "drug_b": "famotidine",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "mild",
+    "severity_with_context": "none",
+    "category": "timing_dependent",
+    "note": "Gabapentin 2h before antacid: absorption essentially complete"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: sucralfate binds phenytoin in GI tract"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "phenytoin 2h before sucralfate: adequate separation prevents binding"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: sucralfate binds digoxin in GI tract"
+  },
+  {
+    "drug_a": "digoxin",
+    "drug_b": "sucralfate",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.25,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "digoxin 2h before sucralfate: adequate separation prevents binding"
+  },
+  {
+    "drug_a": "morphine",
+    "drug_b": "lorazepam",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: morphine + benzodiazepine respiratory depression risk markedly increased; falls risk additive"
+  },
+  {
+    "drug_a": "oxycodone",
+    "drug_b": "lorazepam",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: oxycodone + benzodiazepine respiratory depression risk markedly increased; falls risk additive"
+  },
+  {
+    "drug_a": "hydrocodone",
+    "drug_b": "lorazepam",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: hydrocodone + benzodiazepine respiratory depression risk markedly increased; falls risk additive"
+  },
+  {
+    "drug_a": "fentanyl",
+    "drug_b": "lorazepam",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: fentanyl + benzodiazepine respiratory depression risk markedly increased; falls risk additive"
+  },
+  {
+    "drug_a": "hydromorphone",
+    "drug_b": "lorazepam",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: hydromorphone + benzodiazepine respiratory depression risk markedly increased; falls risk additive"
+  },
+  {
+    "drug_a": "sertraline",
+    "drug_b": "ondansetron",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: serotonergic interaction + increased QT sensitivity with age"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: ciprofloxacin + amiodarone QT prolongation risk higher with age-related cardiac conduction changes"
+  },
+  {
+    "drug_a": "ciprofloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "age_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult: ciprofloxacin + amiodarone QT prolongation risk still severe but baseline cardiac risk lower"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: levofloxacin + amiodarone QT prolongation risk higher with age-related cardiac conduction changes"
+  },
+  {
+    "drug_a": "levofloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "age_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult: levofloxacin + amiodarone QT prolongation risk still severe but baseline cardiac risk lower"
+  },
+  {
+    "drug_a": "moxifloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: moxifloxacin + amiodarone QT prolongation risk higher with age-related cardiac conduction changes"
+  },
+  {
+    "drug_a": "moxifloxacin",
+    "drug_b": "amiodarone",
+    "context": {
+      "age_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Younger adult: moxifloxacin + amiodarone QT prolongation risk still severe but baseline cardiac risk lower"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "fluconazole",
+    "context": {
+      "hepatic_child_pugh_norm": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Normal liver: fluconazole CYP2C9 inhibition raises phenytoin levels; therapeutic drug monitoring needed"
+  },
+  {
+    "drug_a": "phenytoin",
+    "drug_b": "fluconazole",
+    "context": {
+      "hepatic_child_pugh_norm": 0.7,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Hepatic impairment: phenytoin metabolism already reduced; adding CYP2C9 inhibitor causes toxicity"
+  },
+  {
+    "drug_a": "lisinopril",
+    "drug_b": "spironolactone",
+    "context": {
+      "pregnancy": true,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Pregnancy: ACE inhibitors teratogenic (2nd/3rd trimester); spironolactone anti-androgenic; both contraindicated"
+  },
+  {
+    "drug_a": "warfarin",
+    "drug_b": "phenytoin",
+    "context": {
+      "protein_bound_count": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Multiple highly protein-bound drugs: warfarin + phenytoin displacement competition amplified by other bound drugs"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "trimethoprim_sulfamethoxazole",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: TMP-SMX + tacrolimus: hyperkalemia + nephrotoxicity risk manageable"
+  },
+  {
+    "drug_a": "tacrolimus",
+    "drug_b": "trimethoprim_sulfamethoxazole",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Renal impairment: TMP blocks K+ secretion + tacrolimus nephrotoxic = severe hyperkalemia risk"
+  },
+  {
+    "drug_a": "cyclosporine",
+    "drug_b": "enalapril",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal function: cyclosporine + ACEi hyperkalemia risk present, monitor K+"
+  },
+  {
+    "drug_a": "cyclosporine",
+    "drug_b": "enalapril",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Renal impairment: cyclosporine nephrotoxicity + ACEi reduced K+ excretion = dangerous hyperkalemia"
+  },
+  {
+    "drug_a": "theophylline",
+    "drug_b": "erythromycin",
+    "context": {
+      "geriatric": true,
+      "age_norm": 0.85,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Elderly: reduced theophylline clearance baseline + CYP1A2 inhibition by erythromycin = toxicity"
+  },
+  {
+    "drug_a": "verapamil",
+    "drug_b": "simvastatin",
+    "context": {
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "route_dependent",
+    "note": "Oral verapamil: intestinal + hepatic CYP3A4/P-gp inhibition maximally increases simvastatin exposure"
+  },
+  {
+    "drug_a": "verapamil",
+    "drug_b": "simvastatin",
+    "context": {
+      "any_iv": true,
+      "both_oral": false
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "route_dependent",
+    "note": "IV verapamil: hepatic CYP3A4 inhibition present but no intestinal first-pass amplification of simvastatin"
+  },
+  {
+    "drug_a": "colchicine",
+    "drug_b": "ritonavir",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "frequency_a": 0.25,
+      "both_oral": true
+    },
+    "severity_without_context": "contraindicated",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "Very low single-dose colchicine (0.3mg) with ritonavir: still dangerous but may be used for acute gout per FDA guidance"
+  },
+  {
+    "drug_a": "colchicine",
+    "drug_b": "ritonavir",
+    "context": {
+      "dose_a_normalized": 0.5,
+      "frequency_a": 0.75,
+      "both_oral": true
+    },
+    "severity_without_context": "contraindicated",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Repeat-dose colchicine with ritonavir: contraindicated, fatal colchicine toxicity from massive CYP3A4/P-gp inhibition"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "colestipol",
+    "context": {
+      "both_oral": true,
+      "simultaneous": true,
+      "separated_hours_norm": 0.0
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "moderate",
+    "category": "timing_dependent",
+    "note": "Simultaneous: colestipol binds levothyroxine reducing absorption significantly"
+  },
+  {
+    "drug_a": "levothyroxine",
+    "drug_b": "colestipol",
+    "context": {
+      "both_oral": true,
+      "simultaneous": false,
+      "separated_hours_norm": 0.5,
+      "a_before_b": true
+    },
+    "severity_without_context": "moderate",
+    "severity_with_context": "mild",
+    "category": "timing_dependent",
+    "note": "Levothyroxine 4h before colestipol: adequate separation for thyroid hormone absorption"
+  },
+  {
+    "drug_a": "everolimus",
+    "drug_b": "cyclosporine",
+    "context": {
+      "renal_gfr_norm": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "patient_factor_dependent",
+    "note": "Normal renal: cyclosporine increases everolimus levels + additive nephrotoxicity; requires TDM"
+  },
+  {
+    "drug_a": "everolimus",
+    "drug_b": "cyclosporine",
+    "context": {
+      "renal_gfr_norm": 0.3,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "contraindicated",
+    "category": "patient_factor_dependent",
+    "note": "Renal impairment: dual immunosuppressant nephrotoxicity with impaired clearance = organ-threatening"
+  },
+  {
+    "drug_a": "sildenafil",
+    "drug_b": "isosorbide_mononitrate",
+    "context": {
+      "dose_a_normalized": 0.1,
+      "both_oral": true
+    },
+    "severity_without_context": "contraindicated",
+    "severity_with_context": "contraindicated",
+    "category": "dose_dependent",
+    "note": "Even lowest sildenafil dose with nitrates: contraindicated due to severe hypotension risk"
+  },
+  {
+    "drug_a": "methadone",
+    "drug_b": "fluconazole",
+    "context": {
+      "dose_a_normalized": 0.2,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "moderate",
+    "category": "dose_dependent",
+    "note": "Low-dose methadone + fluconazole: CYP3A4 inhibition increases methadone levels but from low baseline"
+  },
+  {
+    "drug_a": "methadone",
+    "drug_b": "fluconazole",
+    "context": {
+      "dose_a_normalized": 0.8,
+      "both_oral": true
+    },
+    "severity_without_context": "severe",
+    "severity_with_context": "severe",
+    "category": "dose_dependent",
+    "note": "High-dose methadone + fluconazole: QT prolongation risk + respiratory depression from elevated levels"
+  }
+]

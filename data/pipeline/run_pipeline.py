@@ -1,12 +1,13 @@
 """
-Phase 4a data pipeline orchestrator.
+PharmLoop data pipeline orchestrator.
 
 Reads the target drug list, extracts features (from DrugBank XML or
 synthetic generation), extracts interactions, runs quality checks,
-and produces drugs_v2.json + interactions_v2.json.
+and produces versioned output (drugs_v2/v3.json + interactions_v2/v3.json).
 
 Usage:
     python -m data.pipeline.run_pipeline [--drugbank path/to/drugbank.xml]
+    python -m data.pipeline.run_pipeline --drug-list data/raw/full_drug_list.txt --version v3
 """
 
 import argparse
@@ -37,6 +38,13 @@ logger = logging.getLogger("pharmloop.pipeline")
 # These define default feature ranges per drug class.
 # Used for synthetic feature generation when DrugBank XML is not available.
 # Each value is (dim_index, default_value) or (dim_index, low, high) for range.
+#
+# WARNING: These priors are handcrafted pharmacological heuristics. The mapping
+# from dimension indices to pharmacological properties (e.g. dim 5 → CYP2D6
+# inhibition) is assumed here and may not match the layout used in the v1
+# feature vectors from Phase 1-3. When DrugBank XML becomes available in
+# Phase 4b, these synthetic features will be replaced entirely. Do NOT treat
+# severity/mechanism accuracy on this synthetic data as clinically meaningful.
 
 CLASS_FEATURE_PRIORS: dict[str, dict[int, float | tuple[float, float]]] = {
     "ssri_snri": {
@@ -465,15 +473,17 @@ def run_pipeline(
     output_dir: str,
     drugbank_xml_path: str | None = None,
     original_data_dir: str | None = None,
+    version: str = "v2",
 ) -> DataQualityReport:
     """
-    Run the full Phase 4a data pipeline.
+    Run the data pipeline for any phase.
 
     Args:
-        drug_list_path: Path to top_300_drugs.txt.
+        drug_list_path: Path to drug list file (top_300_drugs.txt or full_drug_list.txt).
         output_dir: Directory for output files.
         drugbank_xml_path: Optional path to DrugBank XML.
-        original_data_dir: Path to Phase 1-3 data (for preservation).
+        original_data_dir: Path to earlier phase data (for preservation).
+        version: Output file version prefix ("v2" for Phase 4a, "v3" for Phase 4b).
 
     Returns:
         DataQualityReport with extraction statistics.
@@ -519,7 +529,7 @@ def run_pipeline(
     else:
         logger.info("No DrugBank XML — using synthetic feature generation")
 
-    # ── Build drugs_v2.json ──
+    # ── Build drug data ──
     drugs_v2: dict[str, dict] = {}
     for i, entry in enumerate(drug_entries):
         name = entry["name"]
@@ -560,7 +570,7 @@ def run_pipeline(
         else:
             logger.warning("Original drug feature continuity: SOME DRIFT DETECTED")
 
-    # ── Generate interactions_v2.json ──
+    # ── Generate interactions ──
     interactions_v2 = generate_interactions(drug_entries, original_interactions)
     report.total_interactions = len(interactions_v2)
 
@@ -586,20 +596,21 @@ def run_pipeline(
     drugs_output = {
         "num_drugs": len(drugs_v2),
         "feature_dim": 64,
+        "version": version,
         "sources": (
-            "Phase 1-3 hand-curated + Phase 4a synthetic generation "
-            "from pharmacological class priors"
+            f"Phase 1-3 hand-curated + Phase 4{'b' if version == 'v3' else 'a'} "
+            f"synthetic generation from pharmacological class priors"
         ),
         "drugs": drugs_v2,
     }
-    with open(output_path / "drugs_v2.json", "w") as f:
+    with open(output_path / f"drugs_{version}.json", "w") as f:
         json.dump(drugs_output, f, indent=2)
 
     interactions_output = {
         "num_interactions": len(interactions_v2),
         "interactions": interactions_v2,
     }
-    with open(output_path / "interactions_v2.json", "w") as f:
+    with open(output_path / f"interactions_{version}.json", "w") as f:
         json.dump(interactions_output, f, indent=2)
 
     # ── Quality report ──
@@ -613,7 +624,7 @@ def run_pipeline(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Phase 4a data pipeline")
+    parser = argparse.ArgumentParser(description="PharmLoop data pipeline")
     parser.add_argument("--drugbank", type=str, default=None,
                         help="Path to DrugBank XML (optional)")
     parser.add_argument("--drug-list", type=str,
@@ -622,6 +633,9 @@ def main() -> None:
                         default="data/processed")
     parser.add_argument("--original-data", type=str,
                         default="data/processed")
+    parser.add_argument("--version", type=str, default="v2",
+                        choices=["v2", "v3"],
+                        help="Output version prefix (v2=Phase4a, v3=Phase4b)")
     args = parser.parse_args()
 
     run_pipeline(
@@ -629,6 +643,7 @@ def main() -> None:
         output_dir=args.output_dir,
         drugbank_xml_path=args.drugbank,
         original_data_dir=args.original_data,
+        version=args.version,
     )
 
 

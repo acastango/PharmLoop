@@ -82,8 +82,10 @@ class HierarchicalHopfield(nn.Module):
             nn.Sigmoid(),
         )
 
-        # Temporary storage for drug classes (set by PharmLoopModel.forward)
-        self._current_classes: tuple[str, str] | None = None
+        # Temporary storage for drug classes (set by PharmLoopModel.forward).
+        # Can be a single tuple for uniform batches (backward compat) or
+        # a list of tuples for per-item routing in mixed batches.
+        self._current_classes: tuple[str, str] | list[tuple[str, str]] | None = None
 
     @property
     def input_dim(self) -> int:
@@ -125,18 +127,23 @@ class HierarchicalHopfield(nn.Module):
         self,
         query: Tensor,
         beta: float = 1.0,
-        drug_classes: tuple[str, str] | None = None,
+        drug_classes: tuple[str, str] | list[tuple[str, str]] | None = None,
     ) -> Tensor:
         """
         Hierarchical retrieval: class-specific + global, gated.
 
-        If drug_classes not provided, checks _current_classes (set by
-        PharmLoopModel), falls back to global-only.
+        Supports per-item class routing for mixed batches. If drug_classes
+        is a list of (class_a, class_b) tuples (one per batch item), items
+        are grouped by their class pair and each group gets its own
+        class-specific retrieval. If a single tuple, it's applied uniformly.
+
+        Falls back to _current_classes if not provided, then to global-only.
 
         Args:
             query: (batch, input_dim) query tensor.
             beta: Inverse temperature for retrieval sharpness.
-            drug_classes: Optional (class_a, class_b) tuple.
+            drug_classes: Single (class_a, class_b) tuple, list of per-item
+                tuples, or None.
 
         Returns:
             (batch, input_dim) retrieved patterns.
@@ -151,7 +158,51 @@ class HierarchicalHopfield(nn.Module):
         if drug_classes is None:
             return global_retrieved
 
-        # Class-specific retrieval
+        # Normalize: single tuple → uniform for all items
+        if isinstance(drug_classes, tuple):
+            return self._retrieve_for_class_pair(
+                query, global_retrieved, drug_classes, beta,
+            )
+
+        # Per-item routing: group items by class pair, retrieve per group
+        batch_size = query.shape[0]
+        assert len(drug_classes) == batch_size
+
+        # Group by normalized class pair (sorted so (A,B) == (B,A))
+        groups: dict[tuple[str, str], list[int]] = {}
+        for i, (cls_a, cls_b) in enumerate(drug_classes):
+            key = (min(cls_a, cls_b), max(cls_a, cls_b))
+            groups.setdefault(key, []).append(i)
+
+        result = global_retrieved.clone()
+        for cls_pair, indices in groups.items():
+            idx = torch.tensor(indices, device=query.device, dtype=torch.long)
+            group_result = self._retrieve_for_class_pair(
+                query[idx], global_retrieved[idx], cls_pair, beta,
+            )
+            result[idx] = group_result
+
+        return result
+
+    def _retrieve_for_class_pair(
+        self,
+        query: Tensor,
+        global_retrieved: Tensor,
+        drug_classes: tuple[str, str],
+        beta: float,
+    ) -> Tensor:
+        """
+        Class-specific retrieval for a single (class_a, class_b) pair.
+
+        Args:
+            query: (N, input_dim) query tensor for this group.
+            global_retrieved: (N, input_dim) pre-computed global retrieval.
+            drug_classes: (class_a, class_b) tuple.
+            beta: Inverse temperature.
+
+        Returns:
+            (N, input_dim) gated blend of class-specific and global retrieval.
+        """
         class_a, class_b = drug_classes
         class_retrievals = []
         for cls in set([class_a, class_b]):
@@ -167,7 +218,7 @@ class HierarchicalHopfield(nn.Module):
 
         # Learned gating: blend class-specific and global
         combined = torch.cat([class_retrieved, global_retrieved], dim=-1)
-        gate = self.combine_gate(combined)  # (batch, 1)
+        gate = self.combine_gate(combined)  # (N, 1)
         return gate * class_retrieved + (1 - gate) * global_retrieved
 
     def clear(self) -> None:

@@ -1,23 +1,25 @@
 """
-Context encoder: modulates pair state with dose, route, timing, and patient factors.
+Context encoder: modulates pair state with dose, route, timing, patient factors,
+and pharmacogenomic status.
 
 Some interactions are context-dependent:
   - Warfarin + acetaminophen: safe at low doses, risky at high chronic doses
   - CYP interactions scale with dose
   - Some interactions are mitigated by separating administration times
+  - CYP2D6 poor metabolizers: codeine/tramadol interactions change significance
 
 The context encoder uses gated additive modulation: when context is absent or
 irrelevant, the gate stays near zero and output ≈ pair_state. When context
 is informative, the gate opens and shifts the starting point of oscillation.
 
-~200K params.
+Phase 4b expands context from 32 to 48 dims to include pharmacogenomic status.
 """
 
 import torch
 import torch.nn as nn
 from torch import Tensor
 
-CONTEXT_DIM = 32
+CONTEXT_DIM = 48
 
 # Context feature layout:
 # Dims 0-3:   Drug A dosing (dose_normalized, frequency, duration_days, is_loading_dose)
@@ -28,7 +30,33 @@ CONTEXT_DIM = 32
 #             hepatic_child_pugh_norm, pregnancy, pediatric, geriatric, genetic_pm)
 # Dims 24-27: Comedication burden (total_drugs_norm, cyp_inhibitor_count,
 #             cyp_inducer_count, protein_bound_count)
-# Dims 28-31: Reserved
+# Dims 28-31: Reserved (clinical dosing)
+# Dims 32-35: CYP2D6 metabolizer status (one-hot: poor, intermediate, extensive, ultra-rapid)
+# Dims 36-39: CYP2C19 metabolizer status (same encoding)
+# Dims 40-43: CYP2C9 + VKORC1 status (CYP2C9 poor/intermediate/extensive + VKORC1 sensitive)
+# Dims 44-47: HLA markers (B*5701 positive, B*1502 positive, reserved, reserved)
+
+# Pharmacogenomic status encoding offsets
+PGX_CYP2D6_OFFSET = 32
+PGX_CYP2C19_OFFSET = 36
+PGX_CYP2C9_VKORC1_OFFSET = 40
+PGX_HLA_OFFSET = 44
+
+PGX_METABOLIZER_MAP = {
+    "poor_metabolizer": 0,
+    "intermediate_metabolizer": 1,
+    "extensive_metabolizer": 2,
+    "ultra_rapid_metabolizer": 3,
+}
+
+PGX_VKORC1_MAP = {
+    "sensitive": 3,
+}
+
+PGX_HLA_MAP = {
+    "hla_b5701": 0,
+    "hla_b1502": 1,
+}
 
 
 class ContextEncoder(nn.Module):
